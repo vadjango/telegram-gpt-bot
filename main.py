@@ -1,29 +1,34 @@
 from config import *
 import telebot
 import time
+import psycopg2
+from psycopg2 import IntegrityError
+import sys
 from telebot import types
 from telebot.types import ReplyKeyboardMarkup, Message
+from telebot.util import quick_markup
 from datetime import datetime
 from threading import Thread
+from config import TELEBOT_TOKEN, ADMIN_ID, DB_CONFIG
 
-from dotenv import load_dotenv
-
-dotenv_path = "vars.env"
-load_dotenv(dotenv_path)
-OPTION = None
-
-bot = telebot.TeleBot(os.getenv("TOKEN"))
+bot = telebot.TeleBot(TELEBOT_TOKEN)
+BOT_STOP = False
 
 users_info: dict[list[str, datetime]] = dict()
 users_replicas = dict()
 
 
-def markup_options() -> ReplyKeyboardMarkup:
+def markup_options(chat_id) -> ReplyKeyboardMarkup:
     kb = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
     corr_mist = types.KeyboardButton("Исправить ошибки")
     ask_question = types.KeyboardButton("Задать вопрос")
     qt = types.KeyboardButton("Выход")
-    kb.add(corr_mist, ask_question, qt)
+    if chat_id in ADMIN_ID:
+        disable_btn = types.KeyboardButton("Отключить бота")
+        kb.add(corr_mist, ask_question, qt, disable_btn)
+    else:
+        feedback_btn = types.KeyboardButton("Обратная связь")
+        kb.add(corr_mist, ask_question, qt, feedback_btn)
     return kb
 
 
@@ -32,9 +37,18 @@ def markup_options() -> ReplyKeyboardMarkup:
 def start(msg, txt="Привет, я телеграм-бот, который способен ответить на все твои вопросы.\nВыбери опцию:"):
     if msg.text == "Запустить":
         bot.delete_message(chat_id=msg.chat.id, message_id=msg.id)
+    elif msg.text == "/start":
+        try:
+            with psycopg2.connect(**DB_CONFIG) as conn:
+                cursor = conn.cursor()
+                cursor.execute(f"""INSERT INTO telegram_users
+			           VALUES ({msg.chat.id})""")
+                print(f"Добавлен юзер {msg.chat.id} в таблицу")
+        except IntegrityError:
+            pass
     bot.send_message(chat_id=msg.chat.id,
                      text=txt,
-                     reply_markup=markup_options())
+                     reply_markup=markup_options(msg.chat.id))
 
 
 def correct_mistakes_with_openai(msg: Message, thr_name: str) -> None:
@@ -113,6 +127,10 @@ def ask_a_question(msg):
     print(f"{msg.from_user.first_name} {msg.from_user.last_name}: выбран режим 'Задать вопрос' " +
           f"время: {users_info[msg.chat.id][1].time()}")
 
+@bot.message_handler(func=lambda msg: msg.text == "Обратная связь")
+def show_feedback_names(msg):
+    bot.send_message(chat_id=msg.chat.id, 
+                     text="Если у вас появились трудности в использовании бота, пишите в личные сообщения @osiris_4 и @vadmart")
 
 @bot.message_handler(func=lambda msg: msg.text == "Выход")
 def exit_the_mode(msg):
@@ -126,6 +144,41 @@ def exit_the_mode(msg):
         del users_replicas[msg.chat.id]
     except KeyError:
         pass
+
+
+@bot.message_handler(func=lambda msg: msg.text == "Отключить бота")
+def disable_bot_menu(msg):
+    markup = quick_markup({"1 минуту": {"callback_data": "1"},
+                           "5 минут": {"callback_data": "5"},
+                           "10 минут": {"callback_data": "10"},
+                           "20 минут": {"callback_data": "20"}})
+    bot.send_message(chat_id=msg.chat.id, 
+                     text="На какое время вы хотите отключить бота?",
+                     reply_markup=markup)
+
+
+@bot.callback_query_handler(func=lambda call: True)
+def bot_disabler(call):
+    global BOT_STOP
+    with psycopg2.connect(**DB_CONFIG) as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM telegram_users")
+        for user_id_tuple in cursor.fetchall():
+            bot.send_message(chat_id=user_id_tuple[0], 
+                             text=f"Бот будет отключен через {call.data} минут для дальнейших доработок",
+                             disable_notification=True)
+    time.sleep(int(call.data) * 60)
+    with psycopg2.connect(**DB_CONFIG) as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM telegram_users")
+        for user_id_tuple in cursor.fetchall():
+            bot.send_message(chat_id=user_id_tuple[0],
+                             text=f"Бот отключен для дальнейших доработок",
+                             disable_notification=True)
+    BOT_STOP = True
+    bot.stop_bot()
+    time.sleep(1.5)
+    sys.exit()
 
 
 @bot.message_handler(func=lambda msg: msg.text == "Начать новый диалог")
@@ -155,11 +208,9 @@ def end_dialog(msg):
 def handle_requests(msg):
     try:
         if users_info[msg.chat.id][0] == "correct_mistakes":
-            thr = Thread(target=correct_mistakes_with_openai, args=(msg, f"Thread {msg.chat.id}"), daemon=True)
-            thr.start()
+            correct_mistakes_with_openai(msg, f"Thread {msg.chat.id}")
         elif users_info[msg.chat.id][0] == "speak":
-            thr = Thread(target=send_openai_respond, args=(msg, f"Thread {msg.chat.id}"), daemon=True)
-            thr.start()
+            send_openai_respond(msg, f"Thread {msg.chat.id}")
     except KeyError:
         bot.send_message(msg.chat.id,
                          "Для взаимодействия со мной выбери режим с помощью кнопок, расположенных внизу")
@@ -171,6 +222,8 @@ def run():
 
 def check_users():
     while True:
+        if BOT_STOP:
+            return
         for user_id in list(users_info):
             if (datetime.now() - users_info[user_id][1]).seconds > 600:
                 try:
@@ -179,16 +232,16 @@ def check_users():
                     pass
                 print(f"Удаляем {user_id}, время: {users_info[user_id][1].time()}")
                 bot.send_message(chat_id=user_id,
-                                 text="Вы не взаимодействовали с ботом более 10 минут, поэтому ваши диалоги удалены. Вы можете продолжить работу, выбрав режим",
-                                 reply_markup=markup_options(),
+                                 text="Вы не взаимодействовали с ботом более 10 минут, поэтому ваши реплики удалены. Вы можете продолжить работу, выбрав режим",
+                                 reply_markup=markup_options(user_id),
                                  disable_notification=True)
                 del users_info[user_id]
         time.sleep(1)
 
 
 if __name__ == "__main__":
-    tr = Thread(target=check_users, name="Checking", daemon=True)
-    tr.start()
+    th = Thread(target=check_users, name="Checking")
+    th.start()
     run()
 
 # TODO: добавить генерацию фотографий (возможно),
