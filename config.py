@@ -1,13 +1,11 @@
-import openai
-
-TELEBOT_TOKEN = "6192787762:AAFhxQ19pG7IvON8B9H1Uh7ca6bq_3c5N7U"
-openai.api_key = "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"
+TELEBOT_TOKEN = "6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI"
 ADMIN_ID = (1054140400, 975772882)
 DB_CONFIG = {"dbname": "postgres",
              "user": "postgres",
              "password": "swearter903",
-             "host": "192.168.137.110"
-            }
+             "host": "178.150.167.216",
+             "port": 5432
+             }
 
 
 if __name__ == "__main":
