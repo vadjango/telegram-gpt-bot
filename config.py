@@ -1,4 +1,16 @@
-TELEBOT_TOKEN = "6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI"
+import os
+import logging
+from dotenv import load_dotenv
+import gettext
+
+_ = gettext.gettext
+
+load_dotenv("vars.env")
+datefmt = "%d/%m/%Y %H:%M:%S"
+logging.basicConfig(filename="bot.log", format="%(asctime)s %(levelname)s %(message)s", datefmt=datefmt, filemode="w",
+                    level=logging.DEBUG)
+
+TELEBOT_TOKEN = os.getenv("TELEBOT_TOKEN")
 ADMIN_ID = (1054140400, 975772882)
 DB_CONFIG = {"dbname": "postgres",
              "user": "postgres",
@@ -6,11 +18,11 @@ DB_CONFIG = {"dbname": "postgres",
              "host": "178.150.167.216",
              "port": 5432
              }
-START_BOT_TEXT = "Привет, я умный бот 🤖\nМоя способность - отвечать на вопросы пользователей👤\n" + \
-                 "Какие темы можно со мной затронуть? На самом деле, практически любые, желательно не касающиеся " + \
-                 "политики. Почему же? Дело в том, что я не привязан к какой-либо стране идеологически. " + \
-                 "Таким образом, твоё мнение может отличаться от моего ответа.\n" + \
-                 "Для начала работы со мной выбери опцию:"
+TABLE_NAME = "test_telegram_users"
+LANG = {
+    "English": "en_US",
+    "Русский": "ru_RU"
+}
 
 if __name__ == "__main":
     ...
