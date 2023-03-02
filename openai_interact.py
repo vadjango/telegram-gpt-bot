@@ -1,4 +1,5 @@
 import logging
+import threading
 
 import requests
 import json
@@ -33,54 +34,17 @@ class OpenAIServerErrorException(Exception):
             return f"OpenAIServerErrorException has been raised"
 
 
-class OpenAIAPIKey:
-    """Represents the OpenAI API Key object, which has a value and amount of active requests"""
-
-    __api_keys: list = []
-
-    def __init__(self, value: str):
-        self.__value = value
-        self.__active_reqs_amount = 0
-
-    def increment_active_reqs_amount(self):
-        """Increase amount of active requests by 1"""
-        self.__active_reqs_amount += 1
-
-    def decrement_active_reqs_amount(self):
-        """Decrease amount of active requests by 1"""
-        self.__active_reqs_amount -= 1
-
-    @property
-    def value(self) -> str:
-        """Property of the value of API key"""
-        return self.__value
-
-    def save_key(self) -> None:
-        """Saves key to OpenAIAPIKey's list __api_keys"""
-        self.__api_keys.append(self)
-
-    def delete_key(self):
-        self.__api_keys.remove(self)
-
-    @property
-    def active_reqs_amount(self):
-        return self.__active_reqs_amount
-
-    @staticmethod
-    def get_all_keys():
-        return OpenAIAPIKey.__api_keys
-
-
 class CompletionAI:
     """
     Represents an object of OpenAI of CompletionAI model.
     """
     url = "https://api.openai.com/v1/completions"
 
-    def __init__(self, api_key: OpenAIAPIKey, txt: str, max_tokens: int):
+    def __init__(self, api_key: str, txt: str, max_tokens: int):
+        self.api_key = api_key
         self.headers = {
             "Content-Type": "application/json",
-            "Authorization": f"Bearer {api_key.value}"
+            "Authorization": f"Bearer {api_key}"
         }
         self.data = {
             "model": "text-davinci-003",
@@ -92,6 +56,8 @@ class CompletionAI:
     def get_answer(self) -> str:
         json_response = None
         try:
+            logging.info(
+                f"{threading.current_thread().name} : отправка запроса, ключ: {self.api_key}, кол-во токенов: {self.data['max_tokens']}")
             start_time = datetime.now()
             logging.debug("Начало обработки запроса")
             json_response = requests.post(url=self.url, headers=self.headers, json=self.data).json()
@@ -108,7 +74,4 @@ class CompletionAI:
 
 
 if __name__ == "__main__":
-    ok = OpenAIAPIKey("sadasd")
-    ok.save_key()
-    print("Called from class OpenAIAPIKey:", OpenAIAPIKey.get_all_keys())
-    print("Called from instance OpenAIAPIKey:", ok.get_all_keys())
+    ...

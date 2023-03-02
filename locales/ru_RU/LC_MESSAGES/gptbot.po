@@ -64,16 +64,16 @@ msgid "In order to use this bot, you need to subscribe telegram channel"
 msgstr "Для использования даного телеграм-бота нужно подписаться на телеграм-канал"
 
 #: main.py:89
-msgid "Bot gives a detailed answer in this mode."
-msgstr "В этом режиме бот дает развернутый ответ."
+msgid "Bot gives a detailed answer in this mode"
+msgstr "В этом режиме бот дает развернутый ответ"
 
 #: main.py:98 main.py:118 main.py:259
 msgid "In order to continue using this bot, you need to subscribe telegram channel"
 msgstr "Для того, чтобы продолжить использование даного телеграм-бота, нужно подписаться на телеграм-канал"
 
 #: main.py:110
-msgid "Bot can build a dialogue with logically connected replicas in this mode."
-msgstr "В этом режиме бот может построить логически связанный диалог."
+msgid "Bot can build a dialogue with logically connected replicas in this mode"
+msgstr "В этом режиме бот может построить логически связанный диалог"
 
 #: main.py:127
 msgid "If you have some issues with using this bot, please contact @osiris_4 и @vadmart"
@@ -146,10 +146,10 @@ msgstr "Начинаем новый диалог!"
 
 #: main.py:269
 msgid ""
-"Our beautiful dialogue is over🙂.\n"
+"Our beautiful dialogue is over🙂\n"
 "Choose the option:"
 msgstr ""
-"Наш прекрасный диалог завершен🙂.\n"
+"Наш прекрасный диалог завершен🙂\n"
 "Выберите опцию:"
 
 #: main.py:282 main.py:288

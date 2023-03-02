@@ -7,44 +7,6 @@ from datetime import datetime
 from config import *
 
 
-# def get_user_loc(chat_id: int) -> str:
-#     with psycopg2.connect(**DB_CONFIG) as conn:
-#         cursor = conn.cursor()
-#         cursor.execute(f"""SELECT locale
-#                             FROM {TABLE_NAME}
-#                             WHERE user_id = {chat_id}""")
-#         return cursor.fetchone()[0]
-#
-#
-# def init_user(chat_id: int):
-#     """
-#     Add a user to database if he doesn't exist (and also adds to USERS), otherwise just add to USERS
-#     :param chat_id:
-#     :return: None
-#     """
-#     thread_name = threading.current_thread().name
-#     try:
-#         with psycopg2.connect(**DB_CONFIG) as conn:
-#             cursor = conn.cursor()
-#             cursor.execute(f"""
-#                             INSERT INTO {TABLE_NAME}
-#                             VALUES (%s, %s, %s)""", (chat_id, "en_US", 0))
-#             conn.commit()
-#             logging.info(f"{thread_name} : добавлен юзер {chat_id} в таблицу")
-#         USERS[chat_id] = UserInfo(last_active_datetime=datetime.now(),
-#                                   has_active_request=False,
-#                                   language="en_US",
-#                                   mode=None,
-#                                   replicas=None)
-#     except IntegrityError:
-#         USERS[chat_id] = UserInfo(last_active_datetime=datetime.now(),
-#                                   has_active_request=False,
-#                                   language=get_user_loc(chat_id=chat_id),
-#                                   mode=None,
-#                                   replicas=None)
-#
-#
-
 def get_all_user_ids() -> tuple[int]:
     with psycopg2.connect(**DB_CONFIG) as conn:
         cursor = conn.cursor()
@@ -70,12 +32,15 @@ def get_all_api_keys() -> tuple[str]:
 
 
 def add_user_to_database(chat_id) -> None:
-    with psycopg2.connect(**DB_CONFIG) as conn:
-        cursor = conn.cursor()
-        cursor.execute(f"""
-                        INSERT INTO {TABLE_NAME}
-                        VALUES (%s, %s, %s)""", (chat_id, "en_US", 0))
-        conn.commit()
+    try:
+        with psycopg2.connect(**DB_CONFIG) as conn:
+            cursor = conn.cursor()
+            cursor.execute(f"""
+                            INSERT INTO {TABLE_NAME}
+                            VALUES (%s, %s, %s)""", (chat_id, "en_US", 0))
+            conn.commit()
+    except IntegrityError:
+        pass
 
 
 def delete_user_from_database(chat_id) -> None:
@@ -97,5 +62,28 @@ def get_user_loc(chat_id: int) -> str:
         return cursor.fetchone()[0]
 
 
+def change_locale_in_db(user_id, lng):
+    thr_name = threading.current_thread().name
+    if lng not in LANG.values():
+        raise ValueError(f"Locale must be selected from given: {LANG.keys()}")
+    with psycopg2.connect(**DB_CONFIG) as conn:
+        cursor = conn.cursor()
+        cursor.execute("""UPDATE test_telegram_users
+                          SET locale = %s
+                          WHERE user_id = %s""", (lng, user_id))
+        conn.commit()
+        logging.info(f"{thr_name} : {user_id}: локаль изменена на {lng}")
+
+
+def add_user_to_redis(user_id):
+    redis_.hset(f"user_{user_id}", "replicas", "")
+    redis_.hset(f"user_{user_id}", "has_active_request", 0)
+
+    try:
+        redis_.hset(f"user_{user_id}", "local", get_user_loc(user_id))
+    except IndexError:
+        redis_.hset(f"user_{user_id}", "local", "en_US")
+
+
 if __name__ == "__main__":
-    print(get_all_user_ids())
+    ...

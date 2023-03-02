@@ -125,7 +125,7 @@ msgstr ""
 
 #: main.py:291
 msgid ""
-"Our beautiful dialogue is over🙂.\n"
+"Our beautiful dialogue is over🙂\n"
 "Choose the option:"
 msgstr ""
 
