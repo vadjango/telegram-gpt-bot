@@ -3,10 +3,11 @@ from telebot import types
 from telebot.types import ReplyKeyboardMarkup
 from typing import Callable
 from config import ADMIN_ID, redis_
+from db_interaction import get_user_translator
 
 
 def markup_main_menu(chat_id: int) -> ReplyKeyboardMarkup:
-    _ = translate[redis_.hget(f"user_{chat_id}", "local").decode("utf-8")].gettext
+    _ = get_user_translator(chat_id)
     redis_.hdel(f"user_{chat_id}", "mode")
     redis_.hset(f"user_{chat_id}", "replicas", "")
     kb = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)

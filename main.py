@@ -1,4 +1,5 @@
 import time
+
 from openai_interact import *
 import sys
 from telebot import formatting
@@ -20,7 +21,8 @@ def start(msg: Message, txt="Hello, I'm a smart bot 🤖\nMy ability is to answe
                             "politicians. Why? The fact is that I am not ideologically tied to any country. "
                             "So your opinion may differ from mine.\n"
                             "To start working with me, select the option:"):
-    add_user_to_database(msg.chat.id)
+    if msg.text == "/start":
+        add_user_to_database(msg.chat.id)
     add_user_to_redis(msg.chat.id)
     _ = translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext
     if bot.get_chat_member(chat_id=-1001857064307, user_id=msg.chat.id).status in (
@@ -38,13 +40,11 @@ def start(msg: Message, txt="Hello, I'm a smart bot 🤖\nMy ability is to answe
             f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: требуется подписка на телеграм-канал")
 
 
-@bot.message_handler(
-    func=lambda msg: msg.text == translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext(
-        '❔ Detailed answer'))
+@bot.message_handler(func=lambda msg: msg.text == get_user_translator(msg.chat.id)('❔ Detailed answer'))
 def give_a_detailed_answer(msg):
-    _ = translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext
+    _ = get_user_translator(msg.chat.id)
     redis_.hset(f"user_{msg.chat.id}", "replicas", "")
-    # bot.delete_message(chat_id=msg.chat.id, message_id=msg.id)
+    bot.delete_message(chat_id=msg.chat.id, message_id=msg.id)
     if bot.get_chat_member(chat_id=-1001857064307, user_id=msg.chat.id).status in (
             "member", "creator", "administrator"):
         bot.send_message(chat_id=msg.chat.id,
@@ -62,11 +62,9 @@ def give_a_detailed_answer(msg):
             f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: требуется подписка на телеграм-канал")
 
 
-@bot.message_handler(
-    func=lambda msg: msg.text == translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext(
-        '💬 Dialogue'))
+@bot.message_handler(func=lambda msg: msg.text == get_user_translator(msg.chat.id)('💬 Dialogue'))
 def start_first_dialog(msg):
-    _ = translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext
+    _ = get_user_translator(msg.chat.id)
     bot.delete_message(chat_id=msg.chat.id, message_id=msg.id)
     if bot.get_chat_member(chat_id=-1001857064307, user_id=msg.chat.id).status in (
             "member", "creator", "administrator"):
@@ -85,22 +83,18 @@ def start_first_dialog(msg):
             f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: требуется подписка на телеграм-канал")
 
 
-@bot.message_handler(
-    func=lambda msg: msg.text == translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext(
-        "🗯 Feedback"))
+@bot.message_handler(func=lambda msg: msg.text == get_user_translator(msg.chat.id)("🗯 Feedback"))
 def show_feedback_names(msg):
-    _ = translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext
+    _ = get_user_translator(msg.chat.id)
     bot.send_message(chat_id=msg.chat.id,
                      text=_("If you have some issues with using this bot, please contact @osiris_4 и @vadmart"))
     logging.info(
         f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: просмотр контактов для обратной связи")
 
 
-@bot.message_handler(
-    func=lambda msg: msg.text == translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext(
-        "🌏 Language"))
+@bot.message_handler(func=lambda msg: msg.text == get_user_translator(msg.chat.id)("🌏 Language"))
 def change_language(msg):
-    _ = translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext
+    _ = get_user_translator(msg.chat.id)
     kb = types.ReplyKeyboardMarkup(resize_keyboard=True)
     kb.add(*(types.KeyboardButton(text=txt)
              for txt in LANG.keys()
@@ -113,7 +107,7 @@ def change_language(msg):
 def choose_lang_for_user(msg):
     Thread(name="user_locale_changing", target=change_locale_in_db, args=(msg.chat.id, LANG[msg.text])).start()
     redis_.hset(f"user_{msg.chat.id}", "local", LANG[msg.text])
-    _ = translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext
+    _ = get_user_translator(msg.chat.id)
     try:
         bot.send_message(chat_id=msg.chat.id,
                          text=_("Chosen language: {lng}").format(lng=msg.text),
@@ -122,11 +116,9 @@ def choose_lang_for_user(msg):
         bot.send_message(msg.chat.id, text=e)
 
 
-@bot.message_handler(
-    func=lambda msg: msg.text == translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext(
-        "❌ Disable a bot"))
+@bot.message_handler(func=lambda msg: msg.text == get_user_translator(msg.chat.id)("❌ Disable a bot"))
 def disable_bot_menu(msg):
-    _ = translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext
+    _ = get_user_translator(msg.chat.id)
     markup = quick_markup({_("1 minute"): {"callback_data": "1 minute"},
                            _("5 minutes"): {"callback_data": "5 minutes"},
                            _("10 minutes"): {"callback_data": "10 minutes"},
@@ -170,10 +162,9 @@ def bot_disabler(call):
 
 
 @bot.message_handler(
-    func=lambda msg: msg.text == translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext(
-        "📜 Instruction"))
+    func=lambda msg: msg.text == get_user_translator(msg.chat.id)("📜 Instruction"))
 def get_instruction(msg: Message):
-    _ = translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext
+    _ = get_user_translator(msg.chat.id)
     bot.send_message(chat_id=msg.chat.id,
                      text=_("""
                      Bot instruction:
@@ -183,10 +174,9 @@ def get_instruction(msg: Message):
 
 
 @bot.message_handler(
-    func=lambda msg: msg.text == translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext(
-        "New dialogue"))
+    func=lambda msg: msg.text == get_user_translator(msg.chat.id)("New dialogue"))
 def start_new_dialog(msg):
-    _ = translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext
+    _ = get_user_translator(msg.chat.id)
     bot.delete_message(chat_id=msg.chat.id, message_id=msg.id)
     if bot.get_chat_member(chat_id=-1001857064307, user_id=msg.chat.id).status in (
             "member", "creator", "administrator"):
@@ -203,10 +193,9 @@ def start_new_dialog(msg):
 
 
 @bot.message_handler(
-    func=lambda msg: msg.text == translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext(
-        "☰ Main menu"))
+    func=lambda msg: msg.text == get_user_translator(msg.chat.id)("☰ Main menu"))
 def end_dialog(msg):
-    _ = translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext
+    _ = get_user_translator(msg.chat.id)
     try:
         bot.delete_message(chat_id=msg.chat.id, message_id=msg.id)
         start(msg, _("Our beautiful dialogue is over🙂\nChoose the option:"))
@@ -217,7 +206,7 @@ def end_dialog(msg):
 
 @bot.message_handler(content_types=["text"])
 def handle_requests(msg: Message):
-    _ = translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext
+    _ = get_user_translator(msg.chat.id)
     try:
         if not int(redis_.hget(f"user_{msg.chat.id}", "has_active_request")):
             if redis_.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.DIALOG.value:
@@ -236,13 +225,13 @@ def handle_requests(msg: Message):
             bot.send_message(chat_id=msg.chat.id,
                              text=formatting.hitalic(_("Your answer is processing.\nPlease, wait…")),
                              parse_mode="HTML")
-    except AttributeError:
+    except (AttributeError, TypeError):
         bot.send_message(chat_id=msg.chat.id, text=_("Choose the mode from the main menu!"))
         logging.error(f"{THR_NAME} : Пользователь id = {msg.chat.id} не найден!")
 
 
 def send_request(msg: Message) -> Optional[Message]:
-    _ = translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext
+    _ = get_user_translator(msg.chat.id)
     thread_name = threading.current_thread().name
     logging.info(f"{thread_name} : старт работы")
     redis_.hset(f"user_{msg.chat.id}", "has_active_request", 1)
@@ -258,17 +247,21 @@ def send_request(msg: Message) -> Optional[Message]:
             answer = CompletionAI(api_key=best_api_key,
                                   txt=replica,
                                   max_tokens=1600).get_answer()
-            if redis_.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.DIALOG.value:
-                # если после получения ответа пользователь не изменил режим
-                replica += answer + "\n"
-                redis_.hset(f"user_{msg.chat.id}", "replicas", replica)
-                return bot.send_message(msg.chat.id, answer,
-                                        reply_markup=get_dialog_menu(_))
-        else:
+            current_user_mode = redis_.hget(f"user_{msg.chat.id}", "mode")  # получаем текущий выбранный режим юзера
+            if current_user_mode:  # если тип не равен None, то
+                if current_user_mode.decode("utf-8") == UserMode.DIALOG.value:
+                    # если после получения ответа пользователь не изменил режим
+                    replica += answer + "\n"
+                    redis_.hset(f"user_{msg.chat.id}", "replicas", replica)
+                    return bot.send_message(msg.chat.id, answer,
+                                            reply_markup=get_dialog_menu(_))
+        elif redis_.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.DETAILED_ANSWER.value:
             # режим обширный ответ
             answer = CompletionAI(api_key=best_api_key, txt=msg.text, max_tokens=3200).get_answer()
-            if redis_.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.DETAILED_ANSWER.value:
-                return bot.send_message(msg.chat.id, answer, reply_markup=get_detailed_answer_menu(_))
+            current_user_mode = redis_.hget(f"user_{msg.chat.id}", "mode")  # получаем текущий выбранный режим юзера
+            if current_user_mode:  # если тип не равен None, то
+                if current_user_mode.decode("utf-8") == UserMode.DETAILED_ANSWER.value:
+                    return bot.send_message(msg.chat.id, answer, reply_markup=get_detailed_answer_menu(_))
         logging.info(
             f"{thread_name} : {msg.from_user.first_name} {msg.from_user.last_name}: получение ответа")
     except (telebot.apihelper.ApiTelegramException, ExcessTokensException) as err:
@@ -280,6 +273,9 @@ def send_request(msg: Message) -> Optional[Message]:
             bot.send_message(msg.chat.id, err)
             logging.info(
                 f"{thread_name} : {msg.from_user.first_name} {msg.from_user.last_name}: {err}")
+    except AttributeError:
+        bot.send_message(chat_id=msg.chat.id, text=_("Choose the mode from the main menu!"))
+        logging.error(f"{THR_NAME} : Пользователь id = {msg.chat.id} не найден!")
     except KeyError:
         pass
     finally:
@@ -292,7 +288,7 @@ def send_request(msg: Message) -> Optional[Message]:
 
 def init_api_keys():
     for key_name in get_all_api_keys():
-        # инициализация конкретного АПИ-ключа и добавление его в экземпляр класса OpenAIAPIKey
+        # добавление АПИ-ключа в Redis
         redis_.hset("openai_keys-reqs_amount", key_name, 0)
 
 
@@ -306,7 +302,7 @@ def init_users():
 def launch():
     for id_ in get_all_user_ids():
         try:
-            _ = translate[redis_.hget(f"user_{id_}", "local")].gettext
+            _ = get_user_translator(id_)
             bot.send_message(chat_id=id_,
                              text=_("Bot has been launched and is ready to use🙂"),
                              reply_markup=create_launch_menu(_))
@@ -322,4 +318,11 @@ if __name__ == "__main__":
     # bot.run_webhooks(listen="localhost",
     #                  port=80,
     #                  webhook_url="https://9aa7-178-150-167-216.eu.ngrok.io")
-    bot.polling()
+    while True:
+        try:
+            logging.info("Start bot polling...")
+            bot.polling()
+        except Exception as e:
+            logging.error(e)
+            time.sleep(15)
+            logging.info("Reconnecting...")

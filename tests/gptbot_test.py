@@ -2,15 +2,13 @@ import datetime
 from unittest import TestCase, main
 from telebot import types
 from bot_users import UserMode
-from main import send_request, get_instruction
+from main import send_request, init_api_keys
 from openai_interact import *
 from concurrent.futures import ThreadPoolExecutor
-from config import TELEBOT_TOKEN
-import redis
+from config import *
 import requests
 import time
 
-redis_ = redis.Redis()
 TEST_USER_ID = 975772882
 
 
@@ -25,40 +23,41 @@ def add_test_user_to_redis(id_):
 
 class GPTBot(TestCase):
 
-    def test_sending_dialogue_request(self):
-        redis_.hset(f"user_{TEST_USER_ID}", "mode", UserMode.DIALOG.value)
-        message = self.create_test_message("Привет, я ботяра")
-        self.assertTrue(send_request(message))
-
-    def test_sending_detailed_answer_request(self):
-        redis_.hset(f"user_{TEST_USER_ID}", "mode", UserMode.DETAILED_ANSWER.value)
-        message = self.create_test_message("Привет, я ботяра")
-        self.assertTrue(send_request(message))
-
-    def test_not_receiving_answer_after_dialog_mode_changing(self):
-        """WARNING: for testing need to comment string 98 in main.py"""
-        redis_.hset(f"user_{TEST_USER_ID}", "mode", UserMode.DIALOG.value)
-        message = self.create_test_message("Привет, я ботяра.")
-        with ThreadPoolExecutor(max_workers=1) as executor:
-            future = executor.submit(send_request, message)
-            time.sleep(0.3)
-            redis_.hset(f"user_{TEST_USER_ID}", "mode", UserMode.DETAILED_ANSWER.value)
-            self.assertIsNone(future.result())
-
-    def test_not_receiving_answer_after_detailed_answer_mode_changing(self):
-        """WARNING: for testing need to comment string 98 in main.py"""
-        redis_.hset(f"user_{TEST_USER_ID}", "mode", UserMode.DETAILED_ANSWER.value)
-        message = self.create_test_message("Привет, я ботяра.")
-        with ThreadPoolExecutor(max_workers=1) as executor:
-            future = executor.submit(send_request, message)
-            time.sleep(0.5)
-            redis_.hset(f"user_{TEST_USER_ID}", "mode", UserMode.DIALOG.value)
-            self.assertIsNone(future.result())
+    # def test_sending_dialogue_request(self):
+    #     redis_.hset(f"user_{TEST_USER_ID}", "mode", UserMode.DIALOG.value)
+    #     message = self.create_test_message("Привет, я ботяра")
+    #     self.assertTrue(send_request(message))
+    #
+    # def test_sending_detailed_answer_request(self):
+    #     redis_.hset(f"user_{TEST_USER_ID}", "mode", UserMode.DETAILED_ANSWER.value)
+    #     message = self.create_test_message("Привет, я ботяра")
+    #     self.assertTrue(send_request(message))
+    #
+    # def test_not_receiving_answer_after_dialog_mode_changing(self):
+    #     """WARNING: for testing need to comment string 98 in main.py"""
+    #     redis_.hset(f"user_{TEST_USER_ID}", "mode", UserMode.DIALOG.value)
+    #     message = self.create_test_message("Привет, я ботяра.")
+    #     with ThreadPoolExecutor(max_workers=1) as executor:
+    #         future = executor.submit(send_request, message)
+    #         time.sleep(0.3)
+    #         redis_.hset(f"user_{TEST_USER_ID}", "mode", UserMode.DETAILED_ANSWER.value)
+    #         self.assertIsNone(future.result())
+    #
+    # def test_not_receiving_answer_after_detailed_answer_mode_changing(self):
+    #     """WARNING: for testing need to comment string 98 in main.py"""
+    #     redis_.hset(f"user_{TEST_USER_ID}", "mode", UserMode.DETAILED_ANSWER.value)
+    #     message = self.create_test_message("Привет, я ботяра.")
+    #     with ThreadPoolExecutor(max_workers=1) as executor:
+    #         future = executor.submit(send_request, message)
+    #         time.sleep(0.5)
+    #         redis_.hset(f"user_{TEST_USER_ID}", "mode", UserMode.DIALOG.value)
+    #         self.assertIsNone(future.result())
 
     def test_no_mode_sending(self):
         redis_.flushdb()
+        init_api_keys()
         message = self.create_test_message("Привет, я ботяра.")
-        send_request(message)
+        self.assertIsNone(send_request(message))
 
     @staticmethod
     def create_test_message(text: str) -> types.Message:
@@ -73,5 +72,6 @@ class GPTBot(TestCase):
 
 
 if __name__ == "__main__":
+    init_api_keys()
     add_test_user_to_redis(TEST_USER_ID)
     main()

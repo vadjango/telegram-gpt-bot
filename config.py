@@ -9,7 +9,7 @@ _ = gettext.gettext
 
 load_dotenv("vars.env")
 datefmt = "%d/%m/%Y %H:%M:%S"
-logging.basicConfig(filename="bot.log", format="%(asctime)s %(levelname)s %(message)s", datefmt=datefmt, filemode="w",
+logging.basicConfig(filename="bot.log", format="%(asctime)s %(levelname)s %(message)s", datefmt=datefmt,
                     level=logging.DEBUG)
 
 TELEBOT_TOKEN = os.getenv("TELEBOT_TOKEN")
@@ -27,7 +27,9 @@ LANG = {
     "Русский": "ru_RU"
 }
 
-redis_ = redis.Redis(host="127.0.0.1", port=6379)
+redis_ = redis.Redis(host="127.0.0.1", 
+                     port=6379,
+                     password="5DD0B4430246F6B0AE98BDABB3A42ED5A630B81F05031F464F0AE9928AF31EB1")
 
 if __name__ == "__main":
     ...
