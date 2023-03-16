@@ -2,6 +2,7 @@ import time
 
 from openai_interact import *
 import sys
+import flask
 from telebot import formatting
 from telebot.types import Message
 from telebot.util import quick_markup
@@ -11,6 +12,8 @@ from markups import *
 from bot_users import *
 from typing import Optional
 
+
+app = flask.Flask(__name__)
 THR_NAME = threading.current_thread().name
 lock = Lock()
 
@@ -310,19 +313,19 @@ def launch():
             pass
 
 
+@app.route("/", methods=["POST"])
+def webhook():
+    if flask.request.headers.get("content-type") == "application/json":
+        json_string = flask.request.get_data().decode("utf-8")
+        update = telebot.types.Update.de_json(json_string)
+        bot.process_new_updates([update])
+        return ""
+    else:
+        flask.abort(403)
+
+
 if __name__ == "__main__":
     init_api_keys()
     init_users()
-    logging.info(f"{THR_NAME} : API-ключи успешно инициализированы")
-    # launch() will be active later
-    # bot.run_webhooks(listen="localhost",
-    #                  port=80,
-    #                  webhook_url="https://9aa7-178-150-167-216.eu.ngrok.io")
-    while True:
-        try:
-            logging.info("Start bot polling...")
-            bot.polling()
-        except Exception as e:
-            logging.error(e)
-            time.sleep(15)
-            logging.info("Reconnecting...")
+    app.run(host=APP_HOST, port=APP_PORT, debug=True)
+

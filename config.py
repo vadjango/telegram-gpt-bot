@@ -27,9 +27,10 @@ LANG = {
     "Русский": "ru_RU"
 }
 
-redis_ = redis.Redis(host="127.0.0.1", 
-                     port=6379,
-                     password="5DD0B4430246F6B0AE98BDABB3A42ED5A630B81F05031F464F0AE9928AF31EB1")
+APP_HOST = "127.0.0.1"
+APP_PORT = "80"
+WEB_HOOK_URL = "https://979f-178-150-167-216.eu.ngrok.io"
 
-if __name__ == "__main":
-    ...
+redis_ = redis.Redis(host="127.0.0.1", 
+                     port=6379)
+
