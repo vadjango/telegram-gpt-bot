@@ -314,10 +314,6 @@ if __name__ == "__main__":
     init_api_keys()
     init_users()
     logging.info(f"{THR_NAME} : API-ключи успешно инициализированы")
-    # launch() will be active later
-    # bot.run_webhooks(listen="localhost",
-    #                  port=80,
-    #                  webhook_url="https://9aa7-178-150-167-216.eu.ngrok.io")
     while True:
         try:
             logging.info("Start bot polling...")
