@@ -1,5 +1,6 @@
 import time
-
+import flask
+from flask_sslify import SSLify
 from openai_interact import *
 import sys
 from telebot import formatting
@@ -11,6 +12,8 @@ from markups import *
 from bot_users import *
 from typing import Optional
 
+app = flask.Flask(__name__)
+sslify = SSLify(app)
 THR_NAME = threading.current_thread().name
 lock = Lock()
 
@@ -308,6 +311,19 @@ def launch():
                              reply_markup=create_launch_menu(_))
         except telebot.apihelper.ApiTelegramException:
             pass
+
+# @app.route("/", methods=["POST", "GET"])
+# def webhook():
+#     if flask.request.method == "GET":
+#         return "<h2>Server is working now</h2>"
+#     else:
+#         if flask.request.headers.get("content-type") == "application/json":
+#             json_string = flask.request.get_data().decode("utf-8")
+#             update = telebot.types.Update.de_json(json_string)
+#             bot.process_new_updates([update])
+#             return ""
+#         else:
+#             flask.abort(403)
 
 
 if __name__ == "__main__":
