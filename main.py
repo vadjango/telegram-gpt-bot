@@ -3,6 +3,7 @@ import time
 from openai_interact import *
 import sys
 import flask
+from flask import jsonify
 from telebot import formatting
 from telebot.types import Message
 from telebot.util import quick_markup
@@ -11,7 +12,6 @@ from db_interaction import *
 from markups import *
 from bot_users import *
 from typing import Optional
-
 
 app = flask.Flask(__name__)
 THR_NAME = threading.current_thread().name
@@ -47,7 +47,6 @@ def start(msg: Message, txt="Hello, I'm a smart bot 🤖\nMy ability is to answe
 def give_a_detailed_answer(msg):
     _ = get_user_translator(msg.chat.id)
     redis_.hset(f"user_{msg.chat.id}", "replicas", "")
-    bot.delete_message(chat_id=msg.chat.id, message_id=msg.id)
     if bot.get_chat_member(chat_id=-1001857064307, user_id=msg.chat.id).status in (
             "member", "creator", "administrator"):
         bot.send_message(chat_id=msg.chat.id,
@@ -68,7 +67,6 @@ def give_a_detailed_answer(msg):
 @bot.message_handler(func=lambda msg: msg.text == get_user_translator(msg.chat.id)('💬 Dialogue'))
 def start_first_dialog(msg):
     _ = get_user_translator(msg.chat.id)
-    bot.delete_message(chat_id=msg.chat.id, message_id=msg.id)
     if bot.get_chat_member(chat_id=-1001857064307, user_id=msg.chat.id).status in (
             "member", "creator", "administrator"):
         bot.send_message(chat_id=msg.chat.id,
@@ -180,7 +178,6 @@ def get_instruction(msg: Message):
     func=lambda msg: msg.text == get_user_translator(msg.chat.id)("New dialogue"))
 def start_new_dialog(msg):
     _ = get_user_translator(msg.chat.id)
-    bot.delete_message(chat_id=msg.chat.id, message_id=msg.id)
     if bot.get_chat_member(chat_id=-1001857064307, user_id=msg.chat.id).status in (
             "member", "creator", "administrator"):
         redis_.hset(f"user_{msg.chat.id}", "replicas", "")
@@ -200,7 +197,6 @@ def start_new_dialog(msg):
 def end_dialog(msg):
     _ = get_user_translator(msg.chat.id)
     try:
-        bot.delete_message(chat_id=msg.chat.id, message_id=msg.id)
         start(msg, _("Our beautiful dialogue is over🙂\nChoose the option:"))
         logging.info(f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: завершение диалога")
     except KeyError:
@@ -313,19 +309,15 @@ def launch():
             pass
 
 
-@app.route("/", methods=["POST"])
-def webhook():
-    if flask.request.headers.get("content-type") == "application/json":
-        json_string = flask.request.get_data().decode("utf-8")
-        update = telebot.types.Update.de_json(json_string)
-        bot.process_new_updates([update])
-        return ""
-    else:
-        flask.abort(403)
+@app.route("/6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI", methods=["POST"])
+def server():
+    json_string = flask.request.get_data().decode("utf-8")
+    update = telebot.types.Update.de_json(json_string)
+    bot.process_new_updates([update])
+    return ""
 
 
 if __name__ == "__main__":
-    init_api_keys()
-    init_users()
-    app.run(host=APP_HOST, port=APP_PORT, debug=True)
-
+    # init_api_keys()
+    # init_users()
+    app.run(debug=True)
