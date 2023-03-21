@@ -1,14 +1,14 @@
 from unittest import TestCase, main
 from db_interaction import add_user_to_database, delete_user_from_database
 import psycopg2
-from config import DB_CONFIG, TELEGRAM_USERS
+from config import DB_NAME, TELEGRAM_USERS
 
 
 class Database(TestCase):
 
     def test_new_user_default_locale(self):
         add_user_to_database(988854)
-        with psycopg2.connect(**DB_CONFIG) as conn:
+        with psycopg2.connect(**DB_NAME) as conn:
             cursor = conn.cursor()
             cursor.execute(f"""SELECT locale
                               FROM {TELEGRAM_USERS}

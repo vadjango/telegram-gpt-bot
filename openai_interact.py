@@ -38,7 +38,7 @@ class CompletionAI:
     """
     Represents an object of OpenAI of CompletionAI model.
     """
-    url = "https://api.openai.com/v1/completions"
+    url = "https://api.openai.com/v1/chat/completions"
 
     def __init__(self, api_key: str, txt: str, max_tokens: int):
         self.api_key = api_key
@@ -47,8 +47,8 @@ class CompletionAI:
             "Authorization": f"Bearer {api_key}"
         }
         self.data = {
-            "model": "text-davinci-003",
-            "prompt": txt,
+            "model": "gpt-3.5-turbo",
+            "messages": [{"role": "user", "content": txt}],
             "max_tokens": max_tokens,
             "temperature": 0.3
         }
@@ -62,7 +62,7 @@ class CompletionAI:
             logging.debug("Начало обработки запроса")
             json_response = requests.post(url=self.url, headers=self.headers, json=self.data).json()
             logging.info(f"Конец обработки запроса, длительность: {(datetime.now() - start_time).seconds} секунд")
-            return json_response["choices"][0]["text"]
+            return json_response["choices"][0]["message"]["content"]
         except KeyError:
             if json_response["error"]["message"].startswith("This model's maximum context length is"):
                 raise ExcessTokensException(

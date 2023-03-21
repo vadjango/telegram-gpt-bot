@@ -2,7 +2,7 @@ import datetime
 from unittest import TestCase, main
 from telebot import types
 from bot_users import UserMode
-from main import send_request, init_api_keys
+from app import send_request, init_api_keys
 from openai_interact import *
 from concurrent.futures import ThreadPoolExecutor
 from config import *

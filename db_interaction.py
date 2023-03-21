@@ -1,11 +1,8 @@
-from typing import Tuple, Any
-
 import sqlite3
 from sqlite3 import IntegrityError
 import threading
-from datetime import datetime
 from config import *
-from typing import Union, Callable
+from typing import Callable
 from translate import translate
 
 
@@ -39,7 +36,7 @@ def add_user_to_database(chat_id) -> None:
             cursor = conn.cursor()
             cursor.execute(f"""
                             INSERT INTO {TELEGRAM_USERS}
-                            VALUES (%s, %s, %s)""", (chat_id, "en_US", 0))
+                            VALUES (?, ?, ?)""", (chat_id, "en_US", 0))
             conn.commit()
     except IntegrityError:
         pass

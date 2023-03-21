@@ -13,7 +13,7 @@ logging.basicConfig(filename="bot.log", format="%(asctime)s %(levelname)s %(mess
                     level=logging.DEBUG)
 
 TELEBOT_TOKEN = os.getenv("TELEBOT_TOKEN")
-bot = telebot.TeleBot(TELEBOT_TOKEN)
+bot = telebot.TeleBot(TELEBOT_TOKEN, threaded=False)
 ADMIN_ID = (1054140400, 975772882)
 DB_NAME = "database.db"
 TELEGRAM_USERS = "telegram_users"

@@ -1,5 +1,6 @@
 import gettext
 from config import LANG
+
 GETTEXT_DOMAIN = "gptbot"
 GETTEXT_DIR = "locales"
 
@@ -10,3 +11,4 @@ translate: dict[str, gettext.GNUTranslations] = {
 
 if __name__ == "__main__":
     print(translate)
+

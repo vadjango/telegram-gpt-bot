@@ -1,17 +1,7 @@
-22/03/2023 00:00:00 INFO 127.0.0.1 - - [22/Mar/2023 00:00:00] "POST / HTTP/1.1" 200 -
-22/03/2023 00:00:01 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/deleteMessage?chat_id=975772882&message_id=5549 HTTP/1.1" 200 25
-22/03/2023 00:00:01 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
-22/03/2023 00:00:02 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%92+%D1%8D%D1%82%D0%BE%D0%BC+%D1%80%D0%B5%D0%B6%D0%B8%D0%BC%D0%B5+%D0%B1%D0%BE%D1%82+%D0%BC%D0%BE%D0%B6%D0%B5%D1%82+%D0%BF%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D1%8C+%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8+%D1%81%D0%B2%D1%8F%D0%B7%D0%B0%D0%BD%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cu041d%5Cu043e%5Cu0432%5Cu044b%5Cu0439+%5Cu0434%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2630+%5Cu0413%5Cu043b%5Cu0430%5Cu0432%5Cu043d%5Cu043e%5Cu0435+%5Cu043c%5Cu0435%5Cu043d%5Cu044e%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 603
-22/03/2023 00:00:02 INFO MainThread : Вадим None: выбран режим 'Начать диалог' 
-22/03/2023 00:00:40 DEBUG Connection count: 2
-22/03/2023 00:00:40 DEBUG Other clients are still connected to the redis server, not shutting down the connection on socket: /tmp/tmpd73ae9ri/redis.socket
-22/03/2023 00:00:40 DEBUG Connection count: 1
-22/03/2023 00:00:40 DEBUG Last client using the connection, shutting down the redis connection on socket: /tmp/tmpd73ae9ri/redis.socket
-22/03/2023 00:00:40 DEBUG Shutting down redis server with pid of 203
-22/03/2023 00:03:43 DEBUG Setting up redis with rdb file: redis.db
-22/03/2023 00:03:43 DEBUG Setting up redis with socket file: None
-22/03/2023 00:03:43 DEBUG Creating temporary redis directory /tmp/tmp4669zpha
-22/03/2023 00:03:43 DEBUG Using configuration: activerehashing yes
+30/03/2023 23:46:33 DEBUG Setting up redis with rdb file: redis.db
+30/03/2023 23:46:33 DEBUG Setting up redis with socket file: None
+30/03/2023 23:46:33 DEBUG Creating temporary redis directory /tmp/tmpnqqf0kz8
+30/03/2023 23:46:33 DEBUG Using configuration: activerehashing yes
 aof-load-truncated yes
 aof-rewrite-incremental-fsync yes
 appendfilename 'appendonly.aof'
@@ -30,12 +20,12 @@ hz 10
 latency-monitor-threshold 0
 list-max-ziplist-entries 512
 list-max-ziplist-value 64
-logfile /tmp/tmp4669zpha/redis.log
+logfile /tmp/tmpnqqf0kz8/redis.log
 loglevel notice
 lua-time-limit 5000
 no-appendfsync-on-rewrite no
 notify-keyspace-events ""
-pidfile '/tmp/tmp4669zpha/redis.pid'
+pidfile '/tmp/tmpnqqf0kz8/redis.pid'
 port 0
 rdbchecksum yes
 rdbcompression yes
@@ -54,39 +44,71 @@ stop-writes-on-bgsave-error yes
 tcp-backlog 511
 tcp-keepalive 0
 timeout 0
-unixsocket '/tmp/tmp4669zpha/redis.socket'
+unixsocket '/tmp/tmpnqqf0kz8/redis.socket'
 unixsocketperm 700
 zset-max-ziplist-entries 128
 zset-max-ziplist-value 64
 
-22/03/2023 00:03:43 DEBUG Running: /home/vadim/venv/lib/python3.10/site-packages/redislite/bin/redis-server /tmp/tmp4669zpha/redis.config
-22/03/2023 00:03:43 DEBUG Calling binding with (), {'unix_socket_path': '/tmp/tmp4669zpha/redis.socket'}
-22/03/2023 00:03:43 DEBUG Pinging the server to ensure we're connected
-22/03/2023 00:03:43 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
-22/03/2023 00:03:43 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/deleteWebhook HTTP/1.1" 200 61
-22/03/2023 00:03:43 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/setWebhook?url=https%3A%2F%2F1800-178-150-167-216.eu.ngrok.io HTTP/1.1" 200 57
-22/03/2023 00:03:43 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+30/03/2023 23:46:33 DEBUG Running: /home/vadim/venv/lib/python3.10/site-packages/redislite/bin/redis-server /tmp/tmpnqqf0kz8/redis.config
+30/03/2023 23:46:33 DEBUG Calling binding with (), {'unix_socket_path': '/tmp/tmpnqqf0kz8/redis.socket'}
+30/03/2023 23:46:33 DEBUG Pinging the server to ensure we're connected
+30/03/2023 23:46:33 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
-22/03/2023 00:03:43 INFO [33mPress CTRL+C to quit[0m
-22/03/2023 00:03:43 INFO  * Restarting with stat
-22/03/2023 00:03:44 DEBUG Setting up redis with rdb file: redis.db
-22/03/2023 00:03:44 DEBUG Setting up redis with socket file: None
-22/03/2023 00:03:44 DEBUG loading settings, found: {'pidfile': '/tmp/tmp4669zpha/redis.pid', 'unixsocket': '/tmp/tmp4669zpha/redis.socket', 'dbdir': '/tmp', 'dbfilename': 'redis.db'}
-22/03/2023 00:03:44 DEBUG Socket file after registry load: /tmp/tmp4669zpha/redis.socket
-22/03/2023 00:03:44 DEBUG Calling binding with (), {'unix_socket_path': '/tmp/tmp4669zpha/redis.socket'}
-22/03/2023 00:03:44 DEBUG Pinging the server to ensure we're connected
-22/03/2023 00:03:44 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
-22/03/2023 00:03:44 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/deleteWebhook HTTP/1.1" 200 61
-22/03/2023 00:03:44 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/setWebhook?url=https%3A%2F%2F1800-178-150-167-216.eu.ngrok.io HTTP/1.1" 429 109
-22/03/2023 00:03:44 DEBUG Connection count: 2
-22/03/2023 00:03:44 DEBUG Other clients are still connected to the redis server, not shutting down the connection on socket: /tmp/tmp4669zpha/redis.socket
-22/03/2023 00:03:44 DEBUG Connection count: 1
-22/03/2023 00:03:44 DEBUG Last client using the connection, shutting down the redis connection on socket: /tmp/tmp4669zpha/redis.socket
-22/03/2023 00:03:44 DEBUG Shutting down redis server with pid of 240
-22/03/2023 00:03:50 DEBUG Setting up redis with rdb file: redis.db
-22/03/2023 00:03:50 DEBUG Setting up redis with socket file: None
-22/03/2023 00:03:50 DEBUG Creating temporary redis directory /tmp/tmpqspjur7e
-22/03/2023 00:03:50 DEBUG Using configuration: activerehashing yes
+30/03/2023 23:46:33 INFO [33mPress CTRL+C to quit[0m
+30/03/2023 23:46:33 INFO  * Restarting with stat
+30/03/2023 23:46:34 DEBUG Setting up redis with rdb file: redis.db
+30/03/2023 23:46:34 DEBUG Setting up redis with socket file: None
+30/03/2023 23:46:34 DEBUG loading settings, found: {'pidfile': '/tmp/tmpnqqf0kz8/redis.pid', 'unixsocket': '/tmp/tmpnqqf0kz8/redis.socket', 'dbdir': '/tmp', 'dbfilename': 'redis.db'}
+30/03/2023 23:46:34 DEBUG Socket file after registry load: /tmp/tmpnqqf0kz8/redis.socket
+30/03/2023 23:46:34 DEBUG Calling binding with (), {'unix_socket_path': '/tmp/tmpnqqf0kz8/redis.socket'}
+30/03/2023 23:46:34 DEBUG Pinging the server to ensure we're connected
+30/03/2023 23:46:34 WARNING  * Debugger is active!
+30/03/2023 23:46:34 INFO  * Debugger PIN: 115-274-105
+30/03/2023 23:46:36 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
+30/03/2023 23:46:37 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
+30/03/2023 23:46:37 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%9D%D0%B0%D1%88+%D0%BF%D1%80%D0%B5%D0%BA%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3+%D0%B7%D0%B0%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%F0%9F%99%82%0A%D0%92%D1%8B%D0%B1%D0%B5%D1%80%D0%B8%D1%82%D0%B5+%D0%BE%D0%BF%D1%86%D0%B8%D1%8E%3A&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcac+%5Cu0414%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2754+%5Cu041e%5Cu0431%5Cu0448%5Cu0438%5Cu0440%5Cu043d%5Cu044b%5Cu0439+%5Cu043e%5Cu0442%5Cu0432%5Cu0435%5Cu0442%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcdc+%5Cu0418%5Cu043d%5Cu0441%5Cu0442%5Cu0440%5Cu0443%5Cu043a%5Cu0446%5Cu0438%5Cu044f%22%7D%2C+%7B%22text%22%3A+%22%5Cud83c%5Cudf0f+%5Cu042f%5Cu0437%5Cu044b%5Cu043a%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cu274c+%5Cu041e%5Cu0442%5Cu043a%5Cu043b%5Cu044e%5Cu0447%5Cu0438%5Cu0442%5Cu044c+%5Cu0431%5Cu043e%5Cu0442%5Cu0430%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 542
+30/03/2023 23:46:37 INFO MainThread : Вадим None: начало работы
+30/03/2023 23:46:37 INFO MainThread : Вадим None: завершение диалога
+30/03/2023 23:46:37 INFO {'update_id': 999885973, 'message': {'content_type': 'text', 'id': 5942, 'message_id': 5942, 'from_user': <telebot.types.User object at 0x7f22ff5f1c30>, 'date': 1680209200, 'chat': <telebot.types.Chat object at 0x7f22ff5f1ba0>, 'sender_chat': None, 'forward_from': None, 'forward_from_chat': None, 'forward_from_message_id': None, 'forward_signature': None, 'forward_sender_name': None, 'forward_date': None, 'is_automatic_forward': None, 'reply_to_message': None, 'via_bot': None, 'edit_date': None, 'has_protected_content': None, 'media_group_id': None, 'author_signature': None, 'text': '☰ Главное меню', 'entities': None, 'caption_entities': None, 'audio': None, 'document': None, 'photo': None, 'sticker': None, 'video': None, 'video_note': None, 'voice': None, 'caption': None, 'contact': None, 'location': None, 'venue': None, 'animation': None, 'dice': None, 'new_chat_member': None, 'new_chat_members': None, 'left_chat_member': None, 'new_chat_title': None, 'new_chat_photo': None, 'delete_chat_photo': None, 'group_chat_created': None, 'supergroup_chat_created': None, 'channel_chat_created': None, 'migrate_to_chat_id': None, 'migrate_from_chat_id': None, 'pinned_message': None, 'invoice': None, 'successful_payment': None, 'connected_website': None, 'reply_markup': None, 'message_thread_id': None, 'is_topic_message': None, 'forum_topic_created': None, 'forum_topic_closed': None, 'forum_topic_reopened': None, 'has_media_spoiler': None, 'forum_topic_edited': None, 'general_forum_topic_hidden': None, 'general_forum_topic_unhidden': None, 'write_access_allowed': None, 'json': {'message_id': 5942, 'from': {'id': 975772882, 'is_bot': False, 'first_name': 'Вадим', 'username': 'vadmart', 'language_code': 'ru'}, 'chat': {'id': 975772882, 'first_name': 'Вадим', 'username': 'vadmart', 'type': 'private'}, 'date': 1680209200, 'text': '☰ Главное меню'}}, 'edited_message': None, 'channel_post': None, 'edited_channel_post': None, 'inline_query': None, 'chosen_inline_result': None, 'callback_query': None, 'shipping_query': None, 'pre_checkout_query': None, 'poll': None, 'poll_answer': None, 'my_chat_member': None, 'chat_member': None, 'chat_join_request': None}
+30/03/2023 23:46:37 INFO 127.0.0.1 - - [30/Mar/2023 23:46:37] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
+30/03/2023 23:46:39 INFO {'update_id': 999885974, 'message': None, 'edited_message': None, 'channel_post': None, 'edited_channel_post': None, 'inline_query': None, 'chosen_inline_result': None, 'callback_query': None, 'shipping_query': None, 'pre_checkout_query': None, 'poll': None, 'poll_answer': None, 'my_chat_member': {'chat': <telebot.types.Chat object at 0x7f22ff5f14e0>, 'from_user': <telebot.types.User object at 0x7f22ff5f1390>, 'date': 1680209203, 'old_chat_member': <telebot.types.ChatMemberMember object at 0x7f22ff5f1570>, 'new_chat_member': <telebot.types.ChatMemberBanned object at 0x7f22ff5f1630>, 'invite_link': None}, 'chat_member': None, 'chat_join_request': None}
+30/03/2023 23:46:39 INFO 127.0.0.1 - - [30/Mar/2023 23:46:39] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
+30/03/2023 23:46:40 INFO {'update_id': 999885975, 'message': None, 'edited_message': None, 'channel_post': None, 'edited_channel_post': None, 'inline_query': None, 'chosen_inline_result': None, 'callback_query': None, 'shipping_query': None, 'pre_checkout_query': None, 'poll': None, 'poll_answer': None, 'my_chat_member': {'chat': <telebot.types.Chat object at 0x7f22ff5f1cf0>, 'from_user': <telebot.types.User object at 0x7f22ff5f1cc0>, 'date': 1680209204, 'old_chat_member': <telebot.types.ChatMemberBanned object at 0x7f22ff5f1ba0>, 'new_chat_member': <telebot.types.ChatMemberMember object at 0x7f22ff5f1c30>, 'invite_link': None}, 'chat_member': None, 'chat_join_request': None}
+30/03/2023 23:46:40 INFO 127.0.0.1 - - [30/Mar/2023 23:46:40] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
+30/03/2023 23:46:41 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
+30/03/2023 23:46:41 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
+30/03/2023 23:46:41 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%2C+%D1%8F+%D1%83%D0%BC%D0%BD%D1%8B%D0%B9+%D0%B1%D0%BE%D1%82+%F0%9F%A4%96%0A%D0%9C%D0%BE%D1%8F+%D1%81%D0%BF%D0%BE%D1%81%D0%BE%D0%B1%D0%BD%D0%BE%D1%81%D1%82%D1%8C+-+%D0%BE%D1%82%D0%B2%D0%B5%D1%87%D0%B0%D1%82%D1%8C+%D0%BD%D0%B0+%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%8B+%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%B9%F0%9F%91%A4%0A%D0%9A%D0%B0%D0%BA%D0%B8%D0%B5+%D1%82%D0%B5%D0%BC%D1%8B+%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE+%D1%81%D0%BE+%D0%BC%D0%BD%D0%BE%D0%B9+%D0%B7%D0%B0%D1%82%D1%80%D0%BE%D0%BD%D1%83%D1%82%D1%8C%3F+%D0%9D%D0%B0+%D1%81%D0%B0%D0%BC%D0%BE%D0%BC+%D0%B4%D0%B5%D0%BB%D0%B5%2C+%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8+%D0%BB%D1%8E%D0%B1%D1%8B%D0%B5%2C+%D0%B6%D0%B5%D0%BB%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE+%D0%BD%D0%B5+%D0%BA%D0%B0%D1%81%D0%B0%D1%8E%D1%89%D0%B8%D0%B5%D1%81%D1%8F+%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B8.+%D0%9F%D0%BE%D1%87%D0%B5%D0%BC%D1%83+%D0%B6%D0%B5%3F+%D0%94%D0%B5%D0%BB%D0%BE+%D0%B2+%D1%82%D0%BE%D0%BC%2C+%D1%87%D1%82%D0%BE+%D1%8F+%D0%BD%D0%B5+%D0%BF%D1%80%D0%B8%D0%B2%D1%8F%D0%B7%D0%B0%D0%BD+%D0%BA+%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9-%D0%BB%D0%B8%D0%B1%D0%BE+%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B5+%D0%B8%D0%B4%D0%B5%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8.+%D0%A2%D0%B0%D0%BA%D0%B8%D0%BC+%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%BC%2C+%D1%82%D0%B2%D0%BE%D1%91+%D0%BC%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5+%D0%BC%D0%BE%D0%B6%D0%B5%D1%82+%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B0%D1%82%D1%8C%D1%81%D1%8F+%D0%BE%D1%82+%D0%BC%D0%BE%D0%B5%D0%B3%D0%BE+%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%B0.%0A%D0%94%D0%BB%D1%8F+%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0+%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B+%D1%81%D0%BE+%D0%BC%D0%BD%D0%BE%D0%B9+%D0%B2%D1%8B%D0%B1%D0%B5%D1%80%D0%B8+%D0%BE%D0%BF%D1%86%D0%B8%D1%8E%3A&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcac+%5Cu0414%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2754+%5Cu041e%5Cu0431%5Cu0448%5Cu0438%5Cu0440%5Cu043d%5Cu044b%5Cu0439+%5Cu043e%5Cu0442%5Cu0432%5Cu0435%5Cu0442%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcdc+%5Cu0418%5Cu043d%5Cu0441%5Cu0442%5Cu0440%5Cu0443%5Cu043a%5Cu0446%5Cu0438%5Cu044f%22%7D%2C+%7B%22text%22%3A+%22%5Cud83c%5Cudf0f+%5Cu042f%5Cu0437%5Cu044b%5Cu043a%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cu274c+%5Cu041e%5Cu0442%5Cu043a%5Cu043b%5Cu044e%5Cu0447%5Cu0438%5Cu0442%5Cu044c+%5Cu0431%5Cu043e%5Cu0442%5Cu0430%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 2094
+30/03/2023 23:46:41 INFO MainThread : Вадим None: начало работы
+30/03/2023 23:46:41 INFO {'update_id': 999885976, 'message': {'content_type': 'text', 'id': 5944, 'message_id': 5944, 'from_user': <telebot.types.User object at 0x7f22ff5f2e30>, 'date': 1680209204, 'chat': <telebot.types.Chat object at 0x7f22ff5f2ef0>, 'sender_chat': None, 'forward_from': None, 'forward_from_chat': None, 'forward_from_message_id': None, 'forward_signature': None, 'forward_sender_name': None, 'forward_date': None, 'is_automatic_forward': None, 'reply_to_message': None, 'via_bot': None, 'edit_date': None, 'has_protected_content': None, 'media_group_id': None, 'author_signature': None, 'text': '/start', 'entities': [<telebot.types.MessageEntity object at 0x7f22ff5f2d70>], 'caption_entities': None, 'audio': None, 'document': None, 'photo': None, 'sticker': None, 'video': None, 'video_note': None, 'voice': None, 'caption': None, 'contact': None, 'location': None, 'venue': None, 'animation': None, 'dice': None, 'new_chat_member': None, 'new_chat_members': None, 'left_chat_member': None, 'new_chat_title': None, 'new_chat_photo': None, 'delete_chat_photo': None, 'group_chat_created': None, 'supergroup_chat_created': None, 'channel_chat_created': None, 'migrate_to_chat_id': None, 'migrate_from_chat_id': None, 'pinned_message': None, 'invoice': None, 'successful_payment': None, 'connected_website': None, 'reply_markup': None, 'message_thread_id': None, 'is_topic_message': None, 'forum_topic_created': None, 'forum_topic_closed': None, 'forum_topic_reopened': None, 'has_media_spoiler': None, 'forum_topic_edited': None, 'general_forum_topic_hidden': None, 'general_forum_topic_unhidden': None, 'write_access_allowed': None, 'json': {'message_id': 5944, 'from': {'id': 975772882, 'is_bot': False, 'first_name': 'Вадим', 'username': 'vadmart', 'language_code': 'ru'}, 'chat': {'id': 975772882, 'first_name': 'Вадим', 'username': 'vadmart', 'type': 'private'}, 'date': 1680209204, 'text': '/start', 'entities': [{'offset': 0, 'length': 6, 'type': 'bot_command'}]}}, 'edited_message': None, 'channel_post': None, 'edited_channel_post': None, 'inline_query': None, 'chosen_inline_result': None, 'callback_query': None, 'shipping_query': None, 'pre_checkout_query': None, 'poll': None, 'poll_answer': None, 'my_chat_member': None, 'chat_member': None, 'chat_join_request': None}
+30/03/2023 23:46:41 INFO 127.0.0.1 - - [30/Mar/2023 23:46:41] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
+30/03/2023 23:46:43 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
+30/03/2023 23:46:43 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%0A+++++++++++++++++++++%D0%98%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F+%D0%B4%D0%BB%D1%8F+%D0%B1%D0%BE%D1%82%D0%B0%3A%0A++++++%F0%9F%92%AC+%D0%94%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3+-+%D0%B1%D0%BE%D1%82+%D0%B4%D0%B0%D0%B5%D1%82+%D0%BD%D0%B5%D1%80%D0%B0%D0%B7%D0%B2%D0%B5%D1%80%D0%BD%D1%83%D1%82%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+%28%D1%85%D0%BE%D1%82%D1%8F+%D0%B5%D0%B3%D0%BE+%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D1%82%D0%BE%D1%87%D0%BD%D0%BE+%D0%B2+%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%B8%D0%BD%D1%81%D1%82%D0%B2%D0%B5+%D1%81%D0%BB%D1%83%D1%87%D0%B0%D0%B5%D0%B2%29%2C+%D0%BE%D0%B4%D0%BD%D0%B0%D0%BA%D0%BE+%D0%B7%D0%B0%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%B0%D0%B5%D1%82+%D1%80%D0%B5%D0%BF%D0%BB%D0%B8%D0%BA%D0%B8+%D0%B8%2C+%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%2C+%D0%BF%D0%BE%D0%BD%D0%B8%D0%BC%D0%B0%D0%B5%D1%82+%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BA%D1%81%D1%82.+%D0%9D%D0%B0%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%2C+%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE+%D1%81%D0%BF%D1%80%D0%BE%D1%81%D0%B8%D1%82%D1%8C+%22%D0%A7%D1%82%D0%BE+%D1%82%D0%B0%D0%BA%D0%BE%D0%B5+%D0%BA%D0%BB%D0%B5%D1%82%D0%BA%D0%B0%3F%22%2C+%D0%B8+%D0%B5%D1%81%D0%BB%D0%B8+%D0%BF%D0%BE%D1%81%D0%BB%D0%B5+%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%B0+%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C+%D0%B1%D0%BE%D1%82%D1%83+%22%D0%9D%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%81%D1%8F+%D0%BB%D0%B8+%D1%82%D0%B5%D0%B1%D0%B5+%D0%BE%D0%BD%D0%B0%3F%22%2C+%D0%BE%D0%BD+%D0%B4%D0%B0%D1%81%D1%82+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+%D0%BA%D0%B0%D1%81%D0%B0%D0%B5%D0%BC%D0%BE+%D0%BA%D0%BB%D0%B5%D1%82%D0%BA%D0%B8.%0A++++++%E2%9D%94+%D0%9E%D0%B1%D1%88%D0%B8%D1%80%D0%BD%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+-+%D0%B1%D0%BE%D1%82+%D0%BD%D0%B5+%D0%B7%D0%B0%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%B0%D0%B5%D1%82+%D1%80%D0%B5%D0%BF%D0%BB%D0%B8%D0%BA%D0%B8%2C+%D1%82%D0%BE+%D0%B5%D1%81%D1%82%D1%8C%2C+%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BA%D1%81%D1%82%D0%B0+%D1%80%D0%B0%D0%B7%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B0+%D0%BF%D0%BE%D0%BD%D0%B8%D0%BC%D0%B0%D1%82%D1%8C+%D0%BD%D0%B5+%D0%B1%D1%83%D0%B4%D0%B5%D1%82.+%D0%9E%D0%B4%D0%BD%D0%B0%D0%BA%D0%BE%2C+%D0%BC%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE+%D0%B2%D0%BE%D0%B7%D0%BC%D0%BE%D0%B6%D0%BD%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+%D0%BC%D0%BE%D0%B6%D0%B5%D1%82+%D0%B1%D1%8B%D1%82%D1%8C+%D0%B2+2+%D1%80%D0%B0%D0%B7%D0%B0+%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%B5%2C+%D1%87%D0%B5%D0%BC+%D0%B2+%D1%80%D0%B5%D0%B6%D0%B8%D0%BC%D0%B5+%22%D0%94%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3%22.+%D0%9F%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D0%BE%2C+%D0%B5%D1%81%D0%BB%D0%B8+%D0%92%D1%8B+%D0%BD%D0%B5+%D1%81%D0%BE%D0%B1%D0%B8%D1%80%D0%B0%D0%B5%D1%82%D0%B5%D1%81%D1%8C+%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D0%B2%D0%B0%D1%82%D1%8C+%D1%82%D0%B5%D0%BC%D1%83%2C+%D0%BE%D0%B4%D0%BD%D0%B0%D0%BA%D0%BE+%D1%85%D0%BE%D1%82%D0%B8%D1%82%D0%B5+%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82%D1%8C+%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82. HTTP/1.1" 200 3166
+30/03/2023 23:46:43 INFO MainThread : Вадим None: просмотр инструкции
+30/03/2023 23:46:43 INFO {'update_id': 999885977, 'message': {'content_type': 'text', 'id': 5946, 'message_id': 5946, 'from_user': <telebot.types.User object at 0x7f22ff5f1e40>, 'date': 1680209207, 'chat': <telebot.types.Chat object at 0x7f22ff5f1ff0>, 'sender_chat': None, 'forward_from': None, 'forward_from_chat': None, 'forward_from_message_id': None, 'forward_signature': None, 'forward_sender_name': None, 'forward_date': None, 'is_automatic_forward': None, 'reply_to_message': None, 'via_bot': None, 'edit_date': None, 'has_protected_content': None, 'media_group_id': None, 'author_signature': None, 'text': '📜 Инструкция', 'entities': None, 'caption_entities': None, 'audio': None, 'document': None, 'photo': None, 'sticker': None, 'video': None, 'video_note': None, 'voice': None, 'caption': None, 'contact': None, 'location': None, 'venue': None, 'animation': None, 'dice': None, 'new_chat_member': None, 'new_chat_members': None, 'left_chat_member': None, 'new_chat_title': None, 'new_chat_photo': None, 'delete_chat_photo': None, 'group_chat_created': None, 'supergroup_chat_created': None, 'channel_chat_created': None, 'migrate_to_chat_id': None, 'migrate_from_chat_id': None, 'pinned_message': None, 'invoice': None, 'successful_payment': None, 'connected_website': None, 'reply_markup': None, 'message_thread_id': None, 'is_topic_message': None, 'forum_topic_created': None, 'forum_topic_closed': None, 'forum_topic_reopened': None, 'has_media_spoiler': None, 'forum_topic_edited': None, 'general_forum_topic_hidden': None, 'general_forum_topic_unhidden': None, 'write_access_allowed': None, 'json': {'message_id': 5946, 'from': {'id': 975772882, 'is_bot': False, 'first_name': 'Вадим', 'username': 'vadmart', 'language_code': 'ru'}, 'chat': {'id': 975772882, 'first_name': 'Вадим', 'username': 'vadmart', 'type': 'private'}, 'date': 1680209207, 'text': '📜 Инструкция'}}, 'edited_message': None, 'channel_post': None, 'edited_channel_post': None, 'inline_query': None, 'chosen_inline_result': None, 'callback_query': None, 'shipping_query': None, 'pre_checkout_query': None, 'poll': None, 'poll_answer': None, 'my_chat_member': None, 'chat_member': None, 'chat_join_request': None}
+30/03/2023 23:46:43 INFO 127.0.0.1 - - [30/Mar/2023 23:46:43] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
+30/03/2023 23:46:44 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
+30/03/2023 23:46:44 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
+30/03/2023 23:46:45 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%92+%D1%8D%D1%82%D0%BE%D0%BC+%D1%80%D0%B5%D0%B6%D0%B8%D0%BC%D0%B5+%D0%B1%D0%BE%D1%82+%D0%BC%D0%BE%D0%B6%D0%B5%D1%82+%D0%BF%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D1%8C+%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8+%D1%81%D0%B2%D1%8F%D0%B7%D0%B0%D0%BD%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cu041d%5Cu043e%5Cu0432%5Cu044b%5Cu0439+%5Cu0434%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2630+%5Cu0413%5Cu043b%5Cu0430%5Cu0432%5Cu043d%5Cu043e%5Cu0435+%5Cu043c%5Cu0435%5Cu043d%5Cu044e%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 603
+30/03/2023 23:46:45 INFO MainThread : Вадим None: выбран режим 'Начать диалог' 
+30/03/2023 23:46:45 INFO {'update_id': 999885978, 'message': {'content_type': 'text', 'id': 5948, 'message_id': 5948, 'from_user': <telebot.types.User object at 0x7f22ff5f3130>, 'date': 1680209208, 'chat': <telebot.types.Chat object at 0x7f22ff5f3160>, 'sender_chat': None, 'forward_from': None, 'forward_from_chat': None, 'forward_from_message_id': None, 'forward_signature': None, 'forward_sender_name': None, 'forward_date': None, 'is_automatic_forward': None, 'reply_to_message': None, 'via_bot': None, 'edit_date': None, 'has_protected_content': None, 'media_group_id': None, 'author_signature': None, 'text': '💬 Диалог', 'entities': None, 'caption_entities': None, 'audio': None, 'document': None, 'photo': None, 'sticker': None, 'video': None, 'video_note': None, 'voice': None, 'caption': None, 'contact': None, 'location': None, 'venue': None, 'animation': None, 'dice': None, 'new_chat_member': None, 'new_chat_members': None, 'left_chat_member': None, 'new_chat_title': None, 'new_chat_photo': None, 'delete_chat_photo': None, 'group_chat_created': None, 'supergroup_chat_created': None, 'channel_chat_created': None, 'migrate_to_chat_id': None, 'migrate_from_chat_id': None, 'pinned_message': None, 'invoice': None, 'successful_payment': None, 'connected_website': None, 'reply_markup': None, 'message_thread_id': None, 'is_topic_message': None, 'forum_topic_created': None, 'forum_topic_closed': None, 'forum_topic_reopened': None, 'has_media_spoiler': None, 'forum_topic_edited': None, 'general_forum_topic_hidden': None, 'general_forum_topic_unhidden': None, 'write_access_allowed': None, 'json': {'message_id': 5948, 'from': {'id': 975772882, 'is_bot': False, 'first_name': 'Вадим', 'username': 'vadmart', 'language_code': 'ru'}, 'chat': {'id': 975772882, 'first_name': 'Вадим', 'username': 'vadmart', 'type': 'private'}, 'date': 1680209208, 'text': '💬 Диалог'}}, 'edited_message': None, 'channel_post': None, 'edited_channel_post': None, 'inline_query': None, 'chosen_inline_result': None, 'callback_query': None, 'shipping_query': None, 'pre_checkout_query': None, 'poll': None, 'poll_answer': None, 'my_chat_member': None, 'chat_member': None, 'chat_join_request': None}
+30/03/2023 23:46:45 INFO 127.0.0.1 - - [30/Mar/2023 23:46:45] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
+30/03/2023 23:46:50 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
+30/03/2023 23:46:50 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%3Ci%3E%D0%97%D0%B0%D0%BF%D1%80%D0%BE%D1%81+%D0%BE%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%2C+%D0%BE%D0%B6%D0%B8%D0%B4%D0%B0%D0%B9%D1%82%D0%B5+%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%B0%F0%9F%98%89%3C%2Fi%3E&parse_mode=HTML HTTP/1.1" 200 527
+30/03/2023 23:46:50 INFO {'update_id': 999885979, 'message': {'content_type': 'text', 'id': 5950, 'message_id': 5950, 'from_user': <telebot.types.User object at 0x7f22ff5f2a40>, 'date': 1680209214, 'chat': <telebot.types.Chat object at 0x7f22ff5f35e0>, 'sender_chat': None, 'forward_from': None, 'forward_from_chat': None, 'forward_from_message_id': None, 'forward_signature': None, 'forward_sender_name': None, 'forward_date': None, 'is_automatic_forward': None, 'reply_to_message': None, 'via_bot': None, 'edit_date': None, 'has_protected_content': None, 'media_group_id': None, 'author_signature': None, 'text': 'Привет, как дела?', 'entities': None, 'caption_entities': None, 'audio': None, 'document': None, 'photo': None, 'sticker': None, 'video': None, 'video_note': None, 'voice': None, 'caption': None, 'contact': None, 'location': None, 'venue': None, 'animation': None, 'dice': None, 'new_chat_member': None, 'new_chat_members': None, 'left_chat_member': None, 'new_chat_title': None, 'new_chat_photo': None, 'delete_chat_photo': None, 'group_chat_created': None, 'supergroup_chat_created': None, 'channel_chat_created': None, 'migrate_to_chat_id': None, 'migrate_from_chat_id': None, 'pinned_message': None, 'invoice': None, 'successful_payment': None, 'connected_website': None, 'reply_markup': None, 'message_thread_id': None, 'is_topic_message': None, 'forum_topic_created': None, 'forum_topic_closed': None, 'forum_topic_reopened': None, 'has_media_spoiler': None, 'forum_topic_edited': None, 'general_forum_topic_hidden': None, 'general_forum_topic_unhidden': None, 'write_access_allowed': None, 'json': {'message_id': 5950, 'from': {'id': 975772882, 'is_bot': False, 'first_name': 'Вадим', 'username': 'vadmart', 'language_code': 'ru'}, 'chat': {'id': 975772882, 'first_name': 'Вадим', 'username': 'vadmart', 'type': 'private'}, 'date': 1680209214, 'text': 'Привет, как дела?'}}, 'edited_message': None, 'channel_post': None, 'edited_channel_post': None, 'inline_query': None, 'chosen_inline_result': None, 'callback_query': None, 'shipping_query': None, 'pre_checkout_query': None, 'poll': None, 'poll_answer': None, 'my_chat_member': None, 'chat_member': None, 'chat_join_request': None}
+30/03/2023 23:46:50 INFO Thread 975772882 : старт работы
+30/03/2023 23:46:50 INFO 127.0.0.1 - - [30/Mar/2023 23:46:50] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
+30/03/2023 23:46:50 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
+30/03/2023 23:46:50 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendChatAction?chat_id=975772882&action=typing HTTP/1.1" 200 25
+30/03/2023 23:46:50 INFO Thread 975772882 : отправка запроса, ключ: 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, кол-во токенов: 1600
+30/03/2023 23:46:50 DEBUG Начало обработки запроса
+30/03/2023 23:46:50 DEBUG Starting new HTTPS connection (1): api.openai.com:443
+30/03/2023 23:46:56 DEBUG https://api.openai.com:443 "POST /v1/chat/completions HTTP/1.1" 200 None
+30/03/2023 23:46:56 INFO Конец обработки запроса, длительность: 5 секунд
+30/03/2023 23:46:56 INFO Thread 975772882 : конец работы
+30/03/2023 23:47:34 DEBUG Setting up redis with rdb file: redis.db
+30/03/2023 23:47:34 DEBUG Setting up redis with socket file: None
+30/03/2023 23:47:34 DEBUG Creating temporary redis directory /tmp/tmpc9n4fzu1
+30/03/2023 23:47:34 DEBUG Using configuration: activerehashing yes
 aof-load-truncated yes
 aof-rewrite-incremental-fsync yes
 appendfilename 'appendonly.aof'
@@ -105,12 +127,12 @@ hz 10
 latency-monitor-threshold 0
 list-max-ziplist-entries 512
 list-max-ziplist-value 64
-logfile /tmp/tmpqspjur7e/redis.log
+logfile /tmp/tmpc9n4fzu1/redis.log
 loglevel notice
 lua-time-limit 5000
 no-appendfsync-on-rewrite no
 notify-keyspace-events ""
-pidfile '/tmp/tmpqspjur7e/redis.pid'
+pidfile '/tmp/tmpc9n4fzu1/redis.pid'
 port 0
 rdbchecksum yes
 rdbcompression yes
@@ -129,340 +151,80 @@ stop-writes-on-bgsave-error yes
 tcp-backlog 511
 tcp-keepalive 0
 timeout 0
-unixsocket '/tmp/tmpqspjur7e/redis.socket'
+unixsocket '/tmp/tmpc9n4fzu1/redis.socket'
 unixsocketperm 700
 zset-max-ziplist-entries 128
 zset-max-ziplist-value 64
 
-22/03/2023 00:03:50 DEBUG Running: /home/vadim/venv/lib/python3.10/site-packages/redislite/bin/redis-server /tmp/tmpqspjur7e/redis.config
-22/03/2023 00:03:50 DEBUG Calling binding with (), {'unix_socket_path': '/tmp/tmpqspjur7e/redis.socket'}
-22/03/2023 00:03:50 DEBUG Pinging the server to ensure we're connected
-22/03/2023 00:03:50 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
-22/03/2023 00:03:51 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/deleteWebhook HTTP/1.1" 200 68
-22/03/2023 00:03:51 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/setWebhook?url=https%3A%2F%2F1800-178-150-167-216.eu.ngrok.io HTTP/1.1" 200 57
-22/03/2023 00:03:51 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+30/03/2023 23:47:34 DEBUG Running: /home/vadim/venv/lib/python3.10/site-packages/redislite/bin/redis-server /tmp/tmpc9n4fzu1/redis.config
+30/03/2023 23:47:34 DEBUG Calling binding with (), {'unix_socket_path': '/tmp/tmpc9n4fzu1/redis.socket'}
+30/03/2023 23:47:34 DEBUG Pinging the server to ensure we're connected
+30/03/2023 23:47:34 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
-22/03/2023 00:03:51 INFO [33mPress CTRL+C to quit[0m
-22/03/2023 00:03:51 INFO  * Restarting with stat
-22/03/2023 00:03:51 DEBUG Setting up redis with rdb file: redis.db
-22/03/2023 00:03:51 DEBUG Setting up redis with socket file: None
-22/03/2023 00:03:51 DEBUG loading settings, found: {'pidfile': '/tmp/tmpqspjur7e/redis.pid', 'unixsocket': '/tmp/tmpqspjur7e/redis.socket', 'dbdir': '/tmp', 'dbfilename': 'redis.db'}
-22/03/2023 00:03:51 DEBUG Socket file after registry load: /tmp/tmpqspjur7e/redis.socket
-22/03/2023 00:03:51 DEBUG Calling binding with (), {'unix_socket_path': '/tmp/tmpqspjur7e/redis.socket'}
-22/03/2023 00:03:51 DEBUG Pinging the server to ensure we're connected
-22/03/2023 00:03:51 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
-22/03/2023 00:03:51 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/deleteWebhook HTTP/1.1" 200 61
-22/03/2023 00:03:51 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/setWebhook?url=https%3A%2F%2F1800-178-150-167-216.eu.ngrok.io HTTP/1.1" 429 109
-22/03/2023 00:03:51 DEBUG Connection count: 2
-22/03/2023 00:03:51 DEBUG Other clients are still connected to the redis server, not shutting down the connection on socket: /tmp/tmpqspjur7e/redis.socket
-22/03/2023 00:03:51 DEBUG Connection count: 1
-22/03/2023 00:03:51 DEBUG Last client using the connection, shutting down the redis connection on socket: /tmp/tmpqspjur7e/redis.socket
-22/03/2023 00:03:51 DEBUG Shutting down redis server with pid of 254
-22/03/2023 00:04:38 DEBUG Setting up redis with rdb file: redis.db
-22/03/2023 00:04:38 DEBUG Setting up redis with socket file: None
-22/03/2023 00:04:38 DEBUG Creating temporary redis directory /tmp/tmpwzoac746
-22/03/2023 00:04:38 DEBUG Using configuration: activerehashing yes
-aof-load-truncated yes
-aof-rewrite-incremental-fsync yes
-appendfilename 'appendonly.aof'
-appendfsync everysec
-appendonly no
-auto-aof-rewrite-min-size 64mb
-auto-aof-rewrite-percentage 100
-daemonize yes
-databases 16
-dbfilename 'redis.db'
-dir '/tmp'
-hash-max-ziplist-entries 512
-hash-max-ziplist-value 64
-hll-sparse-max-bytes 3000
-hz 10
-latency-monitor-threshold 0
-list-max-ziplist-entries 512
-list-max-ziplist-value 64
-logfile /tmp/tmpwzoac746/redis.log
-loglevel notice
-lua-time-limit 5000
-no-appendfsync-on-rewrite no
-notify-keyspace-events ""
-pidfile '/tmp/tmpwzoac746/redis.pid'
-port 0
-rdbchecksum yes
-rdbcompression yes
-repl-disable-tcp-nodelay no
-save 900 1
-save 300 100
-save 60 200
-save 15 1000
-set-max-intset-entries 512
-slave-priority 100
-slave-read-only yes
-slave-serve-stale-data yes
-slowlog-log-slower-than 10000
-slowlog-max-len 128
-stop-writes-on-bgsave-error yes
-tcp-backlog 511
-tcp-keepalive 0
-timeout 0
-unixsocket '/tmp/tmpwzoac746/redis.socket'
-unixsocketperm 700
-zset-max-ziplist-entries 128
-zset-max-ziplist-value 64
-
-22/03/2023 00:04:38 DEBUG Running: /home/vadim/venv/lib/python3.10/site-packages/redislite/bin/redis-server /tmp/tmpwzoac746/redis.config
-22/03/2023 00:04:38 DEBUG Calling binding with (), {'unix_socket_path': '/tmp/tmpwzoac746/redis.socket'}
-22/03/2023 00:04:38 DEBUG Pinging the server to ensure we're connected
-22/03/2023 00:04:38 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-22/03/2023 00:04:38 INFO [33mPress CTRL+C to quit[0m
-22/03/2023 00:04:38 INFO  * Restarting with stat
-22/03/2023 00:04:38 DEBUG Setting up redis with rdb file: redis.db
-22/03/2023 00:04:38 DEBUG Setting up redis with socket file: None
-22/03/2023 00:04:38 DEBUG loading settings, found: {'pidfile': '/tmp/tmpwzoac746/redis.pid', 'unixsocket': '/tmp/tmpwzoac746/redis.socket', 'dbdir': '/tmp', 'dbfilename': 'redis.db'}
-22/03/2023 00:04:38 DEBUG Socket file after registry load: /tmp/tmpwzoac746/redis.socket
-22/03/2023 00:04:38 DEBUG Calling binding with (), {'unix_socket_path': '/tmp/tmpwzoac746/redis.socket'}
-22/03/2023 00:04:38 DEBUG Pinging the server to ensure we're connected
-22/03/2023 00:04:38 WARNING  * Debugger is active!
-22/03/2023 00:04:38 INFO  * Debugger PIN: 100-148-740
-22/03/2023 00:10:16 DEBUG Connection count: 2
-22/03/2023 00:10:16 DEBUG Other clients are still connected to the redis server, not shutting down the connection on socket: /tmp/tmpwzoac746/redis.socket
-22/03/2023 00:10:16 DEBUG Connection count: 1
-22/03/2023 00:10:16 DEBUG Last client using the connection, shutting down the redis connection on socket: /tmp/tmpwzoac746/redis.socket
-22/03/2023 00:10:16 DEBUG Shutting down redis server with pid of 268
-22/03/2023 00:10:29 DEBUG Setting up redis with rdb file: redis.db
-22/03/2023 00:10:29 DEBUG Setting up redis with socket file: None
-22/03/2023 00:10:29 DEBUG Creating temporary redis directory /tmp/tmp53isg5a0
-22/03/2023 00:10:29 DEBUG Using configuration: activerehashing yes
-aof-load-truncated yes
-aof-rewrite-incremental-fsync yes
-appendfilename 'appendonly.aof'
-appendfsync everysec
-appendonly no
-auto-aof-rewrite-min-size 64mb
-auto-aof-rewrite-percentage 100
-daemonize yes
-databases 16
-dbfilename 'redis.db'
-dir '/tmp'
-hash-max-ziplist-entries 512
-hash-max-ziplist-value 64
-hll-sparse-max-bytes 3000
-hz 10
-latency-monitor-threshold 0
-list-max-ziplist-entries 512
-list-max-ziplist-value 64
-logfile /tmp/tmp53isg5a0/redis.log
-loglevel notice
-lua-time-limit 5000
-no-appendfsync-on-rewrite no
-notify-keyspace-events ""
-pidfile '/tmp/tmp53isg5a0/redis.pid'
-port 0
-rdbchecksum yes
-rdbcompression yes
-repl-disable-tcp-nodelay no
-save 900 1
-save 300 100
-save 60 200
-save 15 1000
-set-max-intset-entries 512
-slave-priority 100
-slave-read-only yes
-slave-serve-stale-data yes
-slowlog-log-slower-than 10000
-slowlog-max-len 128
-stop-writes-on-bgsave-error yes
-tcp-backlog 511
-tcp-keepalive 0
-timeout 0
-unixsocket '/tmp/tmp53isg5a0/redis.socket'
-unixsocketperm 700
-zset-max-ziplist-entries 128
-zset-max-ziplist-value 64
-
-22/03/2023 00:10:29 DEBUG Running: /home/vadim/venv/lib/python3.10/site-packages/redislite/bin/redis-server /tmp/tmp53isg5a0/redis.config
-22/03/2023 00:10:29 DEBUG Calling binding with (), {'unix_socket_path': '/tmp/tmp53isg5a0/redis.socket'}
-22/03/2023 00:10:29 DEBUG Pinging the server to ensure we're connected
-22/03/2023 00:10:29 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-22/03/2023 00:10:29 INFO [33mPress CTRL+C to quit[0m
-22/03/2023 00:10:29 INFO  * Restarting with stat
-22/03/2023 00:10:29 DEBUG Setting up redis with rdb file: redis.db
-22/03/2023 00:10:29 DEBUG Setting up redis with socket file: None
-22/03/2023 00:10:29 DEBUG loading settings, found: {'pidfile': '/tmp/tmp53isg5a0/redis.pid', 'unixsocket': '/tmp/tmp53isg5a0/redis.socket', 'dbdir': '/tmp', 'dbfilename': 'redis.db'}
-22/03/2023 00:10:29 DEBUG Socket file after registry load: /tmp/tmp53isg5a0/redis.socket
-22/03/2023 00:10:29 DEBUG Calling binding with (), {'unix_socket_path': '/tmp/tmp53isg5a0/redis.socket'}
-22/03/2023 00:10:29 DEBUG Pinging the server to ensure we're connected
-22/03/2023 00:10:29 WARNING  * Debugger is active!
-22/03/2023 00:10:29 INFO  * Debugger PIN: 100-148-740
-22/03/2023 00:10:48 INFO 127.0.0.1 - - [22/Mar/2023 00:10:48] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:10:48 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
-22/03/2023 00:10:48 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/deleteMessage?chat_id=975772882&message_id=5551 HTTP/1.1" 200 25
-22/03/2023 00:10:49 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
-22/03/2023 00:10:49 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%9D%D0%B0%D1%88+%D0%BF%D1%80%D0%B5%D0%BA%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3+%D0%B7%D0%B0%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%F0%9F%99%82%0A%D0%92%D1%8B%D0%B1%D0%B5%D1%80%D0%B8%D1%82%D0%B5+%D0%BE%D0%BF%D1%86%D0%B8%D1%8E%3A&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcac+%5Cu0414%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2754+%5Cu041e%5Cu0431%5Cu0448%5Cu0438%5Cu0440%5Cu043d%5Cu044b%5Cu0439+%5Cu043e%5Cu0442%5Cu0432%5Cu0435%5Cu0442%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcdc+%5Cu0418%5Cu043d%5Cu0441%5Cu0442%5Cu0440%5Cu0443%5Cu043a%5Cu0446%5Cu0438%5Cu044f%22%7D%2C+%7B%22text%22%3A+%22%5Cud83c%5Cudf0f+%5Cu042f%5Cu0437%5Cu044b%5Cu043a%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cu274c+%5Cu041e%5Cu0442%5Cu043a%5Cu043b%5Cu044e%5Cu0447%5Cu0438%5Cu0442%5Cu044c+%5Cu0431%5Cu043e%5Cu0442%5Cu0430%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 542
-22/03/2023 00:10:49 INFO MainThread : Вадим None: начало работы
-22/03/2023 00:10:49 INFO MainThread : Вадим None: завершение диалога
-22/03/2023 00:10:54 INFO 127.0.0.1 - - [22/Mar/2023 00:10:54] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:10:54 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
-22/03/2023 00:10:55 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%0A+++++++++++++++++++++%D0%98%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F+%D0%B4%D0%BB%D1%8F+%D0%B1%D0%BE%D1%82%D0%B0%3A%0A++++++%F0%9F%92%AC+%D0%94%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3+-+%D0%B1%D0%BE%D1%82+%D0%B4%D0%B0%D0%B5%D1%82+%D0%BD%D0%B5%D1%80%D0%B0%D0%B7%D0%B2%D0%B5%D1%80%D0%BD%D1%83%D1%82%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+%28%D1%85%D0%BE%D1%82%D1%8F+%D0%B5%D0%B3%D0%BE+%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D1%82%D0%BE%D1%87%D0%BD%D0%BE+%D0%B2+%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%B8%D0%BD%D1%81%D1%82%D0%B2%D0%B5+%D1%81%D0%BB%D1%83%D1%87%D0%B0%D0%B5%D0%B2%29%2C+%D0%BE%D0%B4%D0%BD%D0%B0%D0%BA%D0%BE+%D0%B7%D0%B0%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%B0%D0%B5%D1%82+%D1%80%D0%B5%D0%BF%D0%BB%D0%B8%D0%BA%D0%B8+%D0%B8%2C+%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%2C+%D0%BF%D0%BE%D0%BD%D0%B8%D0%BC%D0%B0%D0%B5%D1%82+%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BA%D1%81%D1%82.+%D0%9D%D0%B0%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%2C+%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE+%D1%81%D0%BF%D1%80%D0%BE%D1%81%D0%B8%D1%82%D1%8C+%22%D0%A7%D1%82%D0%BE+%D1%82%D0%B0%D0%BA%D0%BE%D0%B5+%D0%BA%D0%BB%D0%B5%D1%82%D0%BA%D0%B0%3F%22%2C+%D0%B8+%D0%B5%D1%81%D0%BB%D0%B8+%D0%BF%D0%BE%D1%81%D0%BB%D0%B5+%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%B0+%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C+%D0%B1%D0%BE%D1%82%D1%83+%22%D0%9D%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%81%D1%8F+%D0%BB%D0%B8+%D1%82%D0%B5%D0%B1%D0%B5+%D0%BE%D0%BD%D0%B0%3F%22%2C+%D0%BE%D0%BD+%D0%B4%D0%B0%D1%81%D1%82+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+%D0%BA%D0%B0%D1%81%D0%B0%D0%B5%D0%BC%D0%BE+%D0%BA%D0%BB%D0%B5%D1%82%D0%BA%D0%B8.%0A++++++%E2%9D%94+%D0%9E%D0%B1%D1%88%D0%B8%D1%80%D0%BD%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+-+%D0%B1%D0%BE%D1%82+%D0%BD%D0%B5+%D0%B7%D0%B0%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%B0%D0%B5%D1%82+%D1%80%D0%B5%D0%BF%D0%BB%D0%B8%D0%BA%D0%B8%2C+%D1%82%D0%BE+%D0%B5%D1%81%D1%82%D1%8C%2C+%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BA%D1%81%D1%82%D0%B0+%D1%80%D0%B0%D0%B7%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B0+%D0%BF%D0%BE%D0%BD%D0%B8%D0%BC%D0%B0%D1%82%D1%8C+%D0%BD%D0%B5+%D0%B1%D1%83%D0%B4%D0%B5%D1%82.+%D0%9E%D0%B4%D0%BD%D0%B0%D0%BA%D0%BE%2C+%D0%BC%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE+%D0%B2%D0%BE%D0%B7%D0%BC%D0%BE%D0%B6%D0%BD%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+%D0%BC%D0%BE%D0%B6%D0%B5%D1%82+%D0%B1%D1%8B%D1%82%D1%8C+%D0%B2+2+%D1%80%D0%B0%D0%B7%D0%B0+%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%B5%2C+%D1%87%D0%B5%D0%BC+%D0%B2+%D1%80%D0%B5%D0%B6%D0%B8%D0%BC%D0%B5+%22%D0%94%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3%22.+%D0%9F%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D0%BE%2C+%D0%B5%D1%81%D0%BB%D0%B8+%D0%92%D1%8B+%D0%BD%D0%B5+%D1%81%D0%BE%D0%B1%D0%B8%D1%80%D0%B0%D0%B5%D1%82%D0%B5%D1%81%D1%8C+%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D0%B2%D0%B0%D1%82%D1%8C+%D1%82%D0%B5%D0%BC%D1%83%2C+%D0%BE%D0%B4%D0%BD%D0%B0%D0%BA%D0%BE+%D1%85%D0%BE%D1%82%D0%B8%D1%82%D0%B5+%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82%D1%8C+%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82. HTTP/1.1" 200 3166
-22/03/2023 00:10:55 INFO MainThread : Вадим None: просмотр инструкции
-22/03/2023 00:11:05 INFO 127.0.0.1 - - [22/Mar/2023 00:11:05] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:11:05 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/deleteMessage?chat_id=975772882&message_id=5555 HTTP/1.1" 200 25
-22/03/2023 00:11:05 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
-22/03/2023 00:11:05 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%92+%D1%8D%D1%82%D0%BE%D0%BC+%D1%80%D0%B5%D0%B6%D0%B8%D0%BC%D0%B5+%D0%B1%D0%BE%D1%82+%D0%BC%D0%BE%D0%B6%D0%B5%D1%82+%D0%BF%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D1%8C+%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8+%D1%81%D0%B2%D1%8F%D0%B7%D0%B0%D0%BD%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cu041d%5Cu043e%5Cu0432%5Cu044b%5Cu0439+%5Cu0434%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2630+%5Cu0413%5Cu043b%5Cu0430%5Cu0432%5Cu043d%5Cu043e%5Cu0435+%5Cu043c%5Cu0435%5Cu043d%5Cu044e%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 603
-22/03/2023 00:11:05 INFO MainThread : Вадим None: выбран режим 'Начать диалог' 
-22/03/2023 00:11:07 INFO 127.0.0.1 - - [22/Mar/2023 00:11:07] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:11:07 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/deleteMessage?chat_id=975772882&message_id=5557 HTTP/1.1" 200 25
-22/03/2023 00:11:07 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
-22/03/2023 00:11:07 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%9D%D0%B0%D1%88+%D0%BF%D1%80%D0%B5%D0%BA%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3+%D0%B7%D0%B0%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%F0%9F%99%82%0A%D0%92%D1%8B%D0%B1%D0%B5%D1%80%D0%B8%D1%82%D0%B5+%D0%BE%D0%BF%D1%86%D0%B8%D1%8E%3A&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcac+%5Cu0414%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2754+%5Cu041e%5Cu0431%5Cu0448%5Cu0438%5Cu0440%5Cu043d%5Cu044b%5Cu0439+%5Cu043e%5Cu0442%5Cu0432%5Cu0435%5Cu0442%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcdc+%5Cu0418%5Cu043d%5Cu0441%5Cu0442%5Cu0440%5Cu0443%5Cu043a%5Cu0446%5Cu0438%5Cu044f%22%7D%2C+%7B%22text%22%3A+%22%5Cud83c%5Cudf0f+%5Cu042f%5Cu0437%5Cu044b%5Cu043a%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cu274c+%5Cu041e%5Cu0442%5Cu043a%5Cu043b%5Cu044e%5Cu0447%5Cu0438%5Cu0442%5Cu044c+%5Cu0431%5Cu043e%5Cu0442%5Cu0430%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 542
-22/03/2023 00:11:07 INFO MainThread : Вадим None: начало работы
-22/03/2023 00:11:07 INFO MainThread : Вадим None: завершение диалога
-22/03/2023 00:11:08 INFO 127.0.0.1 - - [22/Mar/2023 00:11:08] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:11:08 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/deleteMessage?chat_id=975772882&message_id=5559 HTTP/1.1" 200 25
-22/03/2023 00:11:08 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
-22/03/2023 00:11:08 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%92+%D1%8D%D1%82%D0%BE%D0%BC+%D1%80%D0%B5%D0%B6%D0%B8%D0%BC%D0%B5+%D0%B1%D0%BE%D1%82+%D0%B4%D0%B0%D0%B5%D1%82+%D1%80%D0%B0%D0%B7%D0%B2%D0%B5%D1%80%D0%BD%D1%83%D1%82%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cu2630+%5Cu0413%5Cu043b%5Cu0430%5Cu0432%5Cu043d%5Cu043e%5Cu0435+%5Cu043c%5Cu0435%5Cu043d%5Cu044e%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 493
-22/03/2023 00:11:08 INFO MainThread : Вадим None: выбран режим 'Обширный ответ'
-22/03/2023 00:11:09 INFO 127.0.0.1 - - [22/Mar/2023 00:11:09] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:11:10 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/deleteMessage?chat_id=975772882&message_id=5561 HTTP/1.1" 200 25
-22/03/2023 00:11:10 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
-22/03/2023 00:11:10 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%9D%D0%B0%D1%88+%D0%BF%D1%80%D0%B5%D0%BA%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3+%D0%B7%D0%B0%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%F0%9F%99%82%0A%D0%92%D1%8B%D0%B1%D0%B5%D1%80%D0%B8%D1%82%D0%B5+%D0%BE%D0%BF%D1%86%D0%B8%D1%8E%3A&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcac+%5Cu0414%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2754+%5Cu041e%5Cu0431%5Cu0448%5Cu0438%5Cu0440%5Cu043d%5Cu044b%5Cu0439+%5Cu043e%5Cu0442%5Cu0432%5Cu0435%5Cu0442%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcdc+%5Cu0418%5Cu043d%5Cu0441%5Cu0442%5Cu0440%5Cu0443%5Cu043a%5Cu0446%5Cu0438%5Cu044f%22%7D%2C+%7B%22text%22%3A+%22%5Cud83c%5Cudf0f+%5Cu042f%5Cu0437%5Cu044b%5Cu043a%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cu274c+%5Cu041e%5Cu0442%5Cu043a%5Cu043b%5Cu044e%5Cu0447%5Cu0438%5Cu0442%5Cu044c+%5Cu0431%5Cu043e%5Cu0442%5Cu0430%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 542
-22/03/2023 00:11:10 INFO MainThread : Вадим None: начало работы
-22/03/2023 00:11:10 INFO MainThread : Вадим None: завершение диалога
-22/03/2023 00:11:11 INFO 127.0.0.1 - - [22/Mar/2023 00:11:11] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:11:11 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%0A+++++++++++++++++++++%D0%98%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F+%D0%B4%D0%BB%D1%8F+%D0%B1%D0%BE%D1%82%D0%B0%3A%0A++++++%F0%9F%92%AC+%D0%94%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3+-+%D0%B1%D0%BE%D1%82+%D0%B4%D0%B0%D0%B5%D1%82+%D0%BD%D0%B5%D1%80%D0%B0%D0%B7%D0%B2%D0%B5%D1%80%D0%BD%D1%83%D1%82%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+%28%D1%85%D0%BE%D1%82%D1%8F+%D0%B5%D0%B3%D0%BE+%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D1%82%D0%BE%D1%87%D0%BD%D0%BE+%D0%B2+%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%B8%D0%BD%D1%81%D1%82%D0%B2%D0%B5+%D1%81%D0%BB%D1%83%D1%87%D0%B0%D0%B5%D0%B2%29%2C+%D0%BE%D0%B4%D0%BD%D0%B0%D0%BA%D0%BE+%D0%B7%D0%B0%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%B0%D0%B5%D1%82+%D1%80%D0%B5%D0%BF%D0%BB%D0%B8%D0%BA%D0%B8+%D0%B8%2C+%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%2C+%D0%BF%D0%BE%D0%BD%D0%B8%D0%BC%D0%B0%D0%B5%D1%82+%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BA%D1%81%D1%82.+%D0%9D%D0%B0%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%2C+%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE+%D1%81%D0%BF%D1%80%D0%BE%D1%81%D0%B8%D1%82%D1%8C+%22%D0%A7%D1%82%D0%BE+%D1%82%D0%B0%D0%BA%D0%BE%D0%B5+%D0%BA%D0%BB%D0%B5%D1%82%D0%BA%D0%B0%3F%22%2C+%D0%B8+%D0%B5%D1%81%D0%BB%D0%B8+%D0%BF%D0%BE%D1%81%D0%BB%D0%B5+%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%B0+%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C+%D0%B1%D0%BE%D1%82%D1%83+%22%D0%9D%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%81%D1%8F+%D0%BB%D0%B8+%D1%82%D0%B5%D0%B1%D0%B5+%D0%BE%D0%BD%D0%B0%3F%22%2C+%D0%BE%D0%BD+%D0%B4%D0%B0%D1%81%D1%82+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+%D0%BA%D0%B0%D1%81%D0%B0%D0%B5%D0%BC%D0%BE+%D0%BA%D0%BB%D0%B5%D1%82%D0%BA%D0%B8.%0A++++++%E2%9D%94+%D0%9E%D0%B1%D1%88%D0%B8%D1%80%D0%BD%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+-+%D0%B1%D0%BE%D1%82+%D0%BD%D0%B5+%D0%B7%D0%B0%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%B0%D0%B5%D1%82+%D1%80%D0%B5%D0%BF%D0%BB%D0%B8%D0%BA%D0%B8%2C+%D1%82%D0%BE+%D0%B5%D1%81%D1%82%D1%8C%2C+%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BA%D1%81%D1%82%D0%B0+%D1%80%D0%B0%D0%B7%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B0+%D0%BF%D0%BE%D0%BD%D0%B8%D0%BC%D0%B0%D1%82%D1%8C+%D0%BD%D0%B5+%D0%B1%D1%83%D0%B4%D0%B5%D1%82.+%D0%9E%D0%B4%D0%BD%D0%B0%D0%BA%D0%BE%2C+%D0%BC%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE+%D0%B2%D0%BE%D0%B7%D0%BC%D0%BE%D0%B6%D0%BD%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+%D0%BC%D0%BE%D0%B6%D0%B5%D1%82+%D0%B1%D1%8B%D1%82%D1%8C+%D0%B2+2+%D1%80%D0%B0%D0%B7%D0%B0+%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%B5%2C+%D1%87%D0%B5%D0%BC+%D0%B2+%D1%80%D0%B5%D0%B6%D0%B8%D0%BC%D0%B5+%22%D0%94%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3%22.+%D0%9F%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D0%BE%2C+%D0%B5%D1%81%D0%BB%D0%B8+%D0%92%D1%8B+%D0%BD%D0%B5+%D1%81%D0%BE%D0%B1%D0%B8%D1%80%D0%B0%D0%B5%D1%82%D0%B5%D1%81%D1%8C+%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D0%B2%D0%B0%D1%82%D1%8C+%D1%82%D0%B5%D0%BC%D1%83%2C+%D0%BE%D0%B4%D0%BD%D0%B0%D0%BA%D0%BE+%D1%85%D0%BE%D1%82%D0%B8%D1%82%D0%B5+%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82%D1%8C+%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82. HTTP/1.1" 200 3166
-22/03/2023 00:11:11 INFO MainThread : Вадим None: просмотр инструкции
-22/03/2023 00:11:24 DEBUG Connection count: 2
-22/03/2023 00:11:24 DEBUG Other clients are still connected to the redis server, not shutting down the connection on socket: /tmp/tmp53isg5a0/redis.socket
-22/03/2023 00:11:24 DEBUG Connection count: 1
-22/03/2023 00:11:24 DEBUG Last client using the connection, shutting down the redis connection on socket: /tmp/tmp53isg5a0/redis.socket
-22/03/2023 00:11:24 DEBUG Shutting down redis server with pid of 283
-22/03/2023 00:12:27 DEBUG Setting up redis with rdb file: redis.db
-22/03/2023 00:12:27 DEBUG Setting up redis with socket file: None
-22/03/2023 00:12:27 DEBUG Creating temporary redis directory /tmp/tmpibb7f9pt
-22/03/2023 00:12:27 DEBUG Using configuration: activerehashing yes
-aof-load-truncated yes
-aof-rewrite-incremental-fsync yes
-appendfilename 'appendonly.aof'
-appendfsync everysec
-appendonly no
-auto-aof-rewrite-min-size 64mb
-auto-aof-rewrite-percentage 100
-daemonize yes
-databases 16
-dbfilename 'redis.db'
-dir '/tmp'
-hash-max-ziplist-entries 512
-hash-max-ziplist-value 64
-hll-sparse-max-bytes 3000
-hz 10
-latency-monitor-threshold 0
-list-max-ziplist-entries 512
-list-max-ziplist-value 64
-logfile /tmp/tmpibb7f9pt/redis.log
-loglevel notice
-lua-time-limit 5000
-no-appendfsync-on-rewrite no
-notify-keyspace-events ""
-pidfile '/tmp/tmpibb7f9pt/redis.pid'
-port 0
-rdbchecksum yes
-rdbcompression yes
-repl-disable-tcp-nodelay no
-save 900 1
-save 300 100
-save 60 200
-save 15 1000
-set-max-intset-entries 512
-slave-priority 100
-slave-read-only yes
-slave-serve-stale-data yes
-slowlog-log-slower-than 10000
-slowlog-max-len 128
-stop-writes-on-bgsave-error yes
-tcp-backlog 511
-tcp-keepalive 0
-timeout 0
-unixsocket '/tmp/tmpibb7f9pt/redis.socket'
-unixsocketperm 700
-zset-max-ziplist-entries 128
-zset-max-ziplist-value 64
-
-22/03/2023 00:12:27 DEBUG Running: /home/vadim/venv/lib/python3.10/site-packages/redislite/bin/redis-server /tmp/tmpibb7f9pt/redis.config
-22/03/2023 00:12:28 DEBUG Calling binding with (), {'unix_socket_path': '/tmp/tmpibb7f9pt/redis.socket'}
-22/03/2023 00:12:28 DEBUG Pinging the server to ensure we're connected
-22/03/2023 00:12:28 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-22/03/2023 00:12:28 INFO [33mPress CTRL+C to quit[0m
-22/03/2023 00:12:28 INFO  * Restarting with stat
-22/03/2023 00:12:28 DEBUG Setting up redis with rdb file: redis.db
-22/03/2023 00:12:28 DEBUG Setting up redis with socket file: None
-22/03/2023 00:12:28 DEBUG loading settings, found: {'pidfile': '/tmp/tmpibb7f9pt/redis.pid', 'unixsocket': '/tmp/tmpibb7f9pt/redis.socket', 'dbdir': '/tmp', 'dbfilename': 'redis.db'}
-22/03/2023 00:12:28 DEBUG Socket file after registry load: /tmp/tmpibb7f9pt/redis.socket
-22/03/2023 00:12:28 DEBUG Calling binding with (), {'unix_socket_path': '/tmp/tmpibb7f9pt/redis.socket'}
-22/03/2023 00:12:28 DEBUG Pinging the server to ensure we're connected
-22/03/2023 00:12:28 WARNING  * Debugger is active!
-22/03/2023 00:12:28 INFO  * Debugger PIN: 100-148-740
-22/03/2023 00:12:32 INFO 127.0.0.1 - - [22/Mar/2023 00:12:32] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:12:32 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
-22/03/2023 00:12:33 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%0A+++++++++++++++++++++%D0%98%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F+%D0%B4%D0%BB%D1%8F+%D0%B1%D0%BE%D1%82%D0%B0%3A%0A++++++%F0%9F%92%AC+%D0%94%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3+-+%D0%B1%D0%BE%D1%82+%D0%B4%D0%B0%D0%B5%D1%82+%D0%BD%D0%B5%D1%80%D0%B0%D0%B7%D0%B2%D0%B5%D1%80%D0%BD%D1%83%D1%82%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+%28%D1%85%D0%BE%D1%82%D1%8F+%D0%B5%D0%B3%D0%BE+%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D1%82%D0%BE%D1%87%D0%BD%D0%BE+%D0%B2+%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%B8%D0%BD%D1%81%D1%82%D0%B2%D0%B5+%D1%81%D0%BB%D1%83%D1%87%D0%B0%D0%B5%D0%B2%29%2C+%D0%BE%D0%B4%D0%BD%D0%B0%D0%BA%D0%BE+%D0%B7%D0%B0%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%B0%D0%B5%D1%82+%D1%80%D0%B5%D0%BF%D0%BB%D0%B8%D0%BA%D0%B8+%D0%B8%2C+%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%2C+%D0%BF%D0%BE%D0%BD%D0%B8%D0%BC%D0%B0%D0%B5%D1%82+%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BA%D1%81%D1%82.+%D0%9D%D0%B0%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%2C+%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE+%D1%81%D0%BF%D1%80%D0%BE%D1%81%D0%B8%D1%82%D1%8C+%22%D0%A7%D1%82%D0%BE+%D1%82%D0%B0%D0%BA%D0%BE%D0%B5+%D0%BA%D0%BB%D0%B5%D1%82%D0%BA%D0%B0%3F%22%2C+%D0%B8+%D0%B5%D1%81%D0%BB%D0%B8+%D0%BF%D0%BE%D1%81%D0%BB%D0%B5+%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%B0+%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C+%D0%B1%D0%BE%D1%82%D1%83+%22%D0%9D%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%81%D1%8F+%D0%BB%D0%B8+%D1%82%D0%B5%D0%B1%D0%B5+%D0%BE%D0%BD%D0%B0%3F%22%2C+%D0%BE%D0%BD+%D0%B4%D0%B0%D1%81%D1%82+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+%D0%BA%D0%B0%D1%81%D0%B0%D0%B5%D0%BC%D0%BE+%D0%BA%D0%BB%D0%B5%D1%82%D0%BA%D0%B8.%0A++++++%E2%9D%94+%D0%9E%D0%B1%D1%88%D0%B8%D1%80%D0%BD%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+-+%D0%B1%D0%BE%D1%82+%D0%BD%D0%B5+%D0%B7%D0%B0%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%B0%D0%B5%D1%82+%D1%80%D0%B5%D0%BF%D0%BB%D0%B8%D0%BA%D0%B8%2C+%D1%82%D0%BE+%D0%B5%D1%81%D1%82%D1%8C%2C+%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BA%D1%81%D1%82%D0%B0+%D1%80%D0%B0%D0%B7%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B0+%D0%BF%D0%BE%D0%BD%D0%B8%D0%BC%D0%B0%D1%82%D1%8C+%D0%BD%D0%B5+%D0%B1%D1%83%D0%B4%D0%B5%D1%82.+%D0%9E%D0%B4%D0%BD%D0%B0%D0%BA%D0%BE%2C+%D0%BC%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE+%D0%B2%D0%BE%D0%B7%D0%BC%D0%BE%D0%B6%D0%BD%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+%D0%BC%D0%BE%D0%B6%D0%B5%D1%82+%D0%B1%D1%8B%D1%82%D1%8C+%D0%B2+2+%D1%80%D0%B0%D0%B7%D0%B0+%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%B5%2C+%D1%87%D0%B5%D0%BC+%D0%B2+%D1%80%D0%B5%D0%B6%D0%B8%D0%BC%D0%B5+%22%D0%94%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3%22.+%D0%9F%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D0%BE%2C+%D0%B5%D1%81%D0%BB%D0%B8+%D0%92%D1%8B+%D0%BD%D0%B5+%D1%81%D0%BE%D0%B1%D0%B8%D1%80%D0%B0%D0%B5%D1%82%D0%B5%D1%81%D1%8C+%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D0%B2%D0%B0%D1%82%D1%8C+%D1%82%D0%B5%D0%BC%D1%83%2C+%D0%BE%D0%B4%D0%BD%D0%B0%D0%BA%D0%BE+%D1%85%D0%BE%D1%82%D0%B8%D1%82%D0%B5+%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82%D1%8C+%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82. HTTP/1.1" 200 3166
-22/03/2023 00:12:33 INFO MainThread : Вадим None: просмотр инструкции
-22/03/2023 00:12:35 INFO 127.0.0.1 - - [22/Mar/2023 00:12:35] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:12:35 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
-22/03/2023 00:12:35 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
-22/03/2023 00:12:35 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%92+%D1%8D%D1%82%D0%BE%D0%BC+%D1%80%D0%B5%D0%B6%D0%B8%D0%BC%D0%B5+%D0%B1%D0%BE%D1%82+%D0%BC%D0%BE%D0%B6%D0%B5%D1%82+%D0%BF%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D1%8C+%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8+%D1%81%D0%B2%D1%8F%D0%B7%D0%B0%D0%BD%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cu041d%5Cu043e%5Cu0432%5Cu044b%5Cu0439+%5Cu0434%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2630+%5Cu0413%5Cu043b%5Cu0430%5Cu0432%5Cu043d%5Cu043e%5Cu0435+%5Cu043c%5Cu0435%5Cu043d%5Cu044e%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 603
-22/03/2023 00:12:35 INFO MainThread : Вадим None: выбран режим 'Начать диалог' 
-22/03/2023 00:12:37 INFO 127.0.0.1 - - [22/Mar/2023 00:12:37] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:12:37 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
-22/03/2023 00:12:37 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%9D%D0%B0%D1%88+%D0%BF%D1%80%D0%B5%D0%BA%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3+%D0%B7%D0%B0%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%F0%9F%99%82%0A%D0%92%D1%8B%D0%B1%D0%B5%D1%80%D0%B8%D1%82%D0%B5+%D0%BE%D0%BF%D1%86%D0%B8%D1%8E%3A&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcac+%5Cu0414%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2754+%5Cu041e%5Cu0431%5Cu0448%5Cu0438%5Cu0440%5Cu043d%5Cu044b%5Cu0439+%5Cu043e%5Cu0442%5Cu0432%5Cu0435%5Cu0442%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcdc+%5Cu0418%5Cu043d%5Cu0441%5Cu0442%5Cu0440%5Cu0443%5Cu043a%5Cu0446%5Cu0438%5Cu044f%22%7D%2C+%7B%22text%22%3A+%22%5Cud83c%5Cudf0f+%5Cu042f%5Cu0437%5Cu044b%5Cu043a%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cu274c+%5Cu041e%5Cu0442%5Cu043a%5Cu043b%5Cu044e%5Cu0447%5Cu0438%5Cu0442%5Cu044c+%5Cu0431%5Cu043e%5Cu0442%5Cu0430%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 542
-22/03/2023 00:12:37 INFO MainThread : Вадим None: начало работы
-22/03/2023 00:12:37 INFO MainThread : Вадим None: завершение диалога
-22/03/2023 00:12:38 INFO 127.0.0.1 - - [22/Mar/2023 00:12:38] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:12:38 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
-22/03/2023 00:12:38 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%92+%D1%8D%D1%82%D0%BE%D0%BC+%D1%80%D0%B5%D0%B6%D0%B8%D0%BC%D0%B5+%D0%B1%D0%BE%D1%82+%D0%B4%D0%B0%D0%B5%D1%82+%D1%80%D0%B0%D0%B7%D0%B2%D0%B5%D1%80%D0%BD%D1%83%D1%82%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cu2630+%5Cu0413%5Cu043b%5Cu0430%5Cu0432%5Cu043d%5Cu043e%5Cu0435+%5Cu043c%5Cu0435%5Cu043d%5Cu044e%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 493
-22/03/2023 00:12:38 INFO MainThread : Вадим None: выбран режим 'Обширный ответ'
-22/03/2023 00:12:39 INFO 127.0.0.1 - - [22/Mar/2023 00:12:39] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:12:39 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
-22/03/2023 00:12:40 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%9D%D0%B0%D1%88+%D0%BF%D1%80%D0%B5%D0%BA%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3+%D0%B7%D0%B0%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%F0%9F%99%82%0A%D0%92%D1%8B%D0%B1%D0%B5%D1%80%D0%B8%D1%82%D0%B5+%D0%BE%D0%BF%D1%86%D0%B8%D1%8E%3A&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcac+%5Cu0414%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2754+%5Cu041e%5Cu0431%5Cu0448%5Cu0438%5Cu0440%5Cu043d%5Cu044b%5Cu0439+%5Cu043e%5Cu0442%5Cu0432%5Cu0435%5Cu0442%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcdc+%5Cu0418%5Cu043d%5Cu0441%5Cu0442%5Cu0440%5Cu0443%5Cu043a%5Cu0446%5Cu0438%5Cu044f%22%7D%2C+%7B%22text%22%3A+%22%5Cud83c%5Cudf0f+%5Cu042f%5Cu0437%5Cu044b%5Cu043a%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cu274c+%5Cu041e%5Cu0442%5Cu043a%5Cu043b%5Cu044e%5Cu0447%5Cu0438%5Cu0442%5Cu044c+%5Cu0431%5Cu043e%5Cu0442%5Cu0430%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 542
-22/03/2023 00:12:40 INFO MainThread : Вадим None: начало работы
-22/03/2023 00:12:40 INFO MainThread : Вадим None: завершение диалога
-22/03/2023 00:13:54 INFO 127.0.0.1 - - [22/Mar/2023 00:13:54] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:13:54 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%0A+++++++++++++++++++++%D0%98%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F+%D0%B4%D0%BB%D1%8F+%D0%B1%D0%BE%D1%82%D0%B0%3A%0A++++++%F0%9F%92%AC+%D0%94%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3+-+%D0%B1%D0%BE%D1%82+%D0%B4%D0%B0%D0%B5%D1%82+%D0%BD%D0%B5%D1%80%D0%B0%D0%B7%D0%B2%D0%B5%D1%80%D0%BD%D1%83%D1%82%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+%28%D1%85%D0%BE%D1%82%D1%8F+%D0%B5%D0%B3%D0%BE+%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D1%82%D0%BE%D1%87%D0%BD%D0%BE+%D0%B2+%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%B8%D0%BD%D1%81%D1%82%D0%B2%D0%B5+%D1%81%D0%BB%D1%83%D1%87%D0%B0%D0%B5%D0%B2%29%2C+%D0%BE%D0%B4%D0%BD%D0%B0%D0%BA%D0%BE+%D0%B7%D0%B0%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%B0%D0%B5%D1%82+%D1%80%D0%B5%D0%BF%D0%BB%D0%B8%D0%BA%D0%B8+%D0%B8%2C+%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%2C+%D0%BF%D0%BE%D0%BD%D0%B8%D0%BC%D0%B0%D0%B5%D1%82+%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BA%D1%81%D1%82.+%D0%9D%D0%B0%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%2C+%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE+%D1%81%D0%BF%D1%80%D0%BE%D1%81%D0%B8%D1%82%D1%8C+%22%D0%A7%D1%82%D0%BE+%D1%82%D0%B0%D0%BA%D0%BE%D0%B5+%D0%BA%D0%BB%D0%B5%D1%82%D0%BA%D0%B0%3F%22%2C+%D0%B8+%D0%B5%D1%81%D0%BB%D0%B8+%D0%BF%D0%BE%D1%81%D0%BB%D0%B5+%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%B0+%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C+%D0%B1%D0%BE%D1%82%D1%83+%22%D0%9D%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D1%81%D1%8F+%D0%BB%D0%B8+%D1%82%D0%B5%D0%B1%D0%B5+%D0%BE%D0%BD%D0%B0%3F%22%2C+%D0%BE%D0%BD+%D0%B4%D0%B0%D1%81%D1%82+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+%D0%BA%D0%B0%D1%81%D0%B0%D0%B5%D0%BC%D0%BE+%D0%BA%D0%BB%D0%B5%D1%82%D0%BA%D0%B8.%0A++++++%E2%9D%94+%D0%9E%D0%B1%D1%88%D0%B8%D1%80%D0%BD%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+-+%D0%B1%D0%BE%D1%82+%D0%BD%D0%B5+%D0%B7%D0%B0%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%B0%D0%B5%D1%82+%D1%80%D0%B5%D0%BF%D0%BB%D0%B8%D0%BA%D0%B8%2C+%D1%82%D0%BE+%D0%B5%D1%81%D1%82%D1%8C%2C+%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BA%D1%81%D1%82%D0%B0+%D1%80%D0%B0%D0%B7%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B0+%D0%BF%D0%BE%D0%BD%D0%B8%D0%BC%D0%B0%D1%82%D1%8C+%D0%BD%D0%B5+%D0%B1%D1%83%D0%B4%D0%B5%D1%82.+%D0%9E%D0%B4%D0%BD%D0%B0%D0%BA%D0%BE%2C+%D0%BC%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE+%D0%B2%D0%BE%D0%B7%D0%BC%D0%BE%D0%B6%D0%BD%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82+%D0%BC%D0%BE%D0%B6%D0%B5%D1%82+%D0%B1%D1%8B%D1%82%D1%8C+%D0%B2+2+%D1%80%D0%B0%D0%B7%D0%B0+%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%B5%2C+%D1%87%D0%B5%D0%BC+%D0%B2+%D1%80%D0%B5%D0%B6%D0%B8%D0%BC%D0%B5+%22%D0%94%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3%22.+%D0%9F%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D0%BE%2C+%D0%B5%D1%81%D0%BB%D0%B8+%D0%92%D1%8B+%D0%BD%D0%B5+%D1%81%D0%BE%D0%B1%D0%B8%D1%80%D0%B0%D0%B5%D1%82%D0%B5%D1%81%D1%8C+%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D0%B2%D0%B0%D1%82%D1%8C+%D1%82%D0%B5%D0%BC%D1%83%2C+%D0%BE%D0%B4%D0%BD%D0%B0%D0%BA%D0%BE+%D1%85%D0%BE%D1%82%D0%B8%D1%82%D0%B5+%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82%D1%8C+%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D1%8B%D0%B9+%D0%BE%D1%82%D0%B2%D0%B5%D1%82. HTTP/1.1" 200 3166
-22/03/2023 00:13:54 INFO MainThread : Вадим None: просмотр инструкции
-22/03/2023 00:13:59 INFO 127.0.0.1 - - [22/Mar/2023 00:13:59] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:13:59 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
-22/03/2023 00:13:59 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%92+%D1%8D%D1%82%D0%BE%D0%BC+%D1%80%D0%B5%D0%B6%D0%B8%D0%BC%D0%B5+%D0%B1%D0%BE%D1%82+%D0%BC%D0%BE%D0%B6%D0%B5%D1%82+%D0%BF%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D1%8C+%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8+%D1%81%D0%B2%D1%8F%D0%B7%D0%B0%D0%BD%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cu041d%5Cu043e%5Cu0432%5Cu044b%5Cu0439+%5Cu0434%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2630+%5Cu0413%5Cu043b%5Cu0430%5Cu0432%5Cu043d%5Cu043e%5Cu0435+%5Cu043c%5Cu0435%5Cu043d%5Cu044e%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 603
-22/03/2023 00:13:59 INFO MainThread : Вадим None: выбран режим 'Начать диалог' 
-22/03/2023 00:14:01 INFO 127.0.0.1 - - [22/Mar/2023 00:14:01] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:14:01 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
-22/03/2023 00:14:01 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%9D%D0%B0%D1%88+%D0%BF%D1%80%D0%B5%D0%BA%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3+%D0%B7%D0%B0%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%F0%9F%99%82%0A%D0%92%D1%8B%D0%B1%D0%B5%D1%80%D0%B8%D1%82%D0%B5+%D0%BE%D0%BF%D1%86%D0%B8%D1%8E%3A&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcac+%5Cu0414%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2754+%5Cu041e%5Cu0431%5Cu0448%5Cu0438%5Cu0440%5Cu043d%5Cu044b%5Cu0439+%5Cu043e%5Cu0442%5Cu0432%5Cu0435%5Cu0442%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcdc+%5Cu0418%5Cu043d%5Cu0441%5Cu0442%5Cu0440%5Cu0443%5Cu043a%5Cu0446%5Cu0438%5Cu044f%22%7D%2C+%7B%22text%22%3A+%22%5Cud83c%5Cudf0f+%5Cu042f%5Cu0437%5Cu044b%5Cu043a%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cu274c+%5Cu041e%5Cu0442%5Cu043a%5Cu043b%5Cu044e%5Cu0447%5Cu0438%5Cu0442%5Cu044c+%5Cu0431%5Cu043e%5Cu0442%5Cu0430%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 542
-22/03/2023 00:14:01 INFO MainThread : Вадим None: начало работы
-22/03/2023 00:14:01 INFO MainThread : Вадим None: завершение диалога
-22/03/2023 00:14:13 INFO 127.0.0.1 - - [22/Mar/2023 00:14:13] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:14:13 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=1054140400 HTTP/1.1" 200 452
-22/03/2023 00:14:14 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=1054140400&text=%D0%9D%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D0%B5%D0%BC+%D0%BD%D0%BE%D0%B2%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3%21 HTTP/1.1" 200 373
-22/03/2023 00:14:14 INFO MainThread : a None: начало нового диалога
-22/03/2023 00:14:16 INFO 127.0.0.1 - - [22/Mar/2023 00:14:16] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:14:16 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=1054140400 HTTP/1.1" 200 452
-22/03/2023 00:14:16 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=1054140400&text=%D0%9D%D0%B0%D1%88+%D0%BF%D1%80%D0%B5%D0%BA%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3+%D0%B7%D0%B0%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%F0%9F%99%82%0A%D0%92%D1%8B%D0%B1%D0%B5%D1%80%D0%B8%D1%82%D0%B5+%D0%BE%D0%BF%D1%86%D0%B8%D1%8E%3A&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcac+%5Cu0414%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2754+%5Cu041e%5Cu0431%5Cu0448%5Cu0438%5Cu0440%5Cu043d%5Cu044b%5Cu0439+%5Cu043e%5Cu0442%5Cu0432%5Cu0435%5Cu0442%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcdc+%5Cu0418%5Cu043d%5Cu0441%5Cu0442%5Cu0440%5Cu0443%5Cu043a%5Cu0446%5Cu0438%5Cu044f%22%7D%2C+%7B%22text%22%3A+%22%5Cud83c%5Cudf0f+%5Cu042f%5Cu0437%5Cu044b%5Cu043a%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cu274c+%5Cu041e%5Cu0442%5Cu043a%5Cu043b%5Cu044e%5Cu0447%5Cu0438%5Cu0442%5Cu044c+%5Cu0431%5Cu043e%5Cu0442%5Cu0430%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 515
-22/03/2023 00:14:16 INFO MainThread : a None: начало работы
-22/03/2023 00:14:16 INFO MainThread : a None: завершение диалога
-22/03/2023 00:14:19 INFO 127.0.0.1 - - [22/Mar/2023 00:14:19] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:14:19 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=1054140400 HTTP/1.1" 200 452
-22/03/2023 00:14:19 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=1054140400&text=%D0%92+%D1%8D%D1%82%D0%BE%D0%BC+%D1%80%D0%B5%D0%B6%D0%B8%D0%BC%D0%B5+%D0%B1%D0%BE%D1%82+%D0%BC%D0%BE%D0%B6%D0%B5%D1%82+%D0%BF%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D1%8C+%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8+%D1%81%D0%B2%D1%8F%D0%B7%D0%B0%D0%BD%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cu041d%5Cu043e%5Cu0432%5Cu044b%5Cu0439+%5Cu0434%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2630+%5Cu0413%5Cu043b%5Cu0430%5Cu0432%5Cu043d%5Cu043e%5Cu0435+%5Cu043c%5Cu0435%5Cu043d%5Cu044e%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 576
-22/03/2023 00:14:19 INFO MainThread : a None: выбран режим 'Начать диалог' 
-22/03/2023 00:14:21 INFO 127.0.0.1 - - [22/Mar/2023 00:14:21] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
-22/03/2023 00:14:21 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=1054140400&text=%3Ci%3E%D0%97%D0%B0%D0%BF%D1%80%D0%BE%D1%81+%D0%BE%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%2C+%D0%BE%D0%B6%D0%B8%D0%B4%D0%B0%D0%B9%D1%82%D0%B5+%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%B0%F0%9F%98%89%3C%2Fi%3E&parse_mode=HTML HTTP/1.1" 200 500
-22/03/2023 00:14:21 INFO Thread 1054140400 : старт работы
-22/03/2023 00:14:21 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
-22/03/2023 00:14:21 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendChatAction?chat_id=1054140400&action=typing HTTP/1.1" 200 25
-22/03/2023 00:14:21 INFO Thread 1054140400 : отправка запроса, ключ: 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, кол-во токенов: 1600
-22/03/2023 00:14:21 DEBUG Начало обработки запроса
-22/03/2023 00:14:21 DEBUG Starting new HTTPS connection (1): api.openai.com:443
-22/03/2023 00:14:30 DEBUG https://api.openai.com:443 "POST /v1/completions HTTP/1.1" 200 None
-22/03/2023 00:14:30 INFO Конец обработки запроса, длительность: 8 секунд
-22/03/2023 00:14:30 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=1054140400&text=%0A%D0%94%D0%BB%D1%8F+%D0%BF%D0%BE%D0%B4%D1%81%D1%87%D0%B5%D1%82%D0%B0+%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D0%BD%D1%82%D0%BD%D0%BE%D0%B3%D0%BE+%D1%81%D0%BE%D0%BE%D1%82%D0%BD%D0%BE%D1%88%D0%B5%D0%BD%D0%B8%D1%8F+%D0%BC%D0%B5%D0%B6%D0%B4%D1%83+%D0%B4%D0%B2%D1%83%D0%BC%D1%8F+%D0%B2%D0%B5%D0%BB%D0%B8%D1%87%D0%B8%D0%BD%D0%B0%D0%BC%D0%B8+%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83%D0%B5%D1%82%D1%81%D1%8F+%D1%84%D0%BE%D1%80%D0%BC%D1%83%D0%BB%D0%B0%3A%0A%0A%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D0%BD%D1%82%D0%BD%D0%BE%D0%B5+%D1%81%D0%BE%D0%BE%D1%82%D0%BD%D0%BE%D1%88%D0%B5%D0%BD%D0%B8%D0%B5+%3D+%28%D0%97%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B51+%2F+%D0%97%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B52%29+%2A+100%25.%0A%0A%D0%92+%D0%B4%D0%B0%D0%BD%D0%BD%D0%BE%D0%BC+%D1%81%D0%BB%D1%83%D1%87%D0%B0%D0%B5+%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D0%BD%D1%82%D0%BD%D0%BE%D0%B5+%D1%81%D0%BE%D0%BE%D1%82%D0%BD%D0%BE%D1%88%D0%B5%D0%BD%D0%B8%D0%B5+%D1%80%D0%B0%D0%B2%D0%BD%D0%BE%3A+%28200+%2F+500%29+%2A+100%25+%3D+40%25.&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cu041d%5Cu043e%5Cu0432%5Cu044b%5Cu0439+%5Cu0434%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2630+%5Cu0413%5Cu043b%5Cu0430%5Cu0432%5Cu043d%5Cu043e%5Cu0435+%5Cu043c%5Cu0435%5Cu043d%5Cu044e%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 1212
-22/03/2023 00:14:45 DEBUG Connection count: 2
-22/03/2023 00:14:45 DEBUG Other clients are still connected to the redis server, not shutting down the connection on socket: /tmp/tmpibb7f9pt/redis.socket
-22/03/2023 00:14:45 DEBUG Connection count: 1
-22/03/2023 00:14:45 DEBUG Last client using the connection, shutting down the redis connection on socket: /tmp/tmpibb7f9pt/redis.socket
-22/03/2023 00:14:45 DEBUG Shutting down redis server with pid of 305
+30/03/2023 23:47:34 INFO [33mPress CTRL+C to quit[0m
+30/03/2023 23:47:34 INFO  * Restarting with stat
+30/03/2023 23:47:35 DEBUG Setting up redis with rdb file: redis.db
+30/03/2023 23:47:35 DEBUG Setting up redis with socket file: None
+30/03/2023 23:47:35 DEBUG loading settings, found: {'pidfile': '/tmp/tmpc9n4fzu1/redis.pid', 'unixsocket': '/tmp/tmpc9n4fzu1/redis.socket', 'dbdir': '/tmp', 'dbfilename': 'redis.db'}
+30/03/2023 23:47:35 DEBUG Socket file after registry load: /tmp/tmpc9n4fzu1/redis.socket
+30/03/2023 23:47:35 DEBUG Calling binding with (), {'unix_socket_path': '/tmp/tmpc9n4fzu1/redis.socket'}
+30/03/2023 23:47:35 DEBUG Pinging the server to ensure we're connected
+30/03/2023 23:47:35 WARNING  * Debugger is active!
+30/03/2023 23:47:35 INFO  * Debugger PIN: 115-274-105
+30/03/2023 23:47:36 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
+30/03/2023 23:47:36 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
+30/03/2023 23:47:36 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%9D%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D0%B5%D0%BC+%D0%BD%D0%BE%D0%B2%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3%21 HTTP/1.1" 200 400
+30/03/2023 23:47:36 INFO MainThread : Вадим None: начало нового диалога
+30/03/2023 23:47:36 INFO {'update_id': 999885980, 'message': {'content_type': 'text', 'id': 5952, 'message_id': 5952, 'from_user': <telebot.types.User object at 0x7fdc56a05c30>, 'date': 1680209260, 'chat': <telebot.types.Chat object at 0x7fdc56a05ba0>, 'sender_chat': None, 'forward_from': None, 'forward_from_chat': None, 'forward_from_message_id': None, 'forward_signature': None, 'forward_sender_name': None, 'forward_date': None, 'is_automatic_forward': None, 'reply_to_message': None, 'via_bot': None, 'edit_date': None, 'has_protected_content': None, 'media_group_id': None, 'author_signature': None, 'text': 'Новый диалог', 'entities': None, 'caption_entities': None, 'audio': None, 'document': None, 'photo': None, 'sticker': None, 'video': None, 'video_note': None, 'voice': None, 'caption': None, 'contact': None, 'location': None, 'venue': None, 'animation': None, 'dice': None, 'new_chat_member': None, 'new_chat_members': None, 'left_chat_member': None, 'new_chat_title': None, 'new_chat_photo': None, 'delete_chat_photo': None, 'group_chat_created': None, 'supergroup_chat_created': None, 'channel_chat_created': None, 'migrate_to_chat_id': None, 'migrate_from_chat_id': None, 'pinned_message': None, 'invoice': None, 'successful_payment': None, 'connected_website': None, 'reply_markup': None, 'message_thread_id': None, 'is_topic_message': None, 'forum_topic_created': None, 'forum_topic_closed': None, 'forum_topic_reopened': None, 'has_media_spoiler': None, 'forum_topic_edited': None, 'general_forum_topic_hidden': None, 'general_forum_topic_unhidden': None, 'write_access_allowed': None, 'json': {'message_id': 5952, 'from': {'id': 975772882, 'is_bot': False, 'first_name': 'Вадим', 'username': 'vadmart', 'language_code': 'ru'}, 'chat': {'id': 975772882, 'first_name': 'Вадим', 'username': 'vadmart', 'type': 'private'}, 'date': 1680209260, 'text': 'Новый диалог'}}, 'edited_message': None, 'channel_post': None, 'edited_channel_post': None, 'inline_query': None, 'chosen_inline_result': None, 'callback_query': None, 'shipping_query': None, 'pre_checkout_query': None, 'poll': None, 'poll_answer': None, 'my_chat_member': None, 'chat_member': None, 'chat_join_request': None}
+30/03/2023 23:47:36 INFO 127.0.0.1 - - [30/Mar/2023 23:47:36] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
+30/03/2023 23:47:40 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
+30/03/2023 23:47:40 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%92%D1%8B%D0%B1%D0%B5%D1%80%D0%B8%D1%82%D0%B5+%D1%80%D0%B5%D0%B6%D0%B8%D0%BC+%D0%B8%D0%B7+%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%BE%D0%B3%D0%BE+%D0%BC%D0%B5%D0%BD%D1%8E%21 HTTP/1.1" 200 450
+30/03/2023 23:47:40 ERROR MainThread : Пользователь id = 975772882 не найден!
+30/03/2023 23:47:40 INFO {'update_id': 999885981, 'message': {'content_type': 'text', 'id': 5954, 'message_id': 5954, 'from_user': <telebot.types.User object at 0x7fdc56a05480>, 'date': 1680209264, 'chat': <telebot.types.Chat object at 0x7fdc56a053c0>, 'sender_chat': None, 'forward_from': None, 'forward_from_chat': None, 'forward_from_message_id': None, 'forward_signature': None, 'forward_sender_name': None, 'forward_date': None, 'is_automatic_forward': None, 'reply_to_message': None, 'via_bot': None, 'edit_date': None, 'has_protected_content': None, 'media_group_id': None, 'author_signature': None, 'text': 'Привет, как дела?', 'entities': None, 'caption_entities': None, 'audio': None, 'document': None, 'photo': None, 'sticker': None, 'video': None, 'video_note': None, 'voice': None, 'caption': None, 'contact': None, 'location': None, 'venue': None, 'animation': None, 'dice': None, 'new_chat_member': None, 'new_chat_members': None, 'left_chat_member': None, 'new_chat_title': None, 'new_chat_photo': None, 'delete_chat_photo': None, 'group_chat_created': None, 'supergroup_chat_created': None, 'channel_chat_created': None, 'migrate_to_chat_id': None, 'migrate_from_chat_id': None, 'pinned_message': None, 'invoice': None, 'successful_payment': None, 'connected_website': None, 'reply_markup': None, 'message_thread_id': None, 'is_topic_message': None, 'forum_topic_created': None, 'forum_topic_closed': None, 'forum_topic_reopened': None, 'has_media_spoiler': None, 'forum_topic_edited': None, 'general_forum_topic_hidden': None, 'general_forum_topic_unhidden': None, 'write_access_allowed': None, 'json': {'message_id': 5954, 'from': {'id': 975772882, 'is_bot': False, 'first_name': 'Вадим', 'username': 'vadmart', 'language_code': 'ru'}, 'chat': {'id': 975772882, 'first_name': 'Вадим', 'username': 'vadmart', 'type': 'private'}, 'date': 1680209264, 'text': 'Привет, как дела?'}}, 'edited_message': None, 'channel_post': None, 'edited_channel_post': None, 'inline_query': None, 'chosen_inline_result': None, 'callback_query': None, 'shipping_query': None, 'pre_checkout_query': None, 'poll': None, 'poll_answer': None, 'my_chat_member': None, 'chat_member': None, 'chat_join_request': None}
+30/03/2023 23:47:40 INFO 127.0.0.1 - - [30/Mar/2023 23:47:40] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
+30/03/2023 23:47:43 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
+30/03/2023 23:47:44 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
+30/03/2023 23:47:44 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%9D%D0%B0%D1%88+%D0%BF%D1%80%D0%B5%D0%BA%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3+%D0%B7%D0%B0%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%F0%9F%99%82%0A%D0%92%D1%8B%D0%B1%D0%B5%D1%80%D0%B8%D1%82%D0%B5+%D0%BE%D0%BF%D1%86%D0%B8%D1%8E%3A&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcac+%5Cu0414%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2754+%5Cu041e%5Cu0431%5Cu0448%5Cu0438%5Cu0440%5Cu043d%5Cu044b%5Cu0439+%5Cu043e%5Cu0442%5Cu0432%5Cu0435%5Cu0442%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcdc+%5Cu0418%5Cu043d%5Cu0441%5Cu0442%5Cu0440%5Cu0443%5Cu043a%5Cu0446%5Cu0438%5Cu044f%22%7D%2C+%7B%22text%22%3A+%22%5Cud83c%5Cudf0f+%5Cu042f%5Cu0437%5Cu044b%5Cu043a%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cu274c+%5Cu041e%5Cu0442%5Cu043a%5Cu043b%5Cu044e%5Cu0447%5Cu0438%5Cu0442%5Cu044c+%5Cu0431%5Cu043e%5Cu0442%5Cu0430%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 542
+30/03/2023 23:47:44 INFO MainThread : Вадим None: начало работы
+30/03/2023 23:47:44 INFO MainThread : Вадим None: завершение диалога
+30/03/2023 23:47:44 INFO {'update_id': 999885982, 'message': {'content_type': 'text', 'id': 5956, 'message_id': 5956, 'from_user': <telebot.types.User object at 0x7fdc56a05ed0>, 'date': 1680209267, 'chat': <telebot.types.Chat object at 0x7fdc56a05db0>, 'sender_chat': None, 'forward_from': None, 'forward_from_chat': None, 'forward_from_message_id': None, 'forward_signature': None, 'forward_sender_name': None, 'forward_date': None, 'is_automatic_forward': None, 'reply_to_message': None, 'via_bot': None, 'edit_date': None, 'has_protected_content': None, 'media_group_id': None, 'author_signature': None, 'text': '☰ Главное меню', 'entities': None, 'caption_entities': None, 'audio': None, 'document': None, 'photo': None, 'sticker': None, 'video': None, 'video_note': None, 'voice': None, 'caption': None, 'contact': None, 'location': None, 'venue': None, 'animation': None, 'dice': None, 'new_chat_member': None, 'new_chat_members': None, 'left_chat_member': None, 'new_chat_title': None, 'new_chat_photo': None, 'delete_chat_photo': None, 'group_chat_created': None, 'supergroup_chat_created': None, 'channel_chat_created': None, 'migrate_to_chat_id': None, 'migrate_from_chat_id': None, 'pinned_message': None, 'invoice': None, 'successful_payment': None, 'connected_website': None, 'reply_markup': None, 'message_thread_id': None, 'is_topic_message': None, 'forum_topic_created': None, 'forum_topic_closed': None, 'forum_topic_reopened': None, 'has_media_spoiler': None, 'forum_topic_edited': None, 'general_forum_topic_hidden': None, 'general_forum_topic_unhidden': None, 'write_access_allowed': None, 'json': {'message_id': 5956, 'from': {'id': 975772882, 'is_bot': False, 'first_name': 'Вадим', 'username': 'vadmart', 'language_code': 'ru'}, 'chat': {'id': 975772882, 'first_name': 'Вадим', 'username': 'vadmart', 'type': 'private'}, 'date': 1680209267, 'text': '☰ Главное меню'}}, 'edited_message': None, 'channel_post': None, 'edited_channel_post': None, 'inline_query': None, 'chosen_inline_result': None, 'callback_query': None, 'shipping_query': None, 'pre_checkout_query': None, 'poll': None, 'poll_answer': None, 'my_chat_member': None, 'chat_member': None, 'chat_join_request': None}
+30/03/2023 23:47:44 INFO 127.0.0.1 - - [30/Mar/2023 23:47:44] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
+30/03/2023 23:47:45 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
+30/03/2023 23:47:45 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
+30/03/2023 23:47:45 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%92+%D1%8D%D1%82%D0%BE%D0%BC+%D1%80%D0%B5%D0%B6%D0%B8%D0%BC%D0%B5+%D0%B1%D0%BE%D1%82+%D0%BC%D0%BE%D0%B6%D0%B5%D1%82+%D0%BF%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D1%8C+%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8+%D1%81%D0%B2%D1%8F%D0%B7%D0%B0%D0%BD%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cu041d%5Cu043e%5Cu0432%5Cu044b%5Cu0439+%5Cu0434%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2630+%5Cu0413%5Cu043b%5Cu0430%5Cu0432%5Cu043d%5Cu043e%5Cu0435+%5Cu043c%5Cu0435%5Cu043d%5Cu044e%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 603
+30/03/2023 23:47:45 INFO MainThread : Вадим None: выбран режим 'Начать диалог' 
+30/03/2023 23:47:45 INFO {'update_id': 999885983, 'message': {'content_type': 'text', 'id': 5958, 'message_id': 5958, 'from_user': <telebot.types.User object at 0x7fdc56a06bf0>, 'date': 1680209269, 'chat': <telebot.types.Chat object at 0x7fdc56a05690>, 'sender_chat': None, 'forward_from': None, 'forward_from_chat': None, 'forward_from_message_id': None, 'forward_signature': None, 'forward_sender_name': None, 'forward_date': None, 'is_automatic_forward': None, 'reply_to_message': None, 'via_bot': None, 'edit_date': None, 'has_protected_content': None, 'media_group_id': None, 'author_signature': None, 'text': '💬 Диалог', 'entities': None, 'caption_entities': None, 'audio': None, 'document': None, 'photo': None, 'sticker': None, 'video': None, 'video_note': None, 'voice': None, 'caption': None, 'contact': None, 'location': None, 'venue': None, 'animation': None, 'dice': None, 'new_chat_member': None, 'new_chat_members': None, 'left_chat_member': None, 'new_chat_title': None, 'new_chat_photo': None, 'delete_chat_photo': None, 'group_chat_created': None, 'supergroup_chat_created': None, 'channel_chat_created': None, 'migrate_to_chat_id': None, 'migrate_from_chat_id': None, 'pinned_message': None, 'invoice': None, 'successful_payment': None, 'connected_website': None, 'reply_markup': None, 'message_thread_id': None, 'is_topic_message': None, 'forum_topic_created': None, 'forum_topic_closed': None, 'forum_topic_reopened': None, 'has_media_spoiler': None, 'forum_topic_edited': None, 'general_forum_topic_hidden': None, 'general_forum_topic_unhidden': None, 'write_access_allowed': None, 'json': {'message_id': 5958, 'from': {'id': 975772882, 'is_bot': False, 'first_name': 'Вадим', 'username': 'vadmart', 'language_code': 'ru'}, 'chat': {'id': 975772882, 'first_name': 'Вадим', 'username': 'vadmart', 'type': 'private'}, 'date': 1680209269, 'text': '💬 Диалог'}}, 'edited_message': None, 'channel_post': None, 'edited_channel_post': None, 'inline_query': None, 'chosen_inline_result': None, 'callback_query': None, 'shipping_query': None, 'pre_checkout_query': None, 'poll': None, 'poll_answer': None, 'my_chat_member': None, 'chat_member': None, 'chat_join_request': None}
+30/03/2023 23:47:45 INFO 127.0.0.1 - - [30/Mar/2023 23:47:45] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
+30/03/2023 23:47:48 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
+30/03/2023 23:47:48 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%3Ci%3E%D0%97%D0%B0%D0%BF%D1%80%D0%BE%D1%81+%D0%BE%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%2C+%D0%BE%D0%B6%D0%B8%D0%B4%D0%B0%D0%B9%D1%82%D0%B5+%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%B0%F0%9F%98%89%3C%2Fi%3E&parse_mode=HTML HTTP/1.1" 200 527
+30/03/2023 23:47:48 INFO {'update_id': 999885984, 'message': {'content_type': 'text', 'id': 5960, 'message_id': 5960, 'from_user': <telebot.types.User object at 0x7fdc56a06f50>, 'date': 1680209272, 'chat': <telebot.types.Chat object at 0x7fdc56a06e30>, 'sender_chat': None, 'forward_from': None, 'forward_from_chat': None, 'forward_from_message_id': None, 'forward_signature': None, 'forward_sender_name': None, 'forward_date': None, 'is_automatic_forward': None, 'reply_to_message': None, 'via_bot': None, 'edit_date': None, 'has_protected_content': None, 'media_group_id': None, 'author_signature': None, 'text': 'Привет, как дела?', 'entities': None, 'caption_entities': None, 'audio': None, 'document': None, 'photo': None, 'sticker': None, 'video': None, 'video_note': None, 'voice': None, 'caption': None, 'contact': None, 'location': None, 'venue': None, 'animation': None, 'dice': None, 'new_chat_member': None, 'new_chat_members': None, 'left_chat_member': None, 'new_chat_title': None, 'new_chat_photo': None, 'delete_chat_photo': None, 'group_chat_created': None, 'supergroup_chat_created': None, 'channel_chat_created': None, 'migrate_to_chat_id': None, 'migrate_from_chat_id': None, 'pinned_message': None, 'invoice': None, 'successful_payment': None, 'connected_website': None, 'reply_markup': None, 'message_thread_id': None, 'is_topic_message': None, 'forum_topic_created': None, 'forum_topic_closed': None, 'forum_topic_reopened': None, 'has_media_spoiler': None, 'forum_topic_edited': None, 'general_forum_topic_hidden': None, 'general_forum_topic_unhidden': None, 'write_access_allowed': None, 'json': {'message_id': 5960, 'from': {'id': 975772882, 'is_bot': False, 'first_name': 'Вадим', 'username': 'vadmart', 'language_code': 'ru'}, 'chat': {'id': 975772882, 'first_name': 'Вадим', 'username': 'vadmart', 'type': 'private'}, 'date': 1680209272, 'text': 'Привет, как дела?'}}, 'edited_message': None, 'channel_post': None, 'edited_channel_post': None, 'inline_query': None, 'chosen_inline_result': None, 'callback_query': None, 'shipping_query': None, 'pre_checkout_query': None, 'poll': None, 'poll_answer': None, 'my_chat_member': None, 'chat_member': None, 'chat_join_request': None}
+30/03/2023 23:47:48 INFO Thread 975772882 : старт работы
+30/03/2023 23:47:48 INFO 127.0.0.1 - - [30/Mar/2023 23:47:48] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
+30/03/2023 23:47:48 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
+30/03/2023 23:47:49 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendChatAction?chat_id=975772882&action=typing HTTP/1.1" 200 25
+30/03/2023 23:47:49 INFO Thread 975772882 : отправка запроса, ключ: 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, кол-во токенов: 1600
+30/03/2023 23:47:49 DEBUG Начало обработки запроса
+30/03/2023 23:47:49 DEBUG Starting new HTTPS connection (1): api.openai.com:443
+30/03/2023 23:47:53 DEBUG https://api.openai.com:443 "POST /v1/chat/completions HTTP/1.1" 200 None
+30/03/2023 23:47:53 INFO Конец обработки запроса, длительность: 4 секунд
+30/03/2023 23:47:53 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21+%D0%AF+-+%D0%B2%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9+%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D0%BD%D0%B8%D0%BA%2C+%D0%BC%D0%BE%D0%B8+%D0%B4%D0%B5%D0%BB%D0%B0+%D0%B2%D1%81%D0%B5%D0%B3%D0%B4%D0%B0+%D1%85%D0%BE%D1%80%D0%BE%D1%88%D0%BE.+%D0%90+%D0%BA%D0%B0%D0%BA+%D1%83+%D0%92%D0%B0%D1%81%3F+%D0%A7%D0%B5%D0%BC+%D1%8F+%D0%BC%D0%BE%D0%B3%D1%83+%D0%92%D0%B0%D0%BC+%D0%BF%D0%BE%D0%BC%D0%BE%D1%87%D1%8C%3F&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cu041d%5Cu043e%5Cu0432%5Cu044b%5Cu0439+%5Cu0434%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2630+%5Cu0413%5Cu043b%5Cu0430%5Cu0432%5Cu043d%5Cu043e%5Cu0435+%5Cu043c%5Cu0435%5Cu043d%5Cu044e%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 762
+30/03/2023 23:48:01 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
+30/03/2023 23:48:01 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%3Ci%3E%D0%97%D0%B0%D0%BF%D1%80%D0%BE%D1%81+%D0%BE%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%2C+%D0%BE%D0%B6%D0%B8%D0%B4%D0%B0%D0%B9%D1%82%D0%B5+%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%B0%F0%9F%98%89%3C%2Fi%3E&parse_mode=HTML HTTP/1.1" 200 527
+30/03/2023 23:48:01 INFO {'update_id': 999885985, 'message': {'content_type': 'text', 'id': 5963, 'message_id': 5963, 'from_user': <telebot.types.User object at 0x7fdc56a053c0>, 'date': 1680209285, 'chat': <telebot.types.Chat object at 0x7fdc56a06f80>, 'sender_chat': None, 'forward_from': None, 'forward_from_chat': None, 'forward_from_message_id': None, 'forward_signature': None, 'forward_sender_name': None, 'forward_date': None, 'is_automatic_forward': None, 'reply_to_message': None, 'via_bot': None, 'edit_date': None, 'has_protected_content': None, 'media_group_id': None, 'author_signature': None, 'text': 'Ничем', 'entities': None, 'caption_entities': None, 'audio': None, 'document': None, 'photo': None, 'sticker': None, 'video': None, 'video_note': None, 'voice': None, 'caption': None, 'contact': None, 'location': None, 'venue': None, 'animation': None, 'dice': None, 'new_chat_member': None, 'new_chat_members': None, 'left_chat_member': None, 'new_chat_title': None, 'new_chat_photo': None, 'delete_chat_photo': None, 'group_chat_created': None, 'supergroup_chat_created': None, 'channel_chat_created': None, 'migrate_to_chat_id': None, 'migrate_from_chat_id': None, 'pinned_message': None, 'invoice': None, 'successful_payment': None, 'connected_website': None, 'reply_markup': None, 'message_thread_id': None, 'is_topic_message': None, 'forum_topic_created': None, 'forum_topic_closed': None, 'forum_topic_reopened': None, 'has_media_spoiler': None, 'forum_topic_edited': None, 'general_forum_topic_hidden': None, 'general_forum_topic_unhidden': None, 'write_access_allowed': None, 'json': {'message_id': 5963, 'from': {'id': 975772882, 'is_bot': False, 'first_name': 'Вадим', 'username': 'vadmart', 'language_code': 'ru'}, 'chat': {'id': 975772882, 'first_name': 'Вадим', 'username': 'vadmart', 'type': 'private'}, 'date': 1680209285, 'text': 'Ничем'}}, 'edited_message': None, 'channel_post': None, 'edited_channel_post': None, 'inline_query': None, 'chosen_inline_result': None, 'callback_query': None, 'shipping_query': None, 'pre_checkout_query': None, 'poll': None, 'poll_answer': None, 'my_chat_member': None, 'chat_member': None, 'chat_join_request': None}
+30/03/2023 23:48:01 INFO Thread 975772882 : старт работы
+30/03/2023 23:48:01 INFO 127.0.0.1 - - [30/Mar/2023 23:48:01] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -
+30/03/2023 23:48:01 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
+30/03/2023 23:48:01 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendChatAction?chat_id=975772882&action=typing HTTP/1.1" 200 25
+30/03/2023 23:48:01 INFO Thread 975772882 : отправка запроса, ключ: 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, кол-во токенов: 1600
+30/03/2023 23:48:01 DEBUG Начало обработки запроса
+30/03/2023 23:48:01 DEBUG Starting new HTTPS connection (1): api.openai.com:443
+30/03/2023 23:48:07 DEBUG https://api.openai.com:443 "POST /v1/chat/completions HTTP/1.1" 200 None
+30/03/2023 23:48:07 INFO Конец обработки запроса, длительность: 5 секунд
+30/03/2023 23:48:07 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%A5%D0%BE%D1%80%D0%BE%D1%88%D0%BE%2C+%D0%B5%D1%81%D0%BB%D0%B8+%D1%83+%D0%92%D0%B0%D1%81+%D0%B2%D0%BE%D0%B7%D0%BD%D0%B8%D0%BA%D0%BD%D1%83%D1%82+%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%BB%D0%B8%D0%B1%D0%BE+%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%8B+%D0%B8%D0%BB%D0%B8+%D0%BF%D0%BE%D1%82%D1%80%D0%B5%D0%B1%D0%BD%D0%BE%D1%81%D1%82%D0%B8+%D0%B2+%D0%B1%D1%83%D0%B4%D1%83%D1%89%D0%B5%D0%BC%2C+%D0%BD%D0%B5+%D1%81%D1%82%D0%B5%D1%81%D0%BD%D1%8F%D0%B9%D1%82%D0%B5%D1%81%D1%8C+%D0%BE%D0%B1%D1%80%D0%B0%D1%89%D0%B0%D1%82%D1%8C%D1%81%D1%8F+%D0%BA%D0%BE+%D0%BC%D0%BD%D0%B5.+%D0%96%D0%B5%D0%BB%D0%B0%D1%8E+%D0%92%D0%B0%D0%BC+%D1%85%D0%BE%D1%80%D0%BE%D1%88%D0%B5%D0%B3%D0%BE+%D0%B4%D0%BD%D1%8F%21&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cu041d%5Cu043e%5Cu0432%5Cu044b%5Cu0439+%5Cu0434%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2630+%5Cu0413%5Cu043b%5Cu0430%5Cu0432%5Cu043d%5Cu043e%5Cu0435+%5Cu043c%5Cu0435%5Cu043d%5Cu044e%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 955
+30/03/2023 23:48:15 DEBUG Starting new HTTPS connection (1): api.telegram.org:443
+30/03/2023 23:48:15 DEBUG https://api.telegram.org:443 "GET /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/getChatMember?chat_id=-1001857064307&user_id=975772882 HTTP/1.1" 200 189
+30/03/2023 23:48:15 DEBUG https://api.telegram.org:443 "POST /bot6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI/sendMessage?chat_id=975772882&text=%D0%9D%D0%B0%D1%88+%D0%BF%D1%80%D0%B5%D0%BA%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B9+%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3+%D0%B7%D0%B0%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%F0%9F%99%82%0A%D0%92%D1%8B%D0%B1%D0%B5%D1%80%D0%B8%D1%82%D0%B5+%D0%BE%D0%BF%D1%86%D0%B8%D1%8E%3A&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcac+%5Cu0414%5Cu0438%5Cu0430%5Cu043b%5Cu043e%5Cu0433%22%7D%2C+%7B%22text%22%3A+%22%5Cu2754+%5Cu041e%5Cu0431%5Cu0448%5Cu0438%5Cu0440%5Cu043d%5Cu044b%5Cu0439+%5Cu043e%5Cu0442%5Cu0432%5Cu0435%5Cu0442%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cud83d%5Cudcdc+%5Cu0418%5Cu043d%5Cu0441%5Cu0442%5Cu0440%5Cu0443%5Cu043a%5Cu0446%5Cu0438%5Cu044f%22%7D%2C+%7B%22text%22%3A+%22%5Cud83c%5Cudf0f+%5Cu042f%5Cu0437%5Cu044b%5Cu043a%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%5Cu274c+%5Cu041e%5Cu0442%5Cu043a%5Cu043b%5Cu044e%5Cu0447%5Cu0438%5Cu0442%5Cu044c+%5Cu0431%5Cu043e%5Cu0442%5Cu0430%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 542
+30/03/2023 23:48:15 INFO MainThread : Вадим None: начало работы
+30/03/2023 23:48:15 INFO MainThread : Вадим None: завершение диалога
+30/03/2023 23:48:15 INFO {'update_id': 999885986, 'message': {'content_type': 'text', 'id': 5966, 'message_id': 5966, 'from_user': <telebot.types.User object at 0x7fdc56a073d0>, 'date': 1680209299, 'chat': <telebot.types.Chat object at 0x7fdc56a057e0>, 'sender_chat': None, 'forward_from': None, 'forward_from_chat': None, 'forward_from_message_id': None, 'forward_signature': None, 'forward_sender_name': None, 'forward_date': None, 'is_automatic_forward': None, 'reply_to_message': None, 'via_bot': None, 'edit_date': None, 'has_protected_content': None, 'media_group_id': None, 'author_signature': None, 'text': '☰ Главное меню', 'entities': None, 'caption_entities': None, 'audio': None, 'document': None, 'photo': None, 'sticker': None, 'video': None, 'video_note': None, 'voice': None, 'caption': None, 'contact': None, 'location': None, 'venue': None, 'animation': None, 'dice': None, 'new_chat_member': None, 'new_chat_members': None, 'left_chat_member': None, 'new_chat_title': None, 'new_chat_photo': None, 'delete_chat_photo': None, 'group_chat_created': None, 'supergroup_chat_created': None, 'channel_chat_created': None, 'migrate_to_chat_id': None, 'migrate_from_chat_id': None, 'pinned_message': None, 'invoice': None, 'successful_payment': None, 'connected_website': None, 'reply_markup': None, 'message_thread_id': None, 'is_topic_message': None, 'forum_topic_created': None, 'forum_topic_closed': None, 'forum_topic_reopened': None, 'has_media_spoiler': None, 'forum_topic_edited': None, 'general_forum_topic_hidden': None, 'general_forum_topic_unhidden': None, 'write_access_allowed': None, 'json': {'message_id': 5966, 'from': {'id': 975772882, 'is_bot': False, 'first_name': 'Вадим', 'username': 'vadmart', 'language_code': 'ru'}, 'chat': {'id': 975772882, 'first_name': 'Вадим', 'username': 'vadmart', 'type': 'private'}, 'date': 1680209299, 'text': '☰ Главное меню'}}, 'edited_message': None, 'channel_post': None, 'edited_channel_post': None, 'inline_query': None, 'chosen_inline_result': None, 'callback_query': None, 'shipping_query': None, 'pre_checkout_query': None, 'poll': None, 'poll_answer': None, 'my_chat_member': None, 'chat_member': None, 'chat_join_request': None}
+30/03/2023 23:48:15 INFO 127.0.0.1 - - [30/Mar/2023 23:48:15] "POST /6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI HTTP/1.1" 200 -

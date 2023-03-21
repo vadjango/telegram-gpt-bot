@@ -1,5 +1,5 @@
 import time
-
+import flask
 from openai_interact import *
 import sys
 import flask
@@ -314,10 +314,9 @@ def server():
     json_string = flask.request.get_data().decode("utf-8")
     update = telebot.types.Update.de_json(json_string)
     bot.process_new_updates([update])
+    logging.info(str(update))
     return ""
 
 
 if __name__ == "__main__":
-    # init_api_keys()
-    # init_users()
     app.run(debug=True)
