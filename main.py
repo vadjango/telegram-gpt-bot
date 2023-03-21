@@ -1,5 +1,5 @@
 import time
-
+import flask
 from openai_interact import *
 import sys
 import flask
@@ -318,6 +318,4 @@ def server():
 
 
 if __name__ == "__main__":
-    # init_api_keys()
-    # init_users()
     app.run(debug=True)
