@@ -15,7 +15,6 @@ from typing import Optional
 
 app = flask.Flask(__name__)
 THR_NAME = threading.current_thread().name
-lock = Lock()
 
 
 @bot.message_handler(commands=["start"])
@@ -212,14 +211,12 @@ def handle_requests(msg: Message):
                 bot.send_message(chat_id=msg.chat.id,
                                  text=formatting.hitalic(_("The request was sent, wait for an answer...😉")),
                                  parse_mode="HTML")
-                Thread(name=f"Thread {msg.chat.id}", target=send_request,
-                       args=(msg,)).start()
+                send_request(msg)
             elif redis_.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.DETAILED_ANSWER.value:
                 bot.send_message(chat_id=msg.chat.id,
                                  text=formatting.hitalic(_("The request was sent, wait for an answer...😉")),
                                  parse_mode="HTML")
-                Thread(name=f"Thread {msg.chat.id}", target=send_request,
-                       args=(msg,)).start()
+                send_request(msg)
         else:
             bot.send_message(chat_id=msg.chat.id,
                              text=formatting.hitalic(_("Your answer is processing.\nPlease, wait…")),
@@ -238,8 +235,7 @@ def send_request(msg: Message) -> Optional[Message]:
     all_api_keys = {k.decode("utf-8"): int(v) for k, v in redis_.hgetall("openai_keys-reqs_amount").items()}
     best_api_key = min(all_api_keys.keys(), key=lambda k: all_api_keys[k])
     all_api_keys[best_api_key] += 1
-    with lock:
-        redis_.hset("openai_keys-reqs_amount", best_api_key, all_api_keys[best_api_key])
+    redis_.hset("openai_keys-reqs_amount", best_api_key, all_api_keys[best_api_key])
     try:
         if redis_.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.DIALOG.value:
             replica = redis_.hget(f"user_{msg.chat.id}", "replicas").decode("utf-8") + msg.text + "\n"
@@ -279,8 +275,7 @@ def send_request(msg: Message) -> Optional[Message]:
         pass
     finally:
         all_api_keys[best_api_key] -= 1
-        with lock:
-            redis_.hset("openai_keys-reqs_amount", best_api_key, all_api_keys[best_api_key])
+        redis_.hset("openai_keys-reqs_amount", best_api_key, all_api_keys[best_api_key])
         redis_.hset(f"user_{msg.chat.id}", "has_active_request", 0)
     logging.info(f"{thread_name} : конец работы")
 
