@@ -67,10 +67,9 @@ class CompletionAI:
             if json_response["error"]["message"].startswith("This model's maximum context length is"):
                 raise ExcessTokensException(
                     "Диалог получился слишком длинным. Необходимо нажать кнопку 'Начать новый диалог, чтобы избежать избытка токенов в запросе")
-            elif json_response["error"]["message"] == \
-                    'The server had an error while processing your request. Sorry about that!':
-                logging.error("Возникла ошибка модели")
-                raise OpenAIServerErrorException
+        except Exception:
+            logging.error("Возникла ошибка модели")
+            raise OpenAIServerErrorException
 
 
 if __name__ == "__main__":
