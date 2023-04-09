@@ -116,6 +116,15 @@ def choose_lang_for_user(msg):
         bot.send_message(msg.chat.id, text=e)
 
 
+@bot.message_handler(func=lambda msg: msg.text == get_user_translator(msg.chat.id)("📝 Solving tasks"))
+def solve_task(msg):
+    _ = get_user_translator(msg.chat.id)
+    redis_.hset(f"user_{msg.chat.id}", "mode", UserMode.SOLVING_TASKS.value)
+    bot.send_message(chat_id=msg.chat.id,
+                     text=_("In this mode bot can answer a question by choosing correct variant(-s)"),
+                     reply_markup=get_tasks_menu(_))
+
+
 @bot.message_handler(func=lambda msg: msg.text == get_user_translator(msg.chat.id)("❌ Disable a bot"))
 def disable_bot_menu(msg):
     _ = get_user_translator(msg.chat.id)
@@ -217,6 +226,14 @@ def handle_requests(msg: Message):
                                  text=formatting.hitalic(_("The request was sent, wait for an answer...😉")),
                                  parse_mode="HTML")
                 send_request(msg)
+            elif redis_.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.SOLVING_TASKS.value:
+                msg.text += '\n' + """Choose either one answer, if there are no more, and then write: """ + \
+                            f"""{_('"Correct answer - *insert the correct variant here*"')}, and if there are more """ + \
+                            f"""options - answer {_('"Correct answers - *insert correct variants here*"')}." """
+                bot.send_message(chat_id=msg.chat.id,
+                                 text=formatting.hitalic(_("The request was sent, wait for an answer...😉")),
+                                 parse_mode="HTML")
+                send_request(msg)
         else:
             bot.send_message(chat_id=msg.chat.id,
                              text=formatting.hitalic(_("Your answer is processing.\nPlease, wait…")),
@@ -257,17 +274,25 @@ def send_request(msg: Message) -> Optional[Message]:
             if current_user_mode:  # если тип не равен None, то
                 if current_user_mode.decode("utf-8") == UserMode.DETAILED_ANSWER.value:
                     return bot.send_message(msg.chat.id, answer, reply_markup=get_detailed_answer_menu(_))
+        elif redis_.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.SOLVING_TASKS.value:
+            answer = CompletionAI(api_key=best_api_key,
+                                  txt=msg.text,
+                                  max_tokens=500).get_answer()
+            current_user_mode = redis_.hget(f"user_{msg.chat.id}", "mode")  # получаем текущий выбранный режим юзера
+            if current_user_mode:  # если тип не равен None, то
+                if current_user_mode.decode("utf-8") == UserMode.SOLVING_TASKS.value:
+                    # если после получения ответа пользователь не изменил режим
+                    return bot.send_message(msg.chat.id, answer)
         logging.info(
             f"{thread_name} : {msg.from_user.first_name} {msg.from_user.last_name}: получение ответа")
-    except (telebot.apihelper.ApiTelegramException, ExcessTokensException) as err:
-        if type(err).__name__ == "ApiTelegramException":
-            bot.send_message(msg.chat.id, _("I don't know what to answer"))
-            logging.info(
-                f"{thread_name} : {msg.from_user.first_name} {msg.from_user.last_name}: бот ответил пустым сообщением")
-        else:
-            bot.send_message(msg.chat.id, err)
-            logging.info(
-                f"{thread_name} : {msg.from_user.first_name} {msg.from_user.last_name}: {err}")
+    except (ExcessTokensException, OpenAIServerErrorException) as err:
+        bot.send_message(msg.chat.id, _("I don't know what to answer"))
+        logging.info(
+            f"{thread_name} : {msg.from_user.first_name} {msg.from_user.last_name}: бот ответил пустым сообщением")
+    except telebot.apihelper.ApiTelegramException as err:
+        bot.send_message(msg.chat.id, err)
+        logging.info(
+            f"{thread_name} : {msg.from_user.first_name} {msg.from_user.last_name}: {err}")
     except AttributeError:
         bot.send_message(chat_id=msg.chat.id, text=_("Choose the mode from the main menu!"))
         logging.error(f"{THR_NAME} : Пользователь id = {msg.chat.id} не найден!")
@@ -304,7 +329,7 @@ def launch():
             pass
 
 
-@app.route("/6129010880:AAG7gRkNF_7Kf9FZENNQkttjCMjl8PmzdsI", methods=["POST"])
+@app.route(f"/{TELEBOT_TOKEN}", methods=["POST"])
 def server():
     json_string = flask.request.get_data().decode("utf-8")
     update = telebot.types.Update.de_json(json_string)
@@ -316,4 +341,4 @@ def server():
 if __name__ == "__main__":
     init_api_keys()
     init_users()
-    app.run(debug=True)
+    app.run(host="https://2cb2-178-150-167-216.ngrok-free.app", debug=True)
