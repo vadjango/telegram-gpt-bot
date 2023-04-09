@@ -14,14 +14,15 @@ def markup_main_menu(chat_id: int) -> ReplyKeyboardMarkup:
     # correction of mistakes sucks, will be implemented later
     ask_question = types.KeyboardButton(_('💬 Dialogue'))
     detailed_answer = types.KeyboardButton(_('❔ Detailed answer'))
+    solving_tasks = types.KeyboardButton(_("📝 Solving tasks"))
     instruction = types.KeyboardButton(_("📜 Instruction"))
     change_lang = types.KeyboardButton(_("🌏 Language"))
     if chat_id in ADMIN_ID:
         disable_btn = types.KeyboardButton(_("❌ Disable a bot"))
-        kb.add(ask_question, detailed_answer, instruction, change_lang, disable_btn)
+        kb.add(ask_question, detailed_answer, solving_tasks, instruction, change_lang, disable_btn)
     else:
         feedback_btn = types.KeyboardButton(_("🗯 Feedback"))
-        kb.add(ask_question, detailed_answer, instruction, change_lang, feedback_btn)
+        kb.add(ask_question, detailed_answer, solving_tasks, instruction, change_lang, feedback_btn)
     return kb
 
 
@@ -44,4 +45,11 @@ def create_launch_menu(_: Callable[[str], str]) -> ReplyKeyboardMarkup:
     kb = types.ReplyKeyboardMarkup(resize_keyboard=True)
     start_btn = types.KeyboardButton(_("▶ Launch"))
     kb.add(start_btn)
+    return kb
+
+
+def get_tasks_menu(_: Callable[[str], str]) -> ReplyKeyboardMarkup:
+    kb = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    main_menu = types.KeyboardButton(_("☰ Main menu"))
+    kb.add(main_menu)
     return kb

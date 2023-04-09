@@ -183,3 +183,14 @@ msgstr ""
 msgid "Bot has been launched and is ready to use🙂"
 msgstr "Bot has been launched and is ready to use🙂"
 
+msgid "\"Correct answer - *insert the correct variant here*\""
+msgstr "\"Correct answer - *insert the correct variant here*\""
+
+msgid "\"Correct answers - *insert correct variants here*\""
+msgstr "\"Correct answers - *insert correct variants here*\""
+
+msgid "📝 Solving tasks"
+msgstr "📝 Solving tasks"
+
+msgid "In this mode bot can answer a question by choosing correct variant(-s)"
+msgstr "In this mode bot can answer a question by choosing correct variant(-s)"
