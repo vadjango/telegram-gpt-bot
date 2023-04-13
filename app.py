@@ -1,13 +1,10 @@
 import time
-import flask
 from openai_interact import *
 import sys
 import flask
-from flask import jsonify
 from telebot import formatting
 from telebot.types import Message
 from telebot.util import quick_markup
-from threading import Thread, Lock
 from db_interaction import *
 from markups import *
 from bot_users import *
@@ -105,7 +102,7 @@ def change_language(msg):
 
 @bot.message_handler(func=lambda msg: msg.text in LANG.keys())
 def choose_lang_for_user(msg):
-    Thread(name="user_locale_changing", target=change_locale_in_db, args=(msg.chat.id, LANG[msg.text])).start()
+    change_locale_in_db(msg.chat.id, LANG[msg.text])
     redis_.hset(f"user_{msg.chat.id}", "local", LANG[msg.text])
     _ = get_user_translator(msg.chat.id)
     try:
@@ -245,8 +242,7 @@ def handle_requests(msg: Message):
 
 def send_request(msg: Message) -> Optional[Message]:
     _ = get_user_translator(msg.chat.id)
-    thread_name = threading.current_thread().name
-    logging.info(f"{thread_name} : старт работы")
+    logging.info(f"{THR_NAME} : старт работы")
     redis_.hset(f"user_{msg.chat.id}", "has_active_request", 1)
     bot.send_chat_action(msg.chat.id, "typing")
     all_api_keys = {k.decode("utf-8"): int(v) for k, v in redis_.hgetall("openai_keys-reqs_amount").items()}
@@ -284,15 +280,15 @@ def send_request(msg: Message) -> Optional[Message]:
                     # если после получения ответа пользователь не изменил режим
                     return bot.send_message(msg.chat.id, answer)
         logging.info(
-            f"{thread_name} : {msg.from_user.first_name} {msg.from_user.last_name}: получение ответа")
+            f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: получение ответа")
     except (ExcessTokensException, OpenAIServerErrorException) as err:
         bot.send_message(msg.chat.id, _("I don't know what to answer"))
         logging.info(
-            f"{thread_name} : {msg.from_user.first_name} {msg.from_user.last_name}: бот ответил пустым сообщением")
+            f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: бот ответил пустым сообщением")
     except telebot.apihelper.ApiTelegramException as err:
         bot.send_message(msg.chat.id, err)
         logging.info(
-            f"{thread_name} : {msg.from_user.first_name} {msg.from_user.last_name}: {err}")
+            f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: {err}")
     except AttributeError:
         bot.send_message(chat_id=msg.chat.id, text=_("Choose the mode from the main menu!"))
         logging.error(f"{THR_NAME} : Пользователь id = {msg.chat.id} не найден!")
@@ -302,7 +298,7 @@ def send_request(msg: Message) -> Optional[Message]:
         all_api_keys[best_api_key] -= 1
         redis_.hset("openai_keys-reqs_amount", best_api_key, all_api_keys[best_api_key])
         redis_.hset(f"user_{msg.chat.id}", "has_active_request", 0)
-    logging.info(f"{thread_name} : конец работы")
+    logging.info(f"{THR_NAME} : конец работы")
 
 
 def init_api_keys():
@@ -341,4 +337,4 @@ def server():
 if __name__ == "__main__":
     init_api_keys()
     init_users()
-    app.run(host="https://2cb2-178-150-167-216.ngrok-free.app", debug=True)
+    app.run(debug=True)

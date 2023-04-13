@@ -2,7 +2,7 @@ import os
 import logging
 from dotenv import load_dotenv
 import gettext
-import redislite
+import redis
 import telebot
 
 _ = gettext.gettext
@@ -23,6 +23,6 @@ LANG = {
     "Русский": "ru_RU"
 }
 
-WEBHOOK_URL = "https://1800-178-150-167-216.eu.ngrok.io"
-
-redis_ = redislite.Redis("/tmp/redis.db")
+redis_ = redis.Redis(host=os.getenv("REDIS_HOST"),
+                     port=6379,
+                     password=os.getenv("REDIS_PASSWORD"))
