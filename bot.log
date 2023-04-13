@@ -2198,9 +2198,12 @@ zset-max-ziplist-value 64
 09/04/2023 19:51:06 DEBUG Connection count: 1
 09/04/2023 19:51:06 DEBUG Last client using the connection, shutting down the redis connection on socket: /tmp/tmpyb3x2rq5/redis.socket
 09/04/2023 19:51:06 DEBUG Shutting down redis server with pid of 25
+<<<<<<< HEAD
 13/04/2023 23:20:09 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
 13/04/2023 23:20:09 INFO [33mPress CTRL+C to quit[0m
 13/04/2023 23:20:09 INFO  * Restarting with stat
 13/04/2023 23:20:11 WARNING  * Debugger is active!
 13/04/2023 23:20:11 INFO  * Debugger PIN: 612-315-397
+=======
+>>>>>>> b9050b56771f1dacbd5ea7e5d8eb4b26dc5495ee
