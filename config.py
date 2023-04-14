@@ -2,7 +2,7 @@ import os
 import logging
 from dotenv import load_dotenv
 import gettext
-import redis
+import redislite
 import telebot
 
 _ = gettext.gettext
@@ -23,6 +23,4 @@ LANG = {
     "Русский": "ru_RU"
 }
 
-redis_ = redis.Redis(host=os.getenv("REDIS_HOST"),
-                     port=int(os.getenv("REDIS_PORT")),
-                     password=os.getenv("REDIS_PASSWORD"))
+redis_ = redislite.Redis("/tmp/redis.db")
