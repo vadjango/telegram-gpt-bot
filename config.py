@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import gettext
 import redislite
 import telebot
+import logging
 
 _ = gettext.gettext
 

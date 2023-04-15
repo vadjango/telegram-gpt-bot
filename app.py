@@ -9,7 +9,6 @@ from db_interaction import *
 from markups import *
 from bot_users import *
 from typing import Optional
-import logging
 from opencensus.ext.azure.trace_exporter import AzureExporter
 from opencensus.ext.flask.flask_middleware import FlaskMiddleware
 from opencensus.trace.samplers import ProbabilitySampler
@@ -334,16 +333,15 @@ def launch():
             pass
 
 
-@app.route(f"/{TELEBOT_TOKEN}", methods=["POST"])
-def server():
-    json_string = flask.request.get_data().decode("utf-8")
-    update = telebot.types.Update.de_json(json_string)
-    bot.process_new_updates([update])
-    logging.info(str(update))
-    return ""
-
-
-if __name__ == "__main__":
-    init_api_keys()
-    init_users()
-    app.run(debug=True, threaded=True)
+# @app.route(f"/{TELEBOT_TOKEN}", methods=["POST"])
+# def server():
+#     json_string = flask.request.get_data().decode("utf-8")
+#     update = telebot.types.Update.de_json(json_string)
+#     bot.process_new_updates([update])
+#     logging.info(str(update))
+#     return ""
+#
+#
+init_api_keys()
+init_users()
+bot.infinity_polling()
