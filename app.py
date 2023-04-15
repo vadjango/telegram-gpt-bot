@@ -9,8 +9,17 @@ from db_interaction import *
 from markups import *
 from bot_users import *
 from typing import Optional
+import logging
+from opencensus.ext.azure.trace_exporter import AzureExporter
+from opencensus.ext.flask.flask_middleware import FlaskMiddleware
+from opencensus.trace.samplers import ProbabilitySampler
 
 app = flask.Flask(__name__)
+middleware = FlaskMiddleware(
+    app,
+    exporter=AzureExporter(connection_string="InstrumentationKey=90aa48ca-c34e-4b3f-b633-582417b8d887"),
+    sampler=ProbabilitySampler(rate=1.0)
+)
 THR_NAME = threading.current_thread().name
 
 
@@ -337,4 +346,4 @@ def server():
 if __name__ == "__main__":
     init_api_keys()
     init_users()
-    app.run(debug=True)
+    app.run(debug=True, threaded=True)

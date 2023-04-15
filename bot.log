@@ -2278,3 +2278,74 @@ zset-max-ziplist-value 64
 15/04/2023 01:42:56 DEBUG Connection count: 1
 15/04/2023 01:42:56 DEBUG Last client using the connection, shutting down the redis connection on socket: /tmp/tmpjlylqu15/redis.socket
 15/04/2023 01:42:56 DEBUG Shutting down redis server with pid of 74
+15/04/2023 20:15:02 DEBUG Setting up redis with rdb file: redis.db
+15/04/2023 20:15:02 DEBUG Setting up redis with socket file: None
+15/04/2023 20:15:02 DEBUG Creating temporary redis directory /tmp/tmp4mv0x0xu
+15/04/2023 20:15:02 DEBUG Using configuration: activerehashing yes
+aof-load-truncated yes
+aof-rewrite-incremental-fsync yes
+appendfilename 'appendonly.aof'
+appendfsync everysec
+appendonly no
+auto-aof-rewrite-min-size 64mb
+auto-aof-rewrite-percentage 100
+daemonize yes
+databases 16
+dbfilename 'redis.db'
+dir '/tmp'
+hash-max-ziplist-entries 512
+hash-max-ziplist-value 64
+hll-sparse-max-bytes 3000
+hz 10
+latency-monitor-threshold 0
+list-max-ziplist-entries 512
+list-max-ziplist-value 64
+logfile /tmp/tmp4mv0x0xu/redis.log
+loglevel notice
+lua-time-limit 5000
+no-appendfsync-on-rewrite no
+notify-keyspace-events ""
+pidfile '/tmp/tmp4mv0x0xu/redis.pid'
+port 0
+rdbchecksum yes
+rdbcompression yes
+repl-disable-tcp-nodelay no
+save 900 1
+save 300 100
+save 60 200
+save 15 1000
+set-max-intset-entries 512
+slave-priority 100
+slave-read-only yes
+slave-serve-stale-data yes
+slowlog-log-slower-than 10000
+slowlog-max-len 128
+stop-writes-on-bgsave-error yes
+tcp-backlog 511
+tcp-keepalive 0
+timeout 0
+unixsocket '/tmp/tmp4mv0x0xu/redis.socket'
+unixsocketperm 700
+zset-max-ziplist-entries 128
+zset-max-ziplist-value 64
+
+15/04/2023 20:15:02 DEBUG Running: /home/vadim/venv/lib/python3.10/site-packages/redislite/bin/redis-server /tmp/tmp4mv0x0xu/redis.config
+15/04/2023 20:15:02 DEBUG Calling binding with (), {'unix_socket_path': '/tmp/tmp4mv0x0xu/redis.socket'}
+15/04/2023 20:15:02 DEBUG Pinging the server to ensure we're connected
+15/04/2023 20:15:03 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+15/04/2023 20:15:03 INFO [33mPress CTRL+C to quit[0m
+15/04/2023 20:15:03 INFO  * Restarting with stat
+15/04/2023 20:15:03 DEBUG Setting up redis with rdb file: redis.db
+15/04/2023 20:15:03 DEBUG Setting up redis with socket file: None
+15/04/2023 20:15:03 DEBUG loading settings, found: {'pidfile': '/tmp/tmp4mv0x0xu/redis.pid', 'unixsocket': '/tmp/tmp4mv0x0xu/redis.socket', 'dbdir': '/tmp', 'dbfilename': 'redis.db'}
+15/04/2023 20:15:03 DEBUG Socket file after registry load: /tmp/tmp4mv0x0xu/redis.socket
+15/04/2023 20:15:03 DEBUG Calling binding with (), {'unix_socket_path': '/tmp/tmp4mv0x0xu/redis.socket'}
+15/04/2023 20:15:03 DEBUG Pinging the server to ensure we're connected
+15/04/2023 20:15:03 WARNING  * Debugger is active!
+15/04/2023 20:15:03 INFO  * Debugger PIN: 688-380-169
+15/04/2023 20:15:04 DEBUG Connection count: 2
+15/04/2023 20:15:04 DEBUG Other clients are still connected to the redis server, not shutting down the connection on socket: /tmp/tmp4mv0x0xu/redis.socket
+15/04/2023 20:15:04 DEBUG Connection count: 1
+15/04/2023 20:15:04 DEBUG Last client using the connection, shutting down the redis connection on socket: /tmp/tmp4mv0x0xu/redis.socket
+15/04/2023 20:15:04 DEBUG Shutting down redis server with pid of 33
