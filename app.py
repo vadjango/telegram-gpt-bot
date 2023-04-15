@@ -343,7 +343,5 @@ def server():
     return ""
 
 
-if __name__ == "__main__":
-    init_api_keys()
-    init_users()
-    app.run(debug=True, threaded=True)
+init_api_keys()
+init_users()
