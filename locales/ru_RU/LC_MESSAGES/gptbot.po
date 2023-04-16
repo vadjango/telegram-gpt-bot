@@ -195,3 +195,6 @@ msgstr "📝 Решение задач"
 
 msgid "In this mode bot can answer a question by choosing correct variant(-s)"
 msgstr "В этом режиме бот может ответить на вопрос, выбрав вариант(-ы) ответа(-ов)"
+
+msgid "\"There is no correct variant from listed above. The correct answer is *insert correct answer here*\""
+msgstr "\"Нет правильного варианта из перечисленных выше. Правильный ответ - *вставь правильный ответ сюда*\""

@@ -194,3 +194,6 @@ msgstr "📝 Solving tasks"
 
 msgid "In this mode bot can answer a question by choosing correct variant(-s)"
 msgstr "In this mode bot can answer a question by choosing correct variant(-s)"
+
+msgid "\"There is no correct variant from listed above. The correct answer is *insert correct answer here*\""
+msgstr ""
