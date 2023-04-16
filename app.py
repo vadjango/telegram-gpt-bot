@@ -232,9 +232,11 @@ def handle_requests(msg: Message):
                                  parse_mode="HTML")
                 send_request(msg)
             elif redis_.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.SOLVING_TASKS.value:
-                msg.text += '\n' + """Choose either one answer, if there are no more, and then write: """ + \
+                msg.text += '\n' + "Choose either one answer, if there are no more, and then write: " + \
                             f"""{_('"Correct answer - *insert the correct variant here*"')}, and if there are more """ + \
-                            f"""options - answer {_('"Correct answers - *insert correct variants here*"')}." """
+                            f"""correct variants - answer {_('"Correct answers - *insert correct variants here*"')}. If """ + \
+                            f"""there are no correct variants from listed above, answer """ + \
+                            _('"There are no correct answer from listed above. The correct answer is *insert correct answer here*"')
                 bot.send_message(chat_id=msg.chat.id,
                                  text=formatting.hitalic(_("The request was sent, wait for an answer...😉")),
                                  parse_mode="HTML")
