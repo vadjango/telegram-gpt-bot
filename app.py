@@ -92,7 +92,7 @@ def start_first_dialog(msg):
 def show_feedback_names(msg):
     _ = get_user_translator(msg.chat.id)
     bot.send_message(chat_id=msg.chat.id,
-                     text=_("If you have some issues with using this bot, please contact @osiris_4 и @vadmart"))
+                     text=_("If you have some issues with using this bot, please contact @nnisl4 и @vadmart"))
     logging.info(
         f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: просмотр контактов для обратной связи")
 
