@@ -16,9 +16,9 @@ TEST_USER_ID = 975772882
 
 
 def add_test_user_to_redis(id_):
-    redis_.hset(f"user_{id_}", "local", "en_US")
-    redis_.hset(f"user_{id_}", "has_active_request", 0)
-    redis_.hset(f"user_{id_}", "replicas", "")
+    red.hset(f"user_{id_}", "local", "en_US")
+    red.hset(f"user_{id_}", "has_active_request", 0)
+    red.hset(f"user_{id_}", "replicas", "")
 
 
 class GPTBot(TestCase):
@@ -54,7 +54,7 @@ class GPTBot(TestCase):
     #         self.assertIsNone(future.result())
 
     def test_no_mode_sending(self):
-        redis_.flushdb()
+        red.flushdb()
         init_api_keys()
         message = self.create_test_message("Привет, я ботяра.")
         self.assertIsNone(send_request(message))

@@ -72,5 +72,30 @@ class CompletionAI:
                     "Диалог получился слишком длинным. Необходимо нажать кнопку 'Начать новый диалог, чтобы избежать избытка токенов в запросе")
 
 
+class ImageDALLEAI:
+    """
+    Represents an object of OpenAI of DALL-E model
+    """
+    url = "https://api.openai.com/v1/images/generations"
+
+    def __init__(self, api_key: str, txt: str, size: str):
+        self.api_key = api_key
+        self.headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {api_key}"
+        }
+        self.data = {
+            "prompt": txt,
+            "n": 1,
+            "size": size
+        }
+        logging.info(
+            f"{threading.current_thread().name} : отправка запроса DALL-E, ключ: {api_key}")
+        response = requests.post(url=self.url, headers=self.headers, json=self.data).json()
+        self.img_url = response["data"][0]["url"]
+        logging.info(
+            f"{threading.current_thread().name} : получение изображения")
+
+
 if __name__ == "__main__":
     ...

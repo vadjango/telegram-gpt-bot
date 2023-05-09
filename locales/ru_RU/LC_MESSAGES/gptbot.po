@@ -198,3 +198,18 @@ msgstr "В этом режиме бот может ответить на воп�
 
 msgid "\"There is no correct variant from listed above. The correct answer is *insert correct answer here*\""
 msgstr "\"Нет правильного варианта из перечисленных выше. Правильный ответ - *вставь правильный ответ сюда*\""
+
+msgid "🖼 Image generation"
+msgstr "🖼 Генерация изображения"
+
+msgid "In this mode bot can generate an image by using your description. Choose the image resolution:"
+msgstr "В этом режиме бот может генерировать изображения, используя ваше описание. Выберите разрешение изображения:"
+
+msgid "Now provide me a text and i'll generate you an image 🙂"
+msgstr "Теперь предоставьте мне текст и я сгенерирую изображение тебе 🙂"
+
+msgid "Choose the correct option!"
+msgstr "Выберите правильную опцию!"
+
+msgid "Something was wrong. Send me a message again or change the text"
+msgstr "Что-то пошло не так. Отправьте мне сообщение снова или измените текст"

@@ -8,7 +8,9 @@ import logging
 _ = gettext.gettext
 
 load_dotenv("vars.env")
-datefmt = "%d/%m/%Y %H:%M:%S"
+LOG_FORMAT = "%(asctime)s"
+
+logging.basicConfig(level=logging.INFO, filename="bot.log")
 
 TELEBOT_TOKEN = os.getenv("TELEBOT_TOKEN")
 bot = telebot.TeleBot(TELEBOT_TOKEN)
@@ -21,4 +23,4 @@ LANG = {
     "Русский": "ru_RU"
 }
 
-redis_ = redislite.Redis("/tmp/redis.db")
+red = redislite.Redis("/tmp/redis.db")

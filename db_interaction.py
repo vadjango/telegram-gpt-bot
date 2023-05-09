@@ -63,7 +63,7 @@ def get_user_local_from_db(chat_id: int) -> str:
 
 def get_user_translator(chat_id: int) -> Callable[[str], str]:
     try:
-        return translate[redis_.hget(f"user_{chat_id}", "local").decode("utf-8")].gettext
+        return translate[red.hget(f"user_{chat_id}", "local").decode("utf-8")].gettext
     except AttributeError:
         # если юзера нет в Редисе
         with sqlite3.connect(DB_NAME) as conn:
@@ -94,9 +94,9 @@ def change_locale_in_db(user_id, lng):
 
 
 def add_user_to_redis(user_id):
-    redis_.hset(f"user_{user_id}", "replicas", "")
-    redis_.hset(f"user_{user_id}", "has_active_request", 0)
+    red.hset(f"user_{user_id}", "replicas", "")
+    red.hset(f"user_{user_id}", "has_active_request", 0)
     try:
-        redis_.hset(f"user_{user_id}", "local", get_user_local_from_db(user_id))
+        red.hset(f"user_{user_id}", "local", get_user_local_from_db(user_id))
     except (IndexError, KeyError):
-        redis_.hset(f"user_{user_id}", "local", "en_US")
+        red.hset(f"user_{user_id}", "local", "en_US")

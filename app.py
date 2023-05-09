@@ -31,7 +31,7 @@ def start(msg: Message, txt="Hello, I'm a smart bot 🤖\nMy ability is to answe
     if msg.text == "/start":
         add_user_to_database(msg.chat.id)
     add_user_to_redis(msg.chat.id)
-    _ = translate[redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext
+    _ = translate[red.hget(f"user_{msg.chat.id}", "local").decode("utf-8")].gettext
     if bot.get_chat_member(chat_id=-1001857064307, user_id=msg.chat.id).status in (
             "member", "creator", "administrator"):
         bot.send_message(chat_id=msg.chat.id,
@@ -48,15 +48,15 @@ def start(msg: Message, txt="Hello, I'm a smart bot 🤖\nMy ability is to answe
 
 
 @bot.message_handler(func=lambda msg: msg.text == get_user_translator(msg.chat.id)('❔ Detailed answer'))
-def give_a_detailed_answer(msg):
+def give_a_detailed_answer(msg: Message):
     _ = get_user_translator(msg.chat.id)
-    redis_.hset(f"user_{msg.chat.id}", "replicas", "")
+    red.hset(f"user_{msg.chat.id}", "replicas", "")
     if bot.get_chat_member(chat_id=-1001857064307, user_id=msg.chat.id).status in (
             "member", "creator", "administrator"):
         bot.send_message(chat_id=msg.chat.id,
                          text=_("Bot gives a detailed answer in this mode"),
-                         reply_markup=get_detailed_answer_menu(_))
-        redis_.hset(f"user_{msg.chat.id}", "mode", UserMode.DETAILED_ANSWER.value)
+                         reply_markup=get_main_menu_button(_))
+        red.hset(f"user_{msg.chat.id}", "mode", UserMode.DETAILED_ANSWER.value)
         logging.info(
             f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: выбран режим 'Обширный ответ'")
     else:
@@ -69,14 +69,14 @@ def give_a_detailed_answer(msg):
 
 
 @bot.message_handler(func=lambda msg: msg.text == get_user_translator(msg.chat.id)('💬 Dialogue'))
-def start_first_dialog(msg):
+def start_first_dialog(msg: Message):
     _ = get_user_translator(msg.chat.id)
     if bot.get_chat_member(chat_id=-1001857064307, user_id=msg.chat.id).status in (
             "member", "creator", "administrator"):
         bot.send_message(chat_id=msg.chat.id,
                          text=_("Bot can build a dialogue with logically connected replicas in this mode"),
                          reply_markup=get_dialog_menu(_))
-        redis_.hset(f"user_{msg.chat.id}", "mode", UserMode.DIALOG.value)
+        red.hset(f"user_{msg.chat.id}", "mode", UserMode.DIALOG.value)
         logging.info(
             f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: выбран режим 'Начать диалог' ")
     else:
@@ -89,7 +89,7 @@ def start_first_dialog(msg):
 
 
 @bot.message_handler(func=lambda msg: msg.text == get_user_translator(msg.chat.id)("🗯 Feedback"))
-def show_feedback_names(msg):
+def show_feedback_names(msg: Message):
     _ = get_user_translator(msg.chat.id)
     bot.send_message(chat_id=msg.chat.id,
                      text=_("If you have some issues with using this bot, please contact @nnisl4 и @vadmart"))
@@ -98,20 +98,20 @@ def show_feedback_names(msg):
 
 
 @bot.message_handler(func=lambda msg: msg.text == get_user_translator(msg.chat.id)("🌏 Language"))
-def change_language(msg):
+def change_language(msg: Message):
     _ = get_user_translator(msg.chat.id)
     kb = types.ReplyKeyboardMarkup(resize_keyboard=True)
     kb.add(*(types.KeyboardButton(text=txt)
              for txt in LANG.keys()
-             if LANG[txt] != redis_.hget(f"user_{msg.chat.id}", "local").decode("utf-8"))
+             if LANG[txt] != red.hget(f"user_{msg.chat.id}", "local").decode("utf-8"))
            )
     bot.send_message(chat_id=msg.chat.id, text=_("Choose language:"), reply_markup=kb)
 
 
 @bot.message_handler(func=lambda msg: msg.text in LANG.keys())
-def choose_lang_for_user(msg):
+def choose_lang_for_user(msg: Message):
     change_locale_in_db(msg.chat.id, LANG[msg.text])
-    redis_.hset(f"user_{msg.chat.id}", "local", LANG[msg.text])
+    red.hset(f"user_{msg.chat.id}", "local", LANG[msg.text])
     _ = get_user_translator(msg.chat.id)
     try:
         bot.send_message(chat_id=msg.chat.id,
@@ -122,16 +122,43 @@ def choose_lang_for_user(msg):
 
 
 @bot.message_handler(func=lambda msg: msg.text == get_user_translator(msg.chat.id)("📝 Solving tasks"))
-def solve_task(msg):
+def solve_task(msg: Message):
     _ = get_user_translator(msg.chat.id)
-    redis_.hset(f"user_{msg.chat.id}", "mode", UserMode.SOLVING_TASKS.value)
+    red.hset(f"user_{msg.chat.id}", "mode", UserMode.SOLVING_TASKS.value)
     bot.send_message(chat_id=msg.chat.id,
                      text=_("In this mode bot can answer a question by choosing correct variant(-s)"),
                      reply_markup=get_tasks_menu(_))
 
 
+@bot.message_handler(func=lambda msg: msg.text == get_user_translator(msg.chat.id)("🖼 Image generation"))
+def image_generation(msg: Message):
+    _ = get_user_translator(msg.chat.id)
+    red.hset(f"user_{msg.chat.id}", "mode", UserMode.IMAGE_GENERATION.value)
+    bot.send_message(chat_id=msg.chat.id,
+                     text=_(
+                         "In this mode bot can generate an image by using your description. Choose the image resolution:"),
+                     reply_markup=get_image_mode_menu(_))
+    bot.register_next_step_handler(message=msg, callback=set_user_resolution)
+
+
+def set_user_resolution(msg: Message) -> None:
+    _ = get_user_translator(msg.chat.id)
+    if msg.text not in ("512x512", "1024x1024", _("☰ Main menu")):
+        bot.send_message(chat_id=msg.chat.id,
+                         text=_("Choose the correct option!"))
+        bot.register_next_step_handler(message=msg, callback=set_user_resolution)
+        return
+    elif msg.text == _("☰ Main menu"):
+        start(msg, _("Our beautiful dialogue is over🙂\nChoose the option:"))
+        return
+    red.hset(f"user_{msg.chat.id}", "image_resolution", msg.text)
+    bot.send_message(chat_id=msg.chat.id,
+                     text=_("Now provide me a text and i'll generate you an image 🙂"),
+                     reply_markup=get_main_menu_button(_))
+
+
 @bot.message_handler(func=lambda msg: msg.text == get_user_translator(msg.chat.id)("❌ Disable a bot"))
-def disable_bot_menu(msg):
+def disable_bot_menu(msg: Message):
     _ = get_user_translator(msg.chat.id)
     markup = quick_markup({_("1 minute"): {"callback_data": "1 minute"},
                            _("5 minutes"): {"callback_data": "5 minutes"},
@@ -189,11 +216,11 @@ def get_instruction(msg: Message):
 
 @bot.message_handler(
     func=lambda msg: msg.text == get_user_translator(msg.chat.id)("New dialogue"))
-def start_new_dialog(msg):
+def start_new_dialog(msg: Message):
     _ = get_user_translator(msg.chat.id)
     if bot.get_chat_member(chat_id=-1001857064307, user_id=msg.chat.id).status in (
             "member", "creator", "administrator"):
-        redis_.hset(f"user_{msg.chat.id}", "replicas", "")
+        red.hset(f"user_{msg.chat.id}", "replicas", "")
         bot.send_message(chat_id=msg.chat.id, text=_("Start a new dialogue!"))
         logging.info(f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: начало нового диалога")
     else:
@@ -207,7 +234,7 @@ def start_new_dialog(msg):
 
 @bot.message_handler(
     func=lambda msg: msg.text == get_user_translator(msg.chat.id)("☰ Main menu"))
-def end_dialog(msg):
+def end_dialog(msg: Message):
     _ = get_user_translator(msg.chat.id)
     try:
         start(msg, _("Our beautiful dialogue is over🙂\nChoose the option:"))
@@ -220,23 +247,28 @@ def end_dialog(msg):
 def handle_requests(msg: Message):
     _ = get_user_translator(msg.chat.id)
     try:
-        if not int(redis_.hget(f"user_{msg.chat.id}", "has_active_request")):
-            if redis_.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.DIALOG.value:
+        if not int(red.hget(f"user_{msg.chat.id}", "has_active_request")):
+            if red.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.DIALOG.value:
                 bot.send_message(chat_id=msg.chat.id,
                                  text=formatting.hitalic(_("The request was sent, wait for an answer...😉")),
                                  parse_mode="HTML")
                 send_request(msg)
-            elif redis_.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.DETAILED_ANSWER.value:
+            elif red.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.DETAILED_ANSWER.value:
                 bot.send_message(chat_id=msg.chat.id,
                                  text=formatting.hitalic(_("The request was sent, wait for an answer...😉")),
                                  parse_mode="HTML")
                 send_request(msg)
-            elif redis_.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.SOLVING_TASKS.value:
+            elif red.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.SOLVING_TASKS.value:
                 msg.text += '\n' + "Choose either one answer, if there are no more, and then write: " + \
                             f"""{_('"Correct answer - *insert the correct variant here*"')}, and if there are more """ + \
                             f"""correct variants - answer {_('"Correct answers - *insert correct variants here*"')}. If """ + \
                             f"""there is no correct variant from listed above, answer """ + \
                             _('"There is no correct variant from listed above. The correct answer is *insert correct answer here*"')
+                bot.send_message(chat_id=msg.chat.id,
+                                 text=formatting.hitalic(_("The request was sent, wait for an answer...😉")),
+                                 parse_mode="HTML")
+                send_request(msg)
+            elif red.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.IMAGE_GENERATION.value:
                 bot.send_message(chat_id=msg.chat.id,
                                  text=formatting.hitalic(_("The request was sent, wait for an answer...😉")),
                                  parse_mode="HTML")
@@ -253,42 +285,54 @@ def handle_requests(msg: Message):
 def send_request(msg: Message) -> Optional[Message]:
     _ = get_user_translator(msg.chat.id)
     logging.info(f"{THR_NAME} : старт работы")
-    redis_.hset(f"user_{msg.chat.id}", "has_active_request", 1)
-    bot.send_chat_action(msg.chat.id, "typing")
-    all_api_keys = {k.decode("utf-8"): int(v) for k, v in redis_.hgetall("openai_keys-reqs_amount").items()}
+    red.hset(f"user_{msg.chat.id}", "has_active_request", 1)
+    all_api_keys = {k.decode("utf-8"): int(v) for k, v in red.hgetall("openai_keys-reqs_amount").items()}
     best_api_key = min(all_api_keys.keys(), key=lambda k: all_api_keys[k])
     all_api_keys[best_api_key] += 1
-    redis_.hset("openai_keys-reqs_amount", best_api_key, all_api_keys[best_api_key])
+    red.hset("openai_keys-reqs_amount", best_api_key, all_api_keys[best_api_key])
     try:
-        if redis_.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.DIALOG.value:
-            replica = redis_.hget(f"user_{msg.chat.id}", "replicas").decode("utf-8") + msg.text + "\n"
+        if red.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.DIALOG.value:
+            bot.send_chat_action(msg.chat.id, "typing")
+            replica = red.hget(f"user_{msg.chat.id}", "replicas").decode("utf-8") + msg.text + "\n"
             answer = CompletionAI(api_key=best_api_key,
                                   txt=replica,
                                   max_tokens=1600).get_answer()
-            current_user_mode = redis_.hget(f"user_{msg.chat.id}", "mode")  # получаем текущий выбранный режим юзера
+            current_user_mode = red.hget(f"user_{msg.chat.id}", "mode")  # получаем текущий выбранный режим юзера
             if current_user_mode:  # если тип не равен None, то
                 if current_user_mode.decode("utf-8") == UserMode.DIALOG.value:
                     # если после получения ответа пользователь не изменил режим
                     replica += answer + "\n"
-                    redis_.hset(f"user_{msg.chat.id}", "replicas", replica)
+                    red.hset(f"user_{msg.chat.id}", "replicas", replica)
                     return bot.send_message(msg.chat.id, answer,
                                             reply_markup=get_dialog_menu(_))
-        elif redis_.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.DETAILED_ANSWER.value:
+        elif red.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.DETAILED_ANSWER.value:
             # режим обширный ответ
+            bot.send_chat_action(msg.chat.id, "typing")
             answer = CompletionAI(api_key=best_api_key, txt=msg.text, max_tokens=3200).get_answer()
-            current_user_mode = redis_.hget(f"user_{msg.chat.id}", "mode")  # получаем текущий выбранный режим юзера
+            current_user_mode = red.hget(f"user_{msg.chat.id}", "mode")  # получаем текущий выбранный режим юзера
             if current_user_mode:  # если тип не равен None, то
                 if current_user_mode.decode("utf-8") == UserMode.DETAILED_ANSWER.value:
-                    return bot.send_message(msg.chat.id, answer, reply_markup=get_detailed_answer_menu(_))
-        elif redis_.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.SOLVING_TASKS.value:
+                    return bot.send_message(msg.chat.id, answer, reply_markup=get_main_menu_button(_))
+        elif red.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.SOLVING_TASKS.value:
+            bot.send_chat_action(msg.chat.id, "typing")
             answer = CompletionAI(api_key=best_api_key,
                                   txt=msg.text,
                                   max_tokens=500).get_answer()
-            current_user_mode = redis_.hget(f"user_{msg.chat.id}", "mode")  # получаем текущий выбранный режим юзера
+            current_user_mode = red.hget(f"user_{msg.chat.id}", "mode")  # получаем текущий выбранный режим юзера
             if current_user_mode:  # если тип не равен None, то
                 if current_user_mode.decode("utf-8") == UserMode.SOLVING_TASKS.value:
                     # если после получения ответа пользователь не изменил режим
                     return bot.send_message(msg.chat.id, answer)
+        elif red.hget(f"user_{msg.chat.id}", "mode").decode("utf-8") == UserMode.IMAGE_GENERATION.value:
+            bot.send_chat_action(msg.chat.id, "upload_photo")
+            image = ImageDALLEAI(api_key=best_api_key,
+                                 txt=msg.text,
+                                 size=red.hget(f"user_{msg.chat.id}", "image_resolution").decode("utf-8"))
+            current_user_mode = red.hget(f"user_{msg.chat.id}", "mode")
+            if current_user_mode:
+                if current_user_mode.decode("utf-8") == UserMode.IMAGE_GENERATION.value:
+                    bot.send_photo(chat_id=msg.chat.id,
+                                   photo=image.img_url)
         logging.info(
             f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: получение ответа")
     except (ExcessTokensException, OpenAIServerErrorException) as err:
@@ -303,25 +347,26 @@ def send_request(msg: Message) -> Optional[Message]:
         bot.send_message(chat_id=msg.chat.id, text=_("Choose the mode from the main menu!"))
         logging.error(f"{THR_NAME} : Пользователь id = {msg.chat.id} не найден!")
     except KeyError:
-        pass
+        bot.send_message(chat_id=msg.chat.id,
+                         text=_("Something was wrong. Send me a message again or change the text"))
     finally:
         all_api_keys[best_api_key] -= 1
-        redis_.hset("openai_keys-reqs_amount", best_api_key, all_api_keys[best_api_key])
-        redis_.hset(f"user_{msg.chat.id}", "has_active_request", 0)
+        red.hset("openai_keys-reqs_amount", best_api_key, all_api_keys[best_api_key])
+        red.hset(f"user_{msg.chat.id}", "has_active_request", 0)
     logging.info(f"{THR_NAME} : конец работы")
 
 
 def init_api_keys():
     for key_name in get_all_api_keys():
         # добавление АПИ-ключа в Redis
-        redis_.hset("openai_keys-reqs_amount", key_name, 0)
+        red.hset("openai_keys-reqs_amount", key_name, 0)
 
 
 def init_users():
     for user_id, language in get_all_user_ids_and_languages():
-        redis_.hset(f"user_{user_id}", "replicas", "")
-        redis_.hset(f"user_{user_id}", "local", language)
-        redis_.hset(f"user_{user_id}", "has_active_request", 0)
+        red.hset(f"user_{user_id}", "replicas", "")
+        red.hset(f"user_{user_id}", "local", language)
+        red.hset(f"user_{user_id}", "has_active_request", 0)
 
 
 def launch():
@@ -346,3 +391,5 @@ def server():
 
 init_api_keys()
 init_users()
+if __name__ == "__main__":
+    app.run()
