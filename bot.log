@@ -2931,3 +2931,62 @@ INFO:root:WorkerThread2 : отправка запроса DALL-E, ключ: sk-H
 INFO:root:WorkerThread2 : получение изображения
 INFO:root:MainThread : Вадим None: получение ответа
 INFO:root:MainThread : конец работы
+INFO:root:MainThread : Вадим None: начало работы
+INFO:root:MainThread : Вадим None: выбран режим 'Начать диалог' 
+INFO:root:MainThread : старт работы
+INFO:root:WorkerThread2 : отправка запроса, ключ: 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, кол-во токенов: 1600
+INFO:root:Конец обработки запроса, длительность: 0 секунд
+ERROR:root:Возникла ошибка модели
+INFO:root:MainThread : Вадим None: бот ответил пустым сообщением
+INFO:root:MainThread : конец работы
+INFO:root:MainThread : Вадим None: начало работы
+INFO:root:MainThread : Вадим None: выбран режим 'Начать диалог' 
+INFO:root:MainThread : старт работы
+INFO:root:WorkerThread2 : отправка запроса, ключ: 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, кол-во токенов: 1600
+INFO:root:MainThread : Вадим None: начало работы
+INFO:root:MainThread : Вадим None: завершение диалога
+INFO:root:MainThread : Вадим None: начало нового диалога
+INFO:root:MainThread : Вадим None: выбран режим 'Начать диалог' 
+INFO:root:MainThread : старт работы
+ERROR:TeleBot:Infinity polling exception: min() arg is an empty sequence
+ERROR:TeleBot:Exception traceback:
+Traceback (most recent call last):
+  File "/home/vadim/venv/lib/python3.10/site-packages/telebot/__init__.py", line 955, in infinity_polling
+    self.polling(non_stop=True, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "/home/vadim/venv/lib/python3.10/site-packages/telebot/__init__.py", line 1043, in polling
+    self.__threaded_polling(non_stop=non_stop, interval=interval, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "/home/vadim/venv/lib/python3.10/site-packages/telebot/__init__.py", line 1118, in __threaded_polling
+    raise e
+  File "/home/vadim/venv/lib/python3.10/site-packages/telebot/__init__.py", line 1074, in __threaded_polling
+    self.worker_pool.raise_exceptions()
+  File "/home/vadim/venv/lib/python3.10/site-packages/telebot/util.py", line 156, in raise_exceptions
+    raise self.exception_info
+  File "/home/vadim/venv/lib/python3.10/site-packages/telebot/util.py", line 100, in run
+    task(*args, **kwargs)
+  File "/home/vadim/venv/lib/python3.10/site-packages/telebot/__init__.py", line 6395, in _run_middlewares_and_handler
+    result = handler['function'](message)
+  File "/mnt/d/telegram-gpt-bot/app.py", line 255, in handle_requests
+    send_request(msg)
+  File "/mnt/d/telegram-gpt-bot/app.py", line 290, in send_request
+    best_api_key = min(all_api_keys.keys(), key=lambda k: all_api_keys[k])
+ValueError: min() arg is an empty sequence
+
+INFO:root:MainThread : Вадим None: начало работы
+INFO:root:MainThread : Вадим None: завершение диалога
+INFO:root:MainThread : Вадим None: выбран режим 'Начать диалог' 
+INFO:root:MainThread : старт работы
+INFO:root:WorkerThread2 : отправка запроса, ключ: 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, кол-во токенов: 1600
+INFO:root:Конец обработки запроса, длительность: 2 секунд
+INFO:root:MainThread : Вадим None: начало нового диалога
+INFO:root:MainThread : старт работы
+INFO:root:WorkerThread1 : отправка запроса, ключ: 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, кол-во токенов: 1600
+INFO:root:Конец обработки запроса, длительность: 3 секунд
+INFO:root:MainThread : старт работы
+INFO:root:WorkerThread2 : отправка запроса, ключ: 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, кол-во токенов: 1600
+INFO:root:Конец обработки запроса, длительность: 3 секунд
+INFO:root:MainThread : Вадим None: начало нового диалога
+INFO:root:MainThread : старт работы
+INFO:root:WorkerThread1 : отправка запроса, ключ: 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, кол-во токенов: 1600
+INFO:root:Конец обработки запроса, длительность: 7 секунд
+INFO:root:MainThread : Вадим None: начало работы
+INFO:root:MainThread : Вадим None: завершение диалога

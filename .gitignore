@@ -4,3 +4,4 @@ experiments
 tests/calculator_test.py
 ngrok.exe
 test.py
+bot.log

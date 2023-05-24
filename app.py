@@ -335,20 +335,19 @@ def send_request(msg: Message) -> Optional[Message]:
                                    photo=image.img_url)
         logging.info(
             f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: получение ответа")
-    except (ExcessTokensException, OpenAIServerErrorException) as err:
-        bot.send_message(msg.chat.id, _("I don't know what to answer"))
+    except (OpenAIServerErrorException,
+            KeyError,
+            telebot.apihelper.ApiTelegramException):
+        bot.send_message(chat_id=msg.chat.id,
+                         text=_("Something went wrong. Send me a message again or change the text"))
         logging.info(
-            f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: бот ответил пустым сообщением")
-    except telebot.apihelper.ApiTelegramException as err:
-        bot.send_message(msg.chat.id, err)
-        logging.info(
-            f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: {err}")
+            f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: бот ответил пустым сообщением либо ошибкой")
+    except ExcessTokensException as e:
+        bot.send_message(chat_id=msg.chat.id,
+                         text=_(str(e)))
     except AttributeError:
         bot.send_message(chat_id=msg.chat.id, text=_("Choose the mode from the main menu!"))
         logging.error(f"{THR_NAME} : Пользователь id = {msg.chat.id} не найден!")
-    except KeyError:
-        bot.send_message(chat_id=msg.chat.id,
-                         text=_("Something was wrong. Send me a message again or change the text"))
     finally:
         all_api_keys[best_api_key] -= 1
         red.hset("openai_keys-reqs_amount", best_api_key, all_api_keys[best_api_key])
@@ -389,7 +388,6 @@ def server():
     return ""
 
 
+clear_redis()
 init_api_keys()
 init_users()
-if __name__ == "__main__":
-    app.run()

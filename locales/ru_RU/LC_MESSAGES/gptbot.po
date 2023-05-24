@@ -213,3 +213,6 @@ msgstr "Выберите правильную опцию!"
 
 msgid "Something was wrong. Send me a message again or change the text"
 msgstr "Что-то пошло не так. Отправьте мне сообщение снова или измените текст"
+
+msgid "Dialog is too long. You need to press button 'Start new dialogue' to avoid an excess of tokens"
+msgstr "Диалог получился слишком длинным. Необходимо нажать кнопку 'Начать новый диалог, чтобы избежать избытка токенов в запросе"
