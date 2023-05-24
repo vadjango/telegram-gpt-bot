@@ -1,5 +1,4 @@
 import os
-from dotenv import load_dotenv
 import gettext
 import redislite
 import telebot
@@ -7,7 +6,6 @@ import logging
 
 _ = gettext.gettext
 
-load_dotenv("vars.env")
 LOG_FORMAT = "%(asctime)s"
 
 logging.basicConfig(level=logging.INFO, filename="bot.log")

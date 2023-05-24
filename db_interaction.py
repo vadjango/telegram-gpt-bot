@@ -100,3 +100,7 @@ def add_user_to_redis(user_id):
         red.hset(f"user_{user_id}", "local", get_user_local_from_db(user_id))
     except (IndexError, KeyError):
         red.hset(f"user_{user_id}", "local", "en_US")
+
+
+def clear_redis() -> None:
+    red.flushdb()

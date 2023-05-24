@@ -143,13 +143,16 @@ def image_generation(msg: Message):
 
 def set_user_resolution(msg: Message) -> None:
     _ = get_user_translator(msg.chat.id)
-    if msg.text not in ("512x512", "1024x1024", _("☰ Main menu")):
+    if msg.text not in ("512x512", "1024x1024", _("☰ Main menu"), "/start"):
         bot.send_message(chat_id=msg.chat.id,
                          text=_("Choose the correct option!"))
         bot.register_next_step_handler(message=msg, callback=set_user_resolution)
         return
     elif msg.text == _("☰ Main menu"):
         start(msg, _("Our beautiful dialogue is over🙂\nChoose the option:"))
+        return
+    elif msg.text == "/start":
+        start(msg)
         return
     red.hset(f"user_{msg.chat.id}", "image_resolution", msg.text)
     bot.send_message(chat_id=msg.chat.id,
@@ -335,20 +338,19 @@ def send_request(msg: Message) -> Optional[Message]:
                                    photo=image.img_url)
         logging.info(
             f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: получение ответа")
-    except (ExcessTokensException, OpenAIServerErrorException) as err:
-        bot.send_message(msg.chat.id, _("I don't know what to answer"))
+    except (OpenAIServerErrorException,
+            KeyError,
+            telebot.apihelper.ApiTelegramException):
+        bot.send_message(chat_id=msg.chat.id,
+                         text=_("Something went wrong. Send me a message again or change the text"))
         logging.info(
-            f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: бот ответил пустым сообщением")
-    except telebot.apihelper.ApiTelegramException as err:
-        bot.send_message(msg.chat.id, err)
-        logging.info(
-            f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: {err}")
+            f"{THR_NAME} : {msg.from_user.first_name} {msg.from_user.last_name}: бот ответил пустым сообщением либо ошибкой")
+    except ExcessTokensException as e:
+        bot.send_message(chat_id=msg.chat.id,
+                         text=_(str(e)))
     except AttributeError:
         bot.send_message(chat_id=msg.chat.id, text=_("Choose the mode from the main menu!"))
         logging.error(f"{THR_NAME} : Пользователь id = {msg.chat.id} не найден!")
-    except KeyError:
-        bot.send_message(chat_id=msg.chat.id,
-                         text=_("Something was wrong. Send me a message again or change the text"))
     finally:
         all_api_keys[best_api_key] -= 1
         red.hset("openai_keys-reqs_amount", best_api_key, all_api_keys[best_api_key])
@@ -389,7 +391,6 @@ def server():
     return ""
 
 
+clear_redis()
 init_api_keys()
 init_users()
-if __name__ == "__main__":
-    app.run()
