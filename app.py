@@ -388,7 +388,12 @@ def server():
     update = telebot.types.Update.de_json(json_string)
     bot.process_new_updates([update])
     logging.info(str(update))
-    return ""
+    return "!", 200
+
+
+@app.route("/", methods=["GET"])
+def echo():
+    return "!", 200
 
 
 clear_redis()
