@@ -3,5 +3,8 @@ vars.env
 experiments
 tests/calculator_test.py
 ngrok.exe
-test.py
 bot.log
+__pycache__
+tasks.md
+.gitignore
+
